@@ -46,9 +46,36 @@ html.page-archives{
 }
 /*article header page end*/
 
+/*about page*/
+.content.content-about .dot.icon{
+    padding:0;
+    text-align:center;
+}
+.content.content-about .dot[class*="fa-"]{
+    font-size:14px;
+}
+/*about page end*/
+
 /*other*/
 .box-prev-next{
     overflow:hidden;
     margin:0;
+}
+ 
+[class^="fa-"]:before, [class*=" fa-"]:before{
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: .2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 /*other end*/
