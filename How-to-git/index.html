@@ -233,7 +233,7 @@ ga('send', 'pageview');
   <span id="cover" class="cover hide"></span>
   <div id="modal-dialog" class="modal-dialog hide-dialog">
     <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
+      <span id="close" class="btn-close">Close</span>
     </div>
     <hr>
     <div class="modal-body">
@@ -316,11 +316,25 @@ ga('send', 'pageview');
     
 	
     	
+    	
     
-    <script src="https://carnivalapp.io/sites/656/init.js"></script>
-	<script>
-	  document.addEventListener("DOMContentLoaded", Carnival.init);
-	</script>
+    <div class="comments" id="comments">
+        <div id="lv-container" data-id="city" data-uid="MTAyMC8yOTI0MS81ODA4">
+        	<script type="text/javascript">
+			   (function(d, s) {
+			       var j, e = d.getElementsByTagName(s)[0];
+
+			       if (typeof LivereTower === 'function') { return; }
+
+			       j = d.createElement(s);
+			       j.src = '//cdn-city.livere.com/js/embed.dist.js';
+			       j.async = true;
+
+			       e.parentNode.insertBefore(j, e);
+			   })(document, 'script');
+			</script>
+        </div>
+    </div>
 	
   </div>
 
