@@ -78,4 +78,7 @@ html.page-archives{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw .user-address-gw{
+    display:none;
+}
 /*other end*/
