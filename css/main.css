@@ -79,6 +79,6 @@ html.page-archives{
   -moz-osx-font-smoothing: grayscale;
 }
 #SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw .user-address-gw{
-    display:none;
+    display:none !important;
 }
 /*other end*/
