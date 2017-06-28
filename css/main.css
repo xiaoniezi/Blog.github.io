@@ -11,6 +11,7 @@ html,body{
     margin:0 auto;
     top:50%;
     left:50%;
+    width:300px;
     -webkit-transform:translate(-50%,-50%);
     -moz-transform:translate(-50%,-50%);
     -o-transform:translate(-50%,-50%);
@@ -20,11 +21,13 @@ html,body{
 
 /*_home page*/
 html.page-home{
-    background-image: url('/images/blog_bg_01.jpg');
+    /*background-image: url('/images/blog_bg_05.jpg');
+    background-size:100% 100%;
+    background-repeat:no-repeat;*/
     background-color: transparent;
 }
 html.page-archives{
-    /*background-image:url('/images/blog_bg_01.jpg');*/
+    /*background-image:url('/images/blog_bg_02.png');*/
     background-color:transparent;
 }
 .content-home hr{
@@ -80,5 +83,10 @@ html.page-archives{
 }
 #SOHUCS #SOHU_MAIN .module-cmt-list .wrap-user-gw .user-address-gw{
     display:none !important;
+}
+@media screen and (min-width:780px){
+    html.page-home{
+        background-image:url('/images/blog_bg_02.png');
+    }
 }
 /*other end*/
