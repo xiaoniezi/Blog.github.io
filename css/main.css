@@ -49,6 +49,21 @@ html.page-archives{
 }
 /*article header page end*/
 
+/*article post page*/
+.post-content{
+    width:100%;
+}
+.article-tags{
+    width:100%;
+    padding:20px 0;
+    overflow:hidden;
+}
+.article-tags>.article-tag{
+    display:inline-block;
+    margin-right:10px;
+}
+/*article post page end*/
+
 /*about page*/
 .content.content-about .dot.icon{
     padding:0;
