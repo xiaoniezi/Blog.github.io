@@ -46,6 +46,7 @@ html.page-archives{
 }
 .content.content-post .article-header .article-meta i{
     margin-left:10px;
+    margin-right:1px;
 }
 /*article header page end*/
 
@@ -61,6 +62,9 @@ html.page-archives{
 .article-tags>.article-tag{
     display:inline-block;
     margin-right:10px;
+}
+.post-excerpt{
+    width:100%;
 }
 /*article post page end*/
 
@@ -80,7 +84,7 @@ html.page-archives{
     margin:0;
 }
  
-[class^="fa-"]:before, [class*=" fa-"]:before{
+[class^="fa-"]:before, [class*="fa-"]:before{
   font-style: normal;
   font-weight: normal;
   speak: none;
