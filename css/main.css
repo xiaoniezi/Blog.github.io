@@ -105,7 +105,7 @@ html,body{
         width:50px;
     }
     .content-belt{
-        background-image:url('/images/blog_bg_title02.png');
+        /*background-image:url('/images/blog_bg_title02.png');*/
     }
     .page-header .breadcrumb .location{
         height:80px;
