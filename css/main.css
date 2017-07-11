@@ -164,6 +164,10 @@ html,body{
 .post-excerpt{
     width:100%;
 }
+.article-content .page-forward{
+    width:100%;
+    font-size:0.8em;
+}
 
 /*detail page end*/
 
