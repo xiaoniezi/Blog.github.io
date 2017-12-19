@@ -144,6 +144,16 @@ html,body{
 
 /*main page end*/
 
+/*topic page*/
+.toc-article{
+    position:fixed;
+    left:auto;
+    right:150px;
+    font-size:14px;
+    top:100px;
+}
+/*topic page end*/
+
 /*detail page*/
 .content.content-post .article-header .article-meta i{
     margin-left:10px;

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>VUE element-ui 写个复用Table组件 | 小聂子客栈</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,javascript,elementUI," />
+  
+
+  <meta name="description" content="饿了么的table组件功能很强大，对于项目中的各种表格基本够用，但是……个人对于它以列为单位的操作不习惯 =。=所以改成了另一种方式（我不会告诉你其实本质没变）。">
+<meta name="keywords" content="vue,javascript,elementUI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE element-ui 写个复用Table组件">
+<meta property="og:url" content="https://xiaoniezi.github.io/2017-11-17/vue-ElementUI-tree-table/index.html">
+<meta property="og:site_name" content="小聂子客栈">
+<meta property="og:description" content="饿了么的table组件功能很强大，对于项目中的各种表格基本够用，但是……个人对于它以列为单位的操作不习惯 =。=所以改成了另一种方式（我不会告诉你其实本质没变）。">
+<meta property="og:updated_time" content="2017-12-19T07:04:07.706Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VUE element-ui 写个复用Table组件">
+<meta name="twitter:description" content="饿了么的table组件功能很强大，对于项目中的各种表格基本够用，但是……个人对于它以列为单位的操作不习惯 =。=所以改成了另一种方式（我不会告诉你其实本质没变）。">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/main.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤一"><span class="toc-text">步骤一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤二"><span class="toc-text">步骤二</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤三"><span class="toc-text">步骤三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#步骤四"><span class="toc-text">步骤四</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-vue-ElementUI-tree-table" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">VUE element-ui 写个复用Table组件</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.11.17</span>
+      </span>
+
+      
+        <!-- <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Shyla Nie</span>
+        </span> -->
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/category/Vue/">Vue</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>饿了么的table组件功能很强大，对于项目中的各种表格基本够用，但是……个人对于它<strong>以列为单位</strong>的操作不习惯 =。=所以改成了另一种方式（我不会告诉你其实本质没变）。<br><a id="more"></a></p>
+</blockquote>
+<p><strong>项目中表格较多，所以复用性最重要</strong></p>
+<h2 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h2><p>先来个基本的表格展示</p>
+<p>官例的tableData</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">tableData: [&#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2016-05-02'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'王小虎'</span>,</div><div class="line">    <span class="attr">address</span>: <span class="string">'上海市普陀区金沙江路 1518 弄'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2016-05-04'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'王小虎'</span>,</div><div class="line">    <span class="attr">address</span>: <span class="string">'上海市普陀区金沙江路 1517 弄'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2016-05-01'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'王小虎'</span>,</div><div class="line">    <span class="attr">address</span>: <span class="string">'上海市普陀区金沙江路 1519 弄'</span></div><div class="line">&#125;, &#123;</div><div class="line">    <span class="attr">date</span>: <span class="string">'2016-05-03'</span>,</div><div class="line">    <span class="attr">name</span>: <span class="string">'王小虎'</span>,</div><div class="line">    <span class="attr">address</span>: <span class="string">'上海市普陀区金沙江路 1516 弄'</span></div><div class="line">&#125;]</div></pre></td></tr></table></figure>
+<p>table.vue</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:data</span>=<span class="string">"tableData"</span> <span class="attr">border</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">"date"</span> <span class="attr">label</span>=<span class="string">"日期"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">"name"</span> <span class="attr">label</span>=<span class="string">"姓名"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">prop</span>=<span class="string">"address"</span> <span class="attr">label</span>=<span class="string">"地址"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h2><p>简化一下表格：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:data</span>=<span class="string">"tableData"</span> <span class="attr">border</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-for</span>=<span class="string">"(item,key) in tableKey"</span> </span></div><div class="line">    	<span class="attr">:key</span>=<span class="string">"key"</span></div><div class="line">    	<span class="attr">:prop</span>=<span class="string">"item.value"</span></div><div class="line">    	<span class="attr">:label</span>=<span class="string">"item.name"</span>&gt;<span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'table'</span>,</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span>&#123;</div><div class="line">            <span class="attr">tableData</span>:[...],</div><div class="line">            <span class="attr">tableKey</span>: [&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'日期'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'date'</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'姓名'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'name'</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'地址'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'address'</span></div><div class="line">			&#125;]</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h2><p>复用<code>table.vue</code>就是————给它数据的同时告诉它我的字段名呗</p>
+<p>新建一个父组件<code>sl_table.vue</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- sl_table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sl-table</span> <span class="attr">:tableData</span>=<span class="string">"tableData"</span> <span class="attr">:tableKey</span>=<span class="string">"tableKey"</span>&gt;</span><span class="tag">&lt;/<span class="name">sl-table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">import</span> Table <span class="keyword">from</span> <span class="string">'@/components/table'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'sl-table'</span>,</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">tableData</span>: [...]</div><div class="line">            tableKey: [&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'日期'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'date'</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'姓名'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'name'</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'地址'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'address'</span></div><div class="line">			&#125;]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">components</span>: &#123;</div><div class="line">        <span class="string">'sl-table'</span>: Table</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>table.vue</code>就更简单了</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:data</span>=<span class="string">"tableData"</span> <span class="attr">border</span>&gt;</span></div><div class="line">    	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-for</span>=<span class="string">"(item,key) in tableKey"</span> </span></div><div class="line">    	<span class="attr">:key</span>=<span class="string">"key"</span></div><div class="line">    	<span class="attr">:prop</span>=<span class="string">"item.value"</span></div><div class="line">    	<span class="attr">:label</span>=<span class="string">"item.name"</span>&gt;<span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'table'</span>,</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span>&#123;</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">props</span>:[<span class="string">'tableData'</span>,<span class="string">'tableKey'</span>],</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h2><p>可以根据需求修改<code>table</code>的形式</p>
+<ol>
+<li><p>列宽度<br>这个较为简单，可以直接加个属性  </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"> <span class="comment">//sl_table.vue</span></div><div class="line"> data()&#123;</div><div class="line">     <span class="keyword">return</span> &#123;</div><div class="line">         <span class="attr">tableData</span>: [...]</div><div class="line">         tableKey: [&#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'日期'</span>,</div><div class="line">	<span class="attr">value</span>: <span class="string">'date'</span>,</div><div class="line">	<span class="attr">width</span>: <span class="number">80</span></div><div class="line">&#125;,&#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'姓名'</span>,</div><div class="line">	<span class="attr">value</span>: <span class="string">'name'</span>,</div><div class="line">	<span class="attr">width</span>: <span class="number">80</span></div><div class="line">&#125;,&#123;</div><div class="line">	<span class="attr">name</span>: <span class="string">'地址'</span>,</div><div class="line">	<span class="attr">value</span>: <span class="string">'address'</span></div><div class="line">&#125;]</div><div class="line">     &#125;</div><div class="line"> &#125;,</div></pre></td></tr></table></figure>
+<p>table.vue</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line">   <span class="comment">&lt;!-- table.vue --&gt;</span></div><div class="line">   ...</div><div class="line">   <span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-for</span>=<span class="string">"(item,key) in tableKey"</span> </span></div><div class="line"><span class="attr">:key</span>=<span class="string">"key"</span></div><div class="line"><span class="attr">:prop</span>=<span class="string">"item.value"</span></div><div class="line"><span class="attr">:label</span>=<span class="string">"item.name"</span></div><div class="line"><span class="attr">:width</span>=<span class="string">"item.width"</span>&gt;<span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line">   ...</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义模板列<br> 如果我们需要告诉组件哪个是自定义的列，所以添加一个属性<code>operate</code><br> table.vue</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-for</span>=<span class="string">"(item,key) in tableKey"</span> </span></div><div class="line"><span class="attr">v-if</span>=<span class="string">"!item.operate"</span></div><div class="line"><span class="attr">:key</span>=<span class="string">"key"</span></div><div class="line"><span class="attr">:prop</span>=<span class="string">"item.value"</span></div><div class="line"><span class="attr">:label</span>=<span class="string">"item.name"</span></div><div class="line"><span class="attr">:width</span>=<span class="string">"item.width"</span>&gt;<span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 自定义 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">scope</span>=<span class="string">"scope"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">slot</span> <span class="attr">:name</span>=<span class="string">"item.value"</span> <span class="attr">:</span>$<span class="attr">index</span>=<span class="string">"scope.$index"</span> <span class="attr">:row</span>=<span class="string">"scope.row"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>sl_table.vue</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- sl_table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">sl-table</span> <span class="attr">:tableData</span>=<span class="string">"tableData"</span> <span class="attr">:tableKey</span>=<span class="string">"tableKey"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">"date"</span> <span class="attr">scope</span>=<span class="string">"scope"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123; scope.row.date | DateFilter &#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">sl-table</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">tableData</span>: [...]</div><div class="line">            tableKey: [&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'日期'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'date'</span>,</div><div class="line">				<span class="attr">operate</span>: <span class="literal">true</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'姓名'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'name'</span>,</div><div class="line">				<span class="attr">operate</span>: <span class="literal">false</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">name</span>: <span class="string">'地址'</span>,</div><div class="line">				<span class="attr">value</span>: <span class="string">'address'</span>,</div><div class="line">				<span class="attr">operate</span>: <span class="literal">false</span></div><div class="line">			&#125;]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">filters</span>: &#123;</div><div class="line">        DateFilter()&#123;...&#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>表格展开行<br>类似宽度，只要<code>sl_table.vue</code>传入一个<code>isExpand</code>的属性。这里加个每次只能展开一行的效果： </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- sl_table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">sl-table</span> <span class="attr">:tableData</span>=<span class="string">"tableData"</span> <span class="attr">:tableKey</span>=<span class="string">"tableKey"</span> <span class="attr">:isExpand</span>=<span class="string">"true"</span> <span class="attr">:isExpandOnly</span>=<span class="string">"true"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">template</span> <span class="attr">slot</span>=<span class="string">"expand"</span> <span class="attr">scope</span>=<span class="string">"scope"</span>&gt;</span></div><div class="line">        &#123;&#123;...expand something&#125;&#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">sl-table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>table.vue</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- table.vue --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-table</span> <span class="attr">:data</span>=<span class="string">"tableData"</span> <span class="attr">border</span> @<span class="attr">expand</span>=<span class="string">"handleExpand"</span> <span class="attr">ref</span>=<span class="string">"raw_table"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">el-table-column</span> <span class="attr">v-if</span>=<span class="string">"isExpand"</span> <span class="attr">type</span>=<span class="string">"expand"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">template</span> <span class="attr">scope</span>=<span class="string">"scope"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"expand"</span> <span class="attr">:</span>$<span class="attr">index</span>=<span class="string">"scope.$index"</span> <span class="attr">:row</span>=<span class="string">"scope.row"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></div><div class="line">...</div><div class="line">props: ['tableData','tableKey','isExpand','isExpandOnly'],</div><div class="line">methods: &#123;</div><div class="line">    handleExpand(row,expanded)&#123;</div><div class="line">        if(this.isExpand &amp;&amp; this.isExpandOnly)&#123;</div><div class="line">           this.$refs.raw_table.store.states.expandRows = expanded ? [row] : [] </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其他的（排序、多选）操作也是类似添加。。。多不赘述。</p>
+
+    
+    
+  <div class="article-tags">
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/elementUI/">elementUI</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/javascript/">javascript</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/vue/">vue</a>
+        </div>
+    
+  </div>
+
+  </div>
+</article>
+
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017-10-16/vue-ElementUI-tree-expand/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    	
+    
+	
+    	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>

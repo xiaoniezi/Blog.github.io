@@ -10,6 +10,7 @@
   var $cover = document.getElementById('cover');
   var $close = document.getElementById('close');
   var $modalDialog = document.getElementById('modal-dialog');
+  var $content = document.getElementsByClass(".content.content-post")[0]
   var scrollTop = 0;
   var tocTop = 20;
 
@@ -24,7 +25,8 @@
       if (tocHeight + 20 > winHeight) {
           return;
       }
-      $body.scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
+      // $body.scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
+      $body.scrollTop > 50 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
     }
 
   }());
@@ -42,8 +44,12 @@
   });
 
   // toc and backTop
+  console.log(888888888)
   Util.bind(window, 'scroll', function() {
+    console.log(999999999999)
+    console.log($content)
     scrollTop = $body.scrollTop;
+    console.log(scrollTop)
     if ($toc) {
       var tocHeight = parseInt(window.getComputedStyle($toc)['height'], 10);
       var winHeight = document.documentElement.clientHeight;
@@ -51,7 +57,8 @@
           return;
       }
       
-      scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
+      // scrollTop > 180 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
+      scrollTop > 50 ? Util.addClass($toc, 'fixed') : Util.removeClass($toc, 'fixed');
     }
 
     if ($backTop) {

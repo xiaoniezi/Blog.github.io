@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>VUE饿了么树形控件添加增删改功能 | 小聂子客栈</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,javascript,elementUI," />
+  
+
+  <meta name="description" content="在原文档中有个案例是有新增和删除功能，但是后来发现其修改的数据并不能直接影响到树形数据，所以采用了 render-content 的API重新写了个组件。写个开发的步骤，所以文章比较长emmm">
+<meta name="keywords" content="vue,javascript,elementUI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VUE饿了么树形控件添加增删改功能">
+<meta property="og:url" content="https://xiaoniezi.github.io/2017-10-16/vue-ElementUI-tree-expand/index.html">
+<meta property="og:site_name" content="小聂子客栈">
+<meta property="og:description" content="在原文档中有个案例是有新增和删除功能，但是后来发现其修改的数据并不能直接影响到树形数据，所以采用了 render-content 的API重新写了个组件。写个开发的步骤，所以文章比较长emmm">
+<meta property="og:image" content="https://xiaoniezi.github.io/images/vue_ex_01.png">
+<meta property="og:updated_time" content="2017-12-19T06:28:30.659Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VUE饿了么树形控件添加增删改功能">
+<meta name="twitter:description" content="在原文档中有个案例是有新增和删除功能，但是后来发现其修改的数据并不能直接影响到树形数据，所以采用了 render-content 的API重新写了个组件。写个开发的步骤，所以文章比较长emmm">
+<meta name="twitter:image" content="https://xiaoniezi.github.io/images/vue_ex_01.png">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/main.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-省市API"><span class="toc-text">1.省市API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-el-tree-Component基本"><span class="toc-text">2.el-tree Component基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tree-render-Component基本"><span class="toc-text">3.tree_render Component基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-改"><span class="toc-text">4.改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-增"><span class="toc-text">5.增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-删"><span class="toc-text">6.删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-拓展"><span class="toc-text">7.拓展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-github"><span class="toc-text">8.github</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-vue-ElementUI-tree-expand" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">VUE饿了么树形控件添加增删改功能</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2017.10.16</span>
+      </span>
+
+      
+        <!-- <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Shyla Nie</span>
+        </span> -->
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/category/Vue/">Vue</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>在原文档中有个案例是有新增和删除功能，但是后来发现其修改的数据并不能直接影响到树形数据，所以采用了 <code>render-content</code> 的API重新写了个组件。<br>写个开发的步骤，所以文章比较长emmm<br><a id="more"></a></p>
+</blockquote>
+<p>element-ui树形控件：<a href="http://element.eleme.io/1.4/#/zh-CN/component/tree" target="_blank" rel="external">地址</a></p>
+<p>大致效果如图：<br><img src="/images/vue_ex_01.png" alt="例图"></p>
+<hr>
+<h2 id="1-省市API"><a href="#1-省市API" class="headerlink" title="1.省市API"></a>1.省市API</h2><p>在网上复制了个省市的list，有两个属性是新增的</p>
+<ul>
+<li><code>isEdit</code>：控制编辑状态</li>
+<li><code>maxexpandId</code>：为现下id的最大值</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">maxexpandId</span>: <span class="number">95</span>,</div><div class="line">    <span class="attr">treelist</span>: [&#123;  </div><div class="line">        <span class="attr">id</span>: <span class="number">1</span>,  </div><div class="line">        <span class="attr">name</span>: <span class="string">"北京市"</span>,  </div><div class="line">        <span class="attr">ProSort</span>: <span class="number">1</span>,  </div><div class="line">        <span class="attr">remark</span>: <span class="string">"直辖市"</span>,</div><div class="line">        <span class="attr">pid</span>: <span class="string">''</span>,</div><div class="line">        <span class="attr">isEdit</span>: <span class="literal">false</span>,</div><div class="line">        <span class="attr">children</span>: [&#123;</div><div class="line">    		<span class="attr">id</span>: <span class="number">35</span>,</div><div class="line">    		<span class="attr">name</span>: <span class="string">"朝阳区"</span>,</div><div class="line">    		<span class="attr">pid</span>: <span class="number">1</span>,</div><div class="line">    		<span class="attr">remark</span>: <span class="string">''</span>,</div><div class="line">    		<span class="attr">isEdit</span>: <span class="literal">false</span>,</div><div class="line">    		<span class="attr">children</span>: []</div><div class="line">    	&#125;]</div><div class="line">    &#125;&#123;...&#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="2-el-tree-Component基本"><a href="#2-el-tree-Component基本" class="headerlink" title="2.el-tree Component基本"></a>2.el-tree Component基本</h2><p>咱们一步步来，先写个饿了么的组件</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-tree</span> <span class="attr">ref</span>=<span class="string">"expandMenuList"</span> <span class="attr">class</span>=<span class="string">"expand-tree"</span></span></div><div class="line">        <span class="attr">v-if</span>=<span class="string">"isLoadingTree"</span></div><div class="line">        <span class="attr">:data</span>=<span class="string">"setTree"</span></div><div class="line">        <span class="attr">node-key</span>=<span class="string">"id"</span></div><div class="line">        <span class="attr">highlight-current</span></div><div class="line">        <span class="attr">:props</span>=<span class="string">"defaultProps"</span></div><div class="line">        <span class="attr">:expand-on-click-node</span>=<span class="string">"false"</span></div><div class="line">        <span class="attr">:render-content</span>=<span class="string">"renderContent"</span></div><div class="line">        <span class="attr">:default-expanded-keys</span>=<span class="string">"defaultExpandKeys"</span>&gt;<span class="tag">&lt;/<span class="name">el-tree</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line">* highlight-current ：为了点击时节点高亮</div><div class="line">* expand-on-click-node : 只能箭头控制树形的展开收缩</div><div class="line">* render-content : 节点渲染方式</div><div class="line">* default-expanded-keys ：默认展开节点</div><div class="line">--&gt;</div></pre></td></tr></table></figure>
+<p>同时引入API和节点渲染的组件</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> TreeRender <span class="keyword">from</span> <span class="string">'@/components/tree_render'</span></div><div class="line"><span class="keyword">import</span> api <span class="keyword">from</span> <span class="string">'@/resource/api'</span></div></pre></td></tr></table></figure>
+<p>然后搭建好基础</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">data()&#123;</div><div class="line">  <span class="keyword">return</span>&#123;</div><div class="line">    <span class="attr">maxexpandId</span>: api.maxexpandId,<span class="comment">//新增节点开始id</span></div><div class="line">    non_maxexpandId: api.maxexpandId,<span class="comment">//新增节点开始id(不更改)</span></div><div class="line">    isLoadingTree: <span class="literal">false</span>,<span class="comment">//是否加载节点树</span></div><div class="line">    setTree: api.treelist,<span class="comment">//节点树数据</span></div><div class="line">    defaultProps: &#123;</div><div class="line">      <span class="attr">children</span>: <span class="string">'children'</span>,</div><div class="line">      <span class="attr">label</span>: <span class="string">'name'</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">defaultExpandKeys</span>: [],<span class="comment">//默认展开节点列表</span></div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure>
+<p>添加个渲染的method</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">    renderContent(h,&#123;node,data,store&#125;)&#123;</div><div class="line">      <span class="keyword">let</span> that = <span class="keyword">this</span>;<span class="comment">//指向vue</span></div><div class="line">      <span class="keyword">return</span> h(TreeRender,&#123;</div><div class="line">        <span class="attr">props</span>: &#123;</div><div class="line">          <span class="attr">DATA</span>: data,<span class="comment">//节点数据</span></div><div class="line">          NODE: node,<span class="comment">//节点内容</span></div><div class="line">          STORE: store,<span class="comment">//完整树形内容</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">on</span>: &#123;<span class="comment">//绑定方法</span></div><div class="line">          nodeAdd: <span class="function">(<span class="params">(s,d,n</span>) =&gt;</span> that.handleAdd(s,d,n)),</div><div class="line">          <span class="attr">nodeEdit</span>: <span class="function">(<span class="params">(s,d,n</span>) =&gt;</span> that.handleEdit(s,d,n)),</div><div class="line">          <span class="attr">nodeDel</span>: <span class="function">(<span class="params">(s,d,n</span>) =&gt;</span> that.handleDelete(s,d,n))</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;,</div><div class="line">    handleAdd(s,d,n)&#123;<span class="comment">//增加节点</span></div><div class="line">      <span class="built_in">console</span>.log(s,d,n)</div><div class="line">    &#125;,</div><div class="line">    handleEdit(s,d,n)&#123;<span class="comment">//编辑节点</span></div><div class="line">      <span class="built_in">console</span>.log(s,d,n)</div><div class="line">    &#125;,</div><div class="line">    handleDelete(s,d,n)&#123;<span class="comment">//删除节点</span></div><div class="line">      <span class="built_in">console</span>.log(s,d,n)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="3-tree-render-Component基本"><a href="#3-tree-render-Component基本" class="headerlink" title="3.tree_render Component基本"></a>3.tree_render Component基本</h2><p>渲染组件：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-expand"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-label"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;DATA.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-btn"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-plus"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeAdd(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-edit"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeEdit(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-delete"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeDel(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加好几个按钮（element-ui自带icon：<a href="http://element.eleme.io/1.4/#/zh-CN/component/icon" target="_blank" rel="external">地址</a>）对应的方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">props</span>: [<span class="string">'NODE'</span>, <span class="string">'DATA'</span>, <span class="string">'STORE'</span>],</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">      nodeAdd(s,d,n)&#123;<span class="comment">//新增</span></div><div class="line">        <span class="keyword">this</span>.$emit(<span class="string">'nodeAdd'</span>,s,d,n)</div><div class="line">      &#125;,</div><div class="line">      nodeEdit(s,d,n)&#123;<span class="comment">//编辑</span></div><div class="line">        <span class="keyword">this</span>.$emit(<span class="string">'nodeEdit'</span>,s,d,n)</div><div class="line">      &#125;,</div><div class="line">      nodeDel(s,d,n)&#123;<span class="comment">//删除</span></div><div class="line">        <span class="keyword">this</span>.$emit(<span class="string">'nodeDel'</span>,s,d,n)</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="4-改"><a href="#4-改" class="headerlink" title="4.改"></a>4.改</h2><p>我们用<code>isEdit</code>来切换<code>input</code>和<code>span</code>的显示状态，首先加个input：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- tree_render component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-expand"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-label"</span> <span class="attr">v-if</span>=<span class="string">"DATA.isEdit"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">el-input</span> <span class="attr">class</span>=<span class="string">"edit"</span> <span class="attr">size</span>=<span class="string">"mini"</span></span></div><div class="line">			<span class="attr">:ref</span>=<span class="string">"'treeInput'+DATA.id"</span></div><div class="line">			<span class="attr">v-model</span>=<span class="string">"DATA.name"</span>&gt;<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-else</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-label"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;DATA.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-btn"</span> <span class="attr">v-show</span>=<span class="string">"!DATA.isEdit"</span>&gt;</span></div><div class="line">    			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-plus"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeAdd(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">    			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-edit"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeEdit(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">    			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-delete"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeDel(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">    		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>编辑的时候按钮同时消失，那么什么时候编辑完成呢？</p>
+<ul>
+<li>编辑完按enter键=》监听input的enter输入</li>
+<li>点击其他节点=》input失焦-<code>blur</code>=》编辑时自动聚焦-<code>focus</code></li>
+<li>点击当前节点范围</li>
+</ul>
+<p>当以上三点发生一项，节点对应的data都要<code>isEdit = false;</code></p>
+<ol>
+<li><p>enter键</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- tree_render component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-input</span> @<span class="attr">keyup.enter.native</span>=<span class="string">"nodeEditPass(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//tree_render component</span></div><div class="line">methods: &#123;</div><div class="line">    nodeEditPass(s,d,n)&#123;</div><div class="line">        d.isEdit = <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>focus or blur</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- tree_render component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-input</span> @<span class="attr">blur</span>=<span class="string">"nodeEditPass(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>后来发现第一次编辑时能让<code>input</code>聚焦，点击第二个<code>input</code>就不起作用了，加了<code>autofocus</code>属性也同样如此。所以我们要在点击编辑<code>icon</code>的时候，用原生的<code>input autofocus</code>。<br>修改方法：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//tree_render component</span></div><div class="line">nodeEdit(s,d,n)&#123;<span class="comment">//编辑</span></div><div class="line">  d.isEdit = <span class="literal">true</span>;</div><div class="line">  <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">this</span>.$refs[<span class="string">'treeInput'</span>+d.id].$refs.input.focus()</div><div class="line">  &#125;)</div><div class="line">  <span class="keyword">this</span>.$emit(<span class="string">'nodeEdit'</span>,s,d,n)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>当前节点</strong>点击<br>采用<code>el-tree</code>已有的API——<code>node-click</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- el-tree component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-tree</span> @<span class="attr">node-click</span>=<span class="string">"handleNodeClick"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-tree</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加methods：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//el-tree component</span></div><div class="line">methods: &#123;</div><div class="line">    handleNodeClick(d,n,s)&#123;<span class="comment">//点击节点</span></div><div class="line">      d.isEdit = <span class="literal">false</span>;<span class="comment">//放弃编辑状态</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>问题来了，如果在编辑状态下点击此节点也同样会影响input，这就无法进入编辑，所以要阻止input<strong>事件冒泡</strong>：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- tree_render component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-input</span> @<span class="attr">click.stop.native</span>=<span class="string">"nodeEditFocus"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加methods：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//tree_render component</span></div><div class="line">methods: &#123;</div><div class="line">    nodeEditFocus()&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>v-show</code>代替<code>v-if</code></p>
+<p>这里有个新的问题，当用户经常编辑修改，<code>v-if</code>模板的开销更高，所以改用v-show。而后者不支持template模板，所以要适当调整一下位置：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-expand"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-label"</span> <span class="attr">v-show</span>=<span class="string">"DATA.isEdit"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">el-input</span> <span class="attr">class</span>=<span class="string">"edit"</span> <span class="attr">size</span>=<span class="string">"mini"</span> <span class="attr">autofocus</span></span></div><div class="line">			<span class="attr">v-model</span>=<span class="string">"DATA.name"</span></div><div class="line">			<span class="attr">:ref</span>=<span class="string">"'treeInput'+DATA.id"</span></div><div class="line">			@<span class="attr">click.stop.native</span>=<span class="string">"nodeEditFocus"</span></div><div class="line">			@<span class="attr">blur</span>=<span class="string">"nodeEditPass(STORE,DATA,NODE)"</span></div><div class="line">			@<span class="attr">keyup.enter.native</span>=<span class="string">"nodeEditPass(STORE,DATA,NODE)"</span>&gt;<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">"!DATA.isEdit"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;DATA.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"tree-btn"</span> <span class="attr">v-show</span>=<span class="string">"!DATA.isEdit"</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-plus"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeAdd(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-edit"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeEdit(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"el-icon-delete"</span> @<span class="attr">click.stop</span>=<span class="string">"nodeDel(STORE,DATA,NODE)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="5-增"><a href="#5-增" class="headerlink" title="5.增"></a>5.增</h2><p>新增节点 =》添加一条数据</p>
+<ol>
+<li>新增的同时展开父节点</li>
+<li>是否考虑无限新增</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//el-tree component</span></div><div class="line">handleAdd(s,d,n)&#123;<span class="comment">//增加节点</span></div><div class="line">  <span class="built_in">console</span>.log(s,d,n)</div><div class="line">  <span class="keyword">if</span>(n.level &gt;=<span class="number">6</span>)&#123;</div><div class="line">    <span class="keyword">this</span>.$message.error(<span class="string">"最多只支持五级！"</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">//添加数据</span></div><div class="line">  d.children.push(&#123;</div><div class="line">    <span class="attr">id</span>: ++<span class="keyword">this</span>.maxexpandId,</div><div class="line">    <span class="attr">name</span>: <span class="string">'新增节点'</span>,</div><div class="line">    <span class="attr">pid</span>: d.id,</div><div class="line">    <span class="attr">isEdit</span>: <span class="literal">false</span>,</div><div class="line">    <span class="attr">children</span>: []</div><div class="line">  &#125;);</div><div class="line">  <span class="comment">//展开节点</span></div><div class="line">  <span class="keyword">if</span>(!n.expanded)&#123;</div><div class="line">    n.expanded = <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>新增节点字体加粗 =》给节点添加一个class =》 如何判断是否新增？<br>我们有一个参数<code>maxexpandId</code><br>给<code>tree_render</code>添加一个<code>prop</code>：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//el-tree component</span></div><div class="line">renderContent(h,&#123;node,data,store&#125;)&#123;<span class="comment">//加载节点</span></div><div class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="keyword">return</span> h(TreeRender,&#123;</div><div class="line">    <span class="attr">props</span>: &#123;</div><div class="line">      ...</div><div class="line">      maxexpandId: that.non_maxexpandId</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">on</span>: &#123;...&#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据id判断：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//tree_render component</span></div><div class="line">props: [<span class="string">'NODE'</span>, <span class="string">'DATA'</span>, <span class="string">'STORE'</span>, <span class="string">'maxexpandId'</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- tree_render component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-show</span>=<span class="string">"!DATA.isEdit"</span> </span></div><div class="line"><span class="attr">:class</span>=<span class="string">"[DATA.id &gt; maxexpandId ? 'tree-new tree-label' : 'tree-label']"</span></div><div class="line"><span class="attr">:ref</span>=<span class="string">"'treeLabel'+DATA.id"</span>&gt;</div><div class="line">	<span class="tag">&lt;<span class="name">span</span>&gt;</span>&#123;&#123;DATA.name&#125;&#125;<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.tree-expand</span> <span class="selector-class">.tree-label</span><span class="selector-class">.tree-new</span>&#123;</div><div class="line">    <span class="attribute">font-weight</span>:<span class="number">600</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="6-删"><a href="#6-删" class="headerlink" title="6.删"></a>6.删</h2><p>跟新增同义：删除节点 =》删除一条数据</p>
+<ol>
+<li>新增节点直接删除</li>
+<li>已有节点需提示再删除</li>
+<li>已有子级节点不能删除</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">handleDelete(s,d,n)&#123;<span class="comment">//删除节点</span></div><div class="line">  <span class="built_in">console</span>.log(s,d,n)</div><div class="line">  <span class="keyword">let</span> that = <span class="keyword">this</span>;</div><div class="line">  <span class="comment">//有子级不删除</span></div><div class="line">  <span class="keyword">if</span>(d.children &amp;&amp; d.children.length !== <span class="number">0</span>)&#123;</div><div class="line">    <span class="keyword">this</span>.$message.error(<span class="string">"此节点有子级，不可删除！"</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="comment">//删除操作</span></div><div class="line">    <span class="keyword">let</span> delNode = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">let</span> list = n.parent.data.children || n.parent.data,</div><div class="line">      <span class="comment">//节点同级数据，顶级节点时无children</span></div><div class="line">        _index = <span class="number">99999</span>;<span class="comment">//要删除的index</span></div><div class="line">      list.map(<span class="function">(<span class="params">c,i</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span>(d.id == c.id)&#123;</div><div class="line">          _index = i;</div><div class="line">        &#125;</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">let</span> k = list.splice(_index,<span class="number">1</span>);</div><div class="line">      <span class="comment">//console.log(_index,k)</span></div><div class="line">      <span class="keyword">this</span>.$message.success(<span class="string">"删除成功！"</span>)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">let</span> isDel = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      that.$confirm(<span class="string">"是否删除此节点？"</span>,<span class="string">"提示"</span>,&#123;</div><div class="line">        <span class="attr">confirmButtonText</span>: <span class="string">"确认"</span>,</div><div class="line">        <span class="attr">cancelButtonText</span>: <span class="string">"取消"</span>,</div><div class="line">        <span class="attr">type</span>: <span class="string">"warning"</span></div><div class="line">      &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        delNode()<span class="comment">//此处可通过ajax做删除操作</span></div><div class="line">      &#125;).catch(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//新增节点直接删除，否则要通过请求数据删除</span></div><div class="line">    d.id &gt; <span class="keyword">this</span>.non_maxexpandId ? delNode() : isDel()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="7-拓展"><a href="#7-拓展" class="headerlink" title="7.拓展"></a>7.拓展</h2><p>还有一些特别的需求，例如：</p>
+<ol>
+<li><p>点击高亮的时候显示icon</p>
+ <figure class="highlight css"><table><tr><td class="code"><pre><div class="line">	<span class="selector-class">.expand-tree</span> <span class="selector-class">.is-current</span>&gt;<span class="selector-class">.el-tree-node__content</span> <span class="selector-class">.tree-btn</span>,</div><div class="line"><span class="selector-class">.expand-tree</span> <span class="selector-class">.el-tree-node__content</span><span class="selector-pseudo">:hover</span> <span class="selector-class">.tree-btn</span>&#123;</div><div class="line">	<span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加顶级节点<br>  添加按钮：</p>
+ <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- el-tree component --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-button</span> @<span class="attr">click</span>=<span class="string">"handleAddTop"</span>&gt;</span>添加顶级节点<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>添加methods：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//el-tree component</span></div><div class="line">methods: &#123;</div><div class="line">  handleAddTop()&#123;</div><div class="line">    <span class="keyword">this</span>.setTree.push(&#123;</div><div class="line">      <span class="attr">id</span>: ++<span class="keyword">this</span>.maxexpandId,</div><div class="line">      <span class="attr">name</span>: <span class="string">'新增节点'</span>,</div><div class="line">      <span class="attr">pid</span>: <span class="string">''</span>,</div><div class="line">      <span class="attr">isEdit</span>: <span class="literal">false</span>,</div><div class="line">      <span class="attr">children</span>: []</div><div class="line">    &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>默认展开树形第一级</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//el-tree component</span></div><div class="line">mounted()&#123;</div><div class="line">  <span class="keyword">this</span>.initExpand()</div><div class="line">&#125;,</div><div class="line"><span class="attr">methods</span>: &#123;</div><div class="line">  initExpand()&#123;</div><div class="line">    <span class="comment">//isLoadingTree用意也是在此</span></div><div class="line">    <span class="keyword">this</span>.setTree.map(<span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</div><div class="line">      <span class="keyword">this</span>.defaultExpandKeys.push(a.id)</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">this</span>.isLoadingTree = <span class="literal">true</span>;</div><div class="line">  &#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="8-github"><a href="#8-github" class="headerlink" title="8.github"></a>8.github</h2><p>还有些具体的样式都放在<a href="https://github.com/xiaoniezi/tree" target="_blank" rel="external">github</a>了</p>
+<p> <strong>如有错漏，欢迎指正╰(<em> ◕ ▽ ◕ </em>)╯</strong></p>
+
+    
+    
+  <div class="article-tags">
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/elementUI/">elementUI</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/javascript/">javascript</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/vue/">vue</a>
+        </div>
+    
+  </div>
+
+  </div>
+</article>
+
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2017-06-22/How-to-git/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="show pull-right" href="/2017-11-17/vue-ElementUI-tree-table/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    	
+    
+	
+    	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
