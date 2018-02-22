@@ -154,7 +154,7 @@ html,body{
     position:fixed;
 }
 .back-top.sl-backtop{
-    display:block;
+    /*display:block;*/
 }
 .content.content-post .article-header .article-meta i{
     margin-left:10px;
