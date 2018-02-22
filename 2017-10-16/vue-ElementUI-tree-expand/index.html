@@ -145,8 +145,8 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
+  <div id="toc" class="toc-article sl-article--toc">
+    <strong class="toc-title">目录</strong>
     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-省市API"><span class="toc-text">1.省市API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-el-tree-Component基本"><span class="toc-text">2.el-tree Component基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tree-render-Component基本"><span class="toc-text">3.tree_render Component基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-改"><span class="toc-text">4.改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-增"><span class="toc-text">5.增</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-删"><span class="toc-text">6.删</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-拓展"><span class="toc-text">7.拓展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-github"><span class="toc-text">8.github</span></a></li></ol>
   </div>
 
@@ -190,6 +190,12 @@
 
       
 
+      
+            <i class="fa fa-comment"></i>
+            <a href="#SOHUCS" id="changyan_count_unit">
+                <i class="fa fa-spinner fa-spin"></i>
+            </a> 条评论
+            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
       
       
     </div>
@@ -336,7 +342,7 @@
 </div>
 
 
-  <a id="backTop" class="back-top">
+  <a id="backTop" class="back-top sl-backtop">
     <i class="icon-angle-up"></i>
   </a>
 
@@ -432,6 +438,18 @@
 	
     	
     
+	<div id="comments" class="comments">
+	    <div id="SOHUCS" sid="cjdy94k1o00082gobystn6e90"></div> 
+	</div>
+	<script>
+		(function(){ 
+		var appid = 'cyt5hjA1m'; 
+		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+		var width = window.innerWidth || document.documentElement.clientWidth; 
+		if (width < 960) { 
+		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+	</script>
+
 	
     	
   </div>

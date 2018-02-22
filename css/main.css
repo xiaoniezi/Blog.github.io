@@ -1,3 +1,8 @@
+/*
+Created By ShylaNie
+Last modify: 2018.02.22;
+*/
+
 html,body{
     position:relative;
     width:100%;
@@ -144,17 +149,13 @@ html,body{
 
 /*main page end*/
 
-/*topic page*/
-.toc-article{
-    position:fixed;
-    left:auto;
-    right:150px;
-    font-size:14px;
-    top:100px;
-}
-/*topic page end*/
-
 /*detail page*/
+.sl-article--toc{
+    position:fixed;
+}
+.sl-backtop{
+    display:block;
+}
 .content.content-post .article-header .article-meta i{
     margin-left:10px;
     margin-right:1px;
@@ -178,7 +179,6 @@ html,body{
     width:100%;
     font-size:0.8em;
 }
-
 /*detail page end*/
 
 

@@ -15,17 +15,17 @@
     <meta name="keywords" content="git,github," />
   
 
-  <meta name="description" content="这是摘要">
+  <meta name="description" content="Github远程仓库">
 <meta name="keywords" content="git,github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to git">
 <meta property="og:url" content="https://xiaoniezi.github.io/2017-06-22/How-to-git/index.html">
 <meta property="og:site_name" content="小聂子客栈">
-<meta property="og:description" content="这是摘要">
-<meta property="og:updated_time" content="2017-06-29T08:19:22.849Z">
+<meta property="og:description" content="Github远程仓库">
+<meta property="og:updated_time" content="2018-02-22T08:16:39.914Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to git">
-<meta name="twitter:description" content="这是摘要">
+<meta name="twitter:description" content="Github远程仓库">
 
   
 
@@ -143,9 +143,9 @@
 </div>
 
 
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Github远程仓库"><span class="toc-text">Github远程仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装Git"><span class="toc-text">第一步：安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置用户"><span class="toc-text">第二步：配置用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：生成ssh"><span class="toc-text">第三步：生成ssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加公钥"><span class="toc-text">第四步：添加公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：检测密钥"><span class="toc-text">第五步：检测密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六步：远程仓库"><span class="toc-text">第六步：远程仓库</span></a></li></ol></li></ol>
+  <div id="toc" class="toc-article sl-article--toc">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装Git"><span class="toc-text">第一步：安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置用户"><span class="toc-text">第二步：配置用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：生成ssh"><span class="toc-text">第三步：生成ssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加公钥"><span class="toc-text">第四步：添加公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：检测密钥"><span class="toc-text">第五步：检测密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六步：远程仓库"><span class="toc-text">第六步：远程仓库</span></a></li></ol>
   </div>
 
 
@@ -189,14 +189,20 @@
       
 
       
+            <i class="fa fa-comment"></i>
+            <a href="#SOHUCS" id="changyan_count_unit">
+                <i class="fa fa-spinner fa-spin"></i>
+            </a> 条评论
+            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+      
       
     </div>
   </header>
 
   <div class="article-content">
     
-      <p>这是摘要<br><a id="more"></a></p>
-<h1 id="Github远程仓库"><a href="#Github远程仓库" class="headerlink" title="Github远程仓库"></a>Github远程仓库</h1><h2 id="第一步：安装Git"><a href="#第一步：安装Git" class="headerlink" title="第一步：安装Git"></a>第一步：安装Git</h2><p>1.下载Git：<a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">国外地址</a>   <a href="https://github.com/waylau/git-for-win" target="_blank" rel="external">国内地址</a><br>2.打开Git目录下的git.cmd，输入：<code>git --version</code>检查是否安装成功</p>
+      <p>Github远程仓库<br><a id="more"></a></p>
+<h2 id="第一步：安装Git"><a href="#第一步：安装Git" class="headerlink" title="第一步：安装Git"></a>第一步：安装Git</h2><p>1.下载Git：<a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">国外地址</a>   <a href="https://github.com/waylau/git-for-win" target="_blank" rel="external">国内地址</a><br>2.打开Git目录下的git.cmd，输入：<code>git --version</code>检查是否安装成功</p>
 <h2 id="第二步：配置用户"><a href="#第二步：配置用户" class="headerlink" title="第二步：配置用户"></a>第二步：配置用户</h2><p>打开git.cmd，配置用户名和邮箱(下方以xiaoniezi为例)<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git config --global user.name <span class="string">"xiaoniezi"</span></div><div class="line">git config --global user.email <span class="string">"123456789@qq.com"</span></div><div class="line">git config --global push.default matching</div></pre></td></tr></table></figure></p>
 <h2 id="第三步：生成ssh"><a href="#第三步：生成ssh" class="headerlink" title="第三步：生成ssh"></a>第三步：生成ssh</h2><p>1.找到Git目录下的git.bash，进入.ssh目录：<code>cd ~/.ssh</code><br>2.创建密钥：<code>ssh-keygen -t rsa</code>期间会有提示用户输入密钥的名字和密码，并二次确认密码，也可默认为空（下方以snow为例）<br>3.创建完成后查看目录文件：<code>ls -al</code>若出现snow和snow.pub两个文件即创建成功</p>
 <h2 id="第四步：添加公钥"><a href="#第四步：添加公钥" class="headerlink" title="第四步：添加公钥"></a>第四步：添加公钥</h2><p>   1.打开Github，进入用户的Settings的SSH and GPG keys设置选项<br>   2.复制snow.pub公钥的内容，在github上添加SSH keys<br>   3.同时在master分支下创建一个新的Repository（下方以test为例）</p>
@@ -247,7 +253,7 @@
 </div>
 
 
-  <a id="backTop" class="back-top">
+  <a id="backTop" class="back-top sl-backtop">
     <i class="icon-angle-up"></i>
   </a>
 
@@ -343,6 +349,18 @@
 	
     	
     
+	<div id="comments" class="comments">
+	    <div id="SOHUCS" sid="cjdy94k1500002gob5gl2kaeo"></div> 
+	</div>
+	<script>
+		(function(){ 
+		var appid = 'cyt5hjA1m'; 
+		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+		var width = window.innerWidth || document.documentElement.clientWidth; 
+		if (width < 960) { 
+		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+	</script>
+
 	
     	
   </div>
