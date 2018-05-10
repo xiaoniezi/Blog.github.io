@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+
+  <html class="dark page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>使用v-charts所遇问题及解决方法 | 小聂子客栈</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="vue,javascript,v-charts,echarts," />
+  
+
+  <meta name="description" content="最近在做一个数据统计的需求要用到图表，偶然发现饿了么团队也有集成百度Echarts，索性直接使用，期间遇到些问题，Mark一下">
+<meta name="keywords" content="vue,javascript,v-charts,echarts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用v-charts所遇问题及解决方法">
+<meta property="og:url" content="https://xiaoniezi.github.io/2018-05-08/working-with-v-charts/index.html">
+<meta property="og:site_name" content="小聂子客栈">
+<meta property="og:description" content="最近在做一个数据统计的需求要用到图表，偶然发现饿了么团队也有集成百度Echarts，索性直接使用，期间遇到些问题，Mark一下">
+<meta property="og:updated_time" content="2018-05-10T09:32:03.912Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用v-charts所遇问题及解决方法">
+<meta name="twitter:description" content="最近在做一个数据统计的需求要用到图表，偶然发现饿了么团队也有集成百度Echarts，索性直接使用，期间遇到些问题，Mark一下">
+
+  
+
+  
+    <link rel="icon" href="/favicon.ico">
+  
+
+  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/main.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">首页</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article sl-article--toc">
+    <strong class="toc-title">目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-颜色渐变"><span class="toc-text">1. 颜色渐变</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-双轴对齐"><span class="toc-text">2. 双轴对齐</span></a></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-working-with-v-charts" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">使用v-charts所遇问题及解决方法</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2018.05.08</span>
+      </span>
+
+      
+        <!-- <span class="article-author">
+          <i class="icon-user"></i>
+          <span>Shyla Nie</span>
+        </span> -->
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/category/Vue/">Vue</a>
+  </span>
+
+
+
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+
+      
+            <i class="fa fa-comment"></i>
+            <a href="#SOHUCS" id="changyan_count_unit">
+                <i class="fa fa-spinner fa-spin"></i>
+            </a> 条评论
+            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <blockquote>
+<p>最近在做一个数据统计的需求要用到图表，偶然发现饿了么团队也有集成百度Echarts，索性直接使用，期间遇到些问题，Mark一下<br><a id="more"></a></p>
+</blockquote>
+<h2 id="1-颜色渐变"><a href="#1-颜色渐变" class="headerlink" title="1. 颜色渐变"></a>1. 颜色渐变</h2><p>在项目中引用echarts：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> echarts <span class="keyword">from</span> <span class="string">'echarts/lib/echarts'</span></div></pre></td></tr></table></figure>
+<p>直接修改颜色参数：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">ve-line</span> <span class="attr">:data</span>=<span class="string">"chartData"</span> <span class="attr">:colors</span>=<span class="string">"chartColor"</span>&gt;</span><span class="tag">&lt;/<span class="name">ve-line</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">	data()&#123;</div><div class="line">		<span class="keyword">return</span> &#123;</div><div class="line">			<span class="attr">chartColor</span>: [<span class="keyword">new</span> echarts.graphic.LinearGradient(</div><div class="line">					<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,[&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'rgb(25,212,174)'</span></div><div class="line">				&#125;,&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'rgba(25,212,174,0.3)'</span></div><div class="line">				&#125;]),</div><div class="line">				<span class="keyword">new</span> echarts.graphic.LinearGradient(</div><div class="line">					<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,[&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'rgb(90,177,239)'</span></div><div class="line">				&#125;,&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'rgba(90,177,239,0.3)'</span></div><div class="line">				&#125;]),</div><div class="line">				<span class="keyword">new</span> echarts.graphic.LinearGradient(</div><div class="line">					<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,[&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'rgb(250,110,134)'</span></div><div class="line">				&#125;,&#123;</div><div class="line">					<span class="attr">offset</span>: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'rgba(250,110,134,0.3)'</span></div><div class="line">				&#125;]</div><div class="line">			)],</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>或者修改<code>itemStyle</code>，这个不知怎么设置两个色值以上→_ →</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.chartSetting = &#123;</div><div class="line">	<span class="attr">itemStyle</span>: &#123;</div><div class="line">		<span class="attr">normal</span>: &#123;</div><div class="line">			<span class="attr">color</span>: <span class="keyword">new</span> echarts.graphic.LinearGradient(<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,[&#123;</div><div class="line">				<span class="attr">offset</span>: <span class="number">0</span>, <span class="attr">color</span>: <span class="string">'#2FDE80'</span></div><div class="line">			&#125;,&#123;</div><div class="line">				<span class="attr">offset</span>: <span class="number">1</span>, <span class="attr">color</span>: <span class="string">'red'</span></div><div class="line">			&#125;])</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>详细：<br><a href="https://jsfiddle.net/xiaoniezi/Lmfjg492/" target="_blank" rel="external">折线图</a><br><a href="https://jsfiddle.net/xiaoniezi/grLtedt7/" target="_blank" rel="external">柱状图</a></p>
+<hr>
+<h2 id="2-双轴对齐"><a href="#2-双轴对齐" class="headerlink" title="2. 双轴对齐"></a>2. 双轴对齐</h2><p>双轴对齐关键是限定y轴最大最小值和间隔值（interval）<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">this</span>.chartData = &#123;</div><div class="line">	<span class="attr">rows</span>: [...]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//以下两者是倍数双轴的值才不会出现小数点</span></div><div class="line"><span class="keyword">this</span>.yAxisMultiple = <span class="number">10</span><span class="comment">//双轴对齐数据处理倍数</span></div><div class="line"><span class="keyword">this</span>.yAxisSplitNumber = <span class="number">5</span><span class="comment">//双轴分段数</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//分别获取左右两轴的列表</span></div><div class="line"><span class="keyword">let</span> left_list = <span class="keyword">this</span>.chartData.rows.map(<span class="function"><span class="params">c</span> =&gt;</span> c.left),</div><div class="line">	right_list = <span class="keyword">this</span>.chartData.rows.map(<span class="function"><span class="params">c</span> =&gt;</span> c.right);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//获取列表内的最大值并向上取整</span></div><div class="line"><span class="keyword">let</span> left_max = <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.max(...let_list)/<span class="keyword">this</span>.yAxisMultiple)*<span class="keyword">this</span>.yAxisMultiple,</div><div class="line">	right_max = <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.max(...right_list)/<span class="keyword">this</span>.yAxisMultiple)*<span class="keyword">this</span>.yAxisMultiple;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//引用yAxis提供的默认参数设置最大最小值和间隔值</span></div><div class="line"><span class="keyword">let</span> that = <span class="keyword">this</span>;</div><div class="line"><span class="keyword">this</span>.chartExtend = &#123;</div><div class="line">	yAxis(item)&#123;</div><div class="line">		item.map(<span class="function"><span class="params">c</span> =&gt;</span> &#123; c.min = <span class="number">0</span> &#125;)</div><div class="line">		item[<span class="number">0</span>].max = left_max</div><div class="line">		item[<span class="number">0</span>].interval = left_max/that.yAxisSplitNumber</div><div class="line">		item[<span class="number">1</span>].max = right_max</div><div class="line">		item[<span class="number">1</span>].interval = right_max/that.yAxisSplitNumber</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>详情： <a href="https://jsfiddle.net/xiaoniezi/2q5udkkt/" target="_blank" rel="external">jsfiddle地址</a></p>
+
+    
+    
+  <div class="article-tags">
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/echarts/">echarts</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/javascript/">javascript</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/v-charts/">v-charts</a>
+        </div>
+    
+    	<div class="article-tag">
+    		<i class="fa fa-tags"></i>
+        	<a class="item-tag" href="/tag/vue/">vue</a>
+        </div>
+    
+  </div>
+
+  </div>
+</article>
+
+
+
+   
+
+   
+  <div class="box-prev-next clearfix">
+    <a class="show pull-left" href="/2018-04-08/common-in-css/">
+        <i class="icon icon-angle-left"></i>
+    </a>
+    <a class="hide pull-right" href="/">
+        <i class="icon icon-angle-right"></i>
+    </a>
+  </div>
+
+
+
+
+</div>
+
+
+  <a id="backTop" class="back-top sl-backtop">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+
+    
+
+
+
+
+    
+
+    
+	
+    	
+    
+	<div id="comments" class="comments">
+	    <div id="SOHUCS" sid="cjh0c60ej000aasvqkd02thkc"></div> 
+	</div>
+	<script>
+		(function(){ 
+		var appid = 'cyt5hjA1m'; 
+		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+		var width = window.innerWidth || document.documentElement.clientWidth; 
+		if (width < 960) { 
+		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+	</script>
+
+	
+    	
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
