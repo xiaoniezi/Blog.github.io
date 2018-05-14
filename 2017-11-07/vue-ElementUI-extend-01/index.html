@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://xiaoniezi.github.io/images/vue_ex_02.png">
 <meta property="og:image" content="https://xiaoniezi.github.io/images/vue_ex_03.png">
 <meta property="og:image" content="https://xiaoniezi.github.io/images/vue_ex_04.png">
-<meta property="og:updated_time" content="2018-05-11T10:15:45.303Z">
+<meta property="og:updated_time" content="2018-05-14T03:23:25.369Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue使用element-ui所遇BUG与需求集结（一）">
 <meta name="twitter:description" content="最近常使用element-ui的组件，遇到问题比较多，想做个清单。也包含一些自己总结的使用vue小方法。">
@@ -231,7 +231,7 @@
 <h2 id="3-tree组件增删改"><a href="#3-tree组件增删改" class="headerlink" title="3.tree组件增删改"></a>3.tree组件增删改</h2><blockquote>
 <p>树形组件最难搞，尤其遇上各种蛋疼的需求=。= 这次要有增删改的功能，但是发现官网给的例子并不是直接在数据上操作，所以自己修改了一个。</p>
 </blockquote>
-<p>详细地址：<a href="https://xiaoniezi.github.io/2017-10-16/vue-ElementUI-tree-expand/">点我就知道啦</a></p>
+<p>详细地址：<a href="/2017-10-16/vue-ElementUI-tree-expand/">点我就知道啦</a></p>
 <h2 id="4-table组件expand每次只展开一项"><a href="#4-table组件expand每次只展开一项" class="headerlink" title="4.table组件expand每次只展开一项"></a>4.table组件expand每次只展开一项</h2><blockquote>
 <p>文档没有具体属性，但是在issue找的方法都是结合<code>row-key</code>和<code>expand-row-keys</code>来实现这个功能</p>
 </blockquote>
@@ -241,7 +241,7 @@
 <p>附上Stack Overflow原地址：<a href="https://stackoverflow.com/questions/44590918/how-can-i-get-an-element-to-appear-directly-when-i-expand-a-row-using-vue" target="_blank" rel="external">大神在此</a><br>————</p>
 <p>以上是v1.4版本的，由于v2.0版本修改了返回参数，仿照上例修改了新的：</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">handleExpandRow(row,expandRows)&#123;</div><div class="line">    <span class="keyword">this</span>.$refs.raw_table.store.states.expandRows = expandRows.length !== <span class="number">0</span> ? [row] : [];</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-<h2 id="5-复用table组件"><a href="#5-复用table组件" class="headerlink" title="5.复用table组件"></a>5.复用table组件</h2><p>项目中表格太多，做了两个之后还是决定写了个复用放组件，而因为需求不断增加修改，所以不断简化，下面只是上个简单版的：<br>详细地址：<a href="https://xiaoniezi.github.io/2017-11-17/vue-ElementUI-table-extend/">都说点我咯</a></p>
+<h2 id="5-复用table组件"><a href="#5-复用table组件" class="headerlink" title="5.复用table组件"></a>5.复用table组件</h2><p>项目中表格太多，做了两个之后还是决定写了个复用放组件，而因为需求不断增加修改，所以不断简化，下面只是上个简单版的：<br>详细地址：<a href="/2017-11-17/vue-ElementUI-table-extend/">都说点我咯</a></p>
 <p>在掘金上看到一篇还不错、也是关于table组件的文章：<a href="https://juejin.im/post/5a100d09f265da4324800807" target="_blank" rel="external">掘金地址</a></p>
 <h2 id="6-upload组件自定义filelist"><a href="#6-upload组件自定义filelist" class="headerlink" title="6.upload组件自定义filelist"></a>6.upload组件自定义filelist</h2><blockquote>
 <p>上传文件用的还是挺多的，就是列表不好控制，尤其是要通过ajax删除等操作，所以还是自己写了一个。也是因为upload上传时有个动态进程用户体验不错，也重新捣鼓了以下。</p>
@@ -464,7 +464,7 @@
     	
     
 	<div id="comments" class="comments">
-	    <div id="SOHUCS" sid="cjh1tg441000d3kvqe9st9dk8"></div> 
+	    <div id="SOHUCS" sid="cjh5pu0h5000g9cvq3pap6z1q"></div> 
 	</div>
 	<script>
 		(function(){ 
