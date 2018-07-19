@@ -1,220 +1,148 @@
 <!DOCTYPE html>
-
-
-  <html class="dark page-post">
-
-
-<head>
-  <meta charset="utf-8">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
   
-  <title>vue相关（持续更新v1.1.1） | 小聂子客栈</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-    <meta name="keywords" content="vue," />
+  <title>
+    
+      vue相关（持续更新07.19） | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
   
-
-  <meta name="description" content="Vue相关设置和基础用法">
-<meta name="keywords" content="vue">
-<meta property="og:type" content="article">
-<meta property="og:title" content="vue相关（持续更新v1.1.1）">
-<meta property="og:url" content="https://xiaoniezi.github.io/2018-05-11/common-in-vue/index.html">
-<meta property="og:site_name" content="小聂子客栈">
-<meta property="og:description" content="Vue相关设置和基础用法">
-<meta property="og:updated_time" content="2018-05-28T08:51:57.404Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue相关（持续更新v1.1.1）">
-<meta name="twitter:description" content="Vue相关设置和基础用法">
-
+    <link rel="stylesheet" href="/css/vexo_style.css">
   
-
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
-    <link rel="icon" href="/favicon.ico">
   
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
-
-
-  
-    <link rel="stylesheet" href="/css/main.css">
-  
-
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-  
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
 
-<body>
-
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">首页</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>小聂子客栈</span>
     </a>
-    <ul class="list-toolbox">
+    <ul class="right-list">
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            博客
-          </a>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            分类
-          </a>
+        <li class="list-item">
+          
+            <a href="/tag/" class="item-link">Tags</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            标签
-          </a>
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            搜索
-          </a>
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
         </li>
       
     </ul>
-  </div>
-
-
-</div>
-
-
-  <div id="toc" class="toc-article sl-article--toc">
-    <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#零碎集"><span class="toc-text">零碎集</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-多个锚点"><span class="toc-text">1. 多个锚点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-监听页面滚动"><span class="toc-text">2. 监听页面滚动</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ElementUI"><span class="toc-text">ElementUI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VCharts"><span class="toc-text">VCharts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Emojify"><span class="toc-text">Emojify</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引入自定义组件"><span class="toc-text">引入自定义组件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局过滤器"><span class="toc-text">全局过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-时间戳转换"><span class="toc-text">1. 时间戳转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-筛选键值对"><span class="toc-text">2. 筛选键值对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-手机号码部分隐藏"><span class="toc-text">3. 手机号码部分隐藏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cookie"><span class="toc-text">Cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vuex"><span class="toc-text">Vuex</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VueRouter"><span class="toc-text">VueRouter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Webpack"><span class="toc-text">Webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-打包后移除console"><span class="toc-text">1. 打包后移除console</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-本机IP可访问项目"><span class="toc-text">2. 本机IP可访问项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-打包时不包含-map文件"><span class="toc-text">3. 打包时不包含.map文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-第三方组件单独打包DLLPlugin"><span class="toc-text">4. 第三方组件单独打包DLLPlugin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-新增文件"><span class="toc-text">1. 新增文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-新增插件"><span class="toc-text">2. 新增插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-新增命令"><span class="toc-text">3. 新增命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-引入DLL文件"><span class="toc-text">4. 引入DLL文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-打包构建"><span class="toc-text">5. 打包构建</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue"><span class="toc-text">Vue</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-common-in-vue" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">vue相关（持续更新v1.1.1）</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2018.05.11</span>
-      </span>
-
-      
-        <!-- <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Shyla Nie</span>
-        </span> -->
-      
-
-      
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/category/Vue/">Vue</a>
-  </span>
-
-
-
-      
-
-      
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
-      
-
-      
-
-      
-            <i class="fa fa-comment"></i>
-            <a href="#SOHUCS" id="changyan_count_unit">
-                <i class="fa fa-spinner fa-spin"></i>
-            </a> 条评论
-            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-      
-      
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
-  </header>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tag/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
 
-  <div class="article-content">
-    
-      <p>Vue相关设置和基础用法<br><a id="more"></a></p>
+    <div id="article-banner">
+  <h2>vue相关（持续更新07.19）</h2>
+  <p class="post-date">2018-05-11</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Vue相关设置和基础用法<br><a id="more"></a></p>
 <h2 id="零碎集"><a href="#零碎集" class="headerlink" title="零碎集"></a>零碎集</h2><h3 id="1-多个锚点"><a href="#1-多个锚点" class="headerlink" title="1. 多个锚点"></a>1. 多个锚点</h3><p>有时候页面内容过多，要在侧栏做个导航栏：<a href="https://blog.csdn.net/iceking66/article/details/78211213" target="_blank" rel="external">参考地址</a></p>
 <h3 id="2-监听页面滚动"><a href="#2-监听页面滚动" class="headerlink" title="2. 监听页面滚动"></a>2. 监听页面滚动</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">	handleScroll()&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"I am scroll !!!"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;,</div><div class="line">created()&#123;</div><div class="line">	<span class="built_in">window</span>.addEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll)</div><div class="line">&#125;,</div><div class="line">destroyed()&#123;</div><div class="line">	<span class="built_in">window</span>.removeEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll)</div><div class="line">&#125;</div><div class="line">;</div></pre></td></tr></table></figure>
+<h3 id="3-图片相对地址"><a href="#3-图片相对地址" class="headerlink" title="3. 图片相对地址"></a>3. 图片相对地址</h3><p>如果用<code>../../assets/example.png</code>插入<code>.vue</code>文件，一旦文件变动，地址可能也要改。所以用<code>vue-loader</code>的转换规则<br><code>@</code>在<code>build/webpack.base.config.js</code>中可配置</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"~@/assets/example.png"</span>&gt;</span></div></pre></td></tr></table></figure>
 <hr>
 <h2 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">"element-ui"</span></div><div class="line"><span class="keyword">import</span> <span class="string">"element-ui/lib/theme-chalk/index.css"</span></div><div class="line"><span class="comment">//修改ElementUI默认值</span></div><div class="line">ElementUI.Dialog.props.appendToBody.default = <span class="literal">true</span>;</div><div class="line">Vue.use(ElementUI);</div></pre></td></tr></table></figure>
 <p>内容较多，另开文章说明：<a href="/2017-11-07/vue-ElementUI-extend-01/">第一版</a>、<a href="/2018-05-14/vue-ElementUI-extend-02/">第二版</a></p>
@@ -268,196 +196,215 @@
 <h4 id="5-打包构建"><a href="#5-打包构建" class="headerlink" title="5. 打包构建"></a>5. 打包构建</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm run dll</div><div class="line">npm run dev / npm run build</div></pre></td></tr></table></figure>
 <hr>
 <h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span></div><div class="line"><span class="keyword">new</span> Vue(&#123;</div><div class="line">	<span class="attr">el</span>: <span class="string">"#app"</span>,</div><div class="line">	router,</div><div class="line">	store,</div><div class="line">	<span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</div><div class="line">	<span class="attr">watch</span>: &#123;</div><div class="line">		<span class="comment">/* 监听路由变化 */</span></div><div class="line">		<span class="string">'$route'</span>: <span class="string">'handleRouter'</span></div><div class="line">	&#125;,</div><div class="line">	<span class="attr">methods</span>: &#123;</div><div class="line">		handleRouter()&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">"路由变化..."</span>)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
+</section>
+    <!-- Tags START -->
     
-    
-  <div class="article-tags">
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/vue/">vue</a>
-        </div>
-    
-  </div>
-
-  </div>
-</article>
-
-
-
-   
-
-   
-  <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018-05-08/working-with-v-charts/">
-        <i class="icon icon-angle-left"></i>
-    </a>
-    <a class="show pull-right" href="/2018-05-14/vue-ElementUI-extend-02/">
-        <i class="icon icon-angle-right"></i>
-    </a>
-  </div>
-
-
-
-
-</div>
-
-
-  <a id="backTop" class="back-top sl-backtop">
-    <i class="icon-angle-up"></i>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
   </a>
 
-
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
-  </div>
-</div>
-
-
-
-  
-      <div class="fexo-comments comments-post">
+      </div>
     
-
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-
-
-
-
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-
+      <a class="nav-left" href="/2018-05-08/working-with-v-charts/">
+        <span class="nav-arrow">← </span>
+        
+          使用v-charts所遇问题及解决方法
+        
+      </a>
     
-	
-    	
     
-	<div id="comments" class="comments">
-	    <div id="SOHUCS" sid="cjifcd6re0006hkvqxsqla014"></div> 
-	</div>
-	<script>
-		(function(){ 
-		var appid = 'cyt5hjA1m'; 
-		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
-		var width = window.innerWidth || document.documentElement.clientWidth; 
-		if (width < 960) { 
-		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
-	</script>
-
-	
-    	
+      <a class="nav-right" href="/2018-05-14/vue-ElementUI-extend-02/">
+        
+          Vue使用element-ui所遇BUG与需求集结（二）更新中...
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
   </div>
 
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- ChangYan START -->
+      <div id="comments" class="comments">
+          <div id="SOHUCS" sid="cjjseu7km0008mgvqws7uaag0"></div> 
+      </div>
+      <script>
+        (function(){ 
+        var appid = 'cyt5hjA1m'; 
+        var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+        var width = window.innerWidth || document.documentElement.clientWidth; 
+        if (width < 960) { 
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+      </script>
+      <!-- ChangYan END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#零碎集"><span class="toc-nav-text">零碎集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-多个锚点"><span class="toc-nav-text">1. 多个锚点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-监听页面滚动"><span class="toc-nav-text">2. 监听页面滚动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-图片相对地址"><span class="toc-nav-text">3. 图片相对地址</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ElementUI"><span class="toc-nav-text">ElementUI</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VCharts"><span class="toc-nav-text">VCharts</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Emojify"><span class="toc-nav-text">Emojify</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#引入自定义组件"><span class="toc-nav-text">引入自定义组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#全局过滤器"><span class="toc-nav-text">全局过滤器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-时间戳转换"><span class="toc-nav-text">1. 时间戳转换</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-筛选键值对"><span class="toc-nav-text">2. 筛选键值对</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-手机号码部分隐藏"><span class="toc-nav-text">3. 手机号码部分隐藏</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Cookie"><span class="toc-nav-text">Cookie</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Vuex"><span class="toc-nav-text">Vuex</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VueRouter"><span class="toc-nav-text">VueRouter</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Webpack"><span class="toc-nav-text">Webpack</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-打包后移除console"><span class="toc-nav-text">1. 打包后移除console</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-本机IP可访问项目"><span class="toc-nav-text">2. 本机IP可访问项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-打包时不包含-map文件"><span class="toc-nav-text">3. 打包时不包含.map文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-第三方组件单独打包DLLPlugin"><span class="toc-nav-text">4. 第三方组件单独打包DLLPlugin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-新增文件"><span class="toc-nav-text">1. 新增文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-新增插件"><span class="toc-nav-text">2. 新增插件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-新增命令"><span class="toc-nav-text">3. 新增命令</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-引入DLL文件"><span class="toc-nav-text">4. 引入DLL文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-打包构建"><span class="toc-nav-text">5. 打包构建</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Vue"><span class="toc-nav-text">Vue</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
 
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2018-05-11/common-in-vue/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
     }
+    $('.header').removeClass('fixed-header')
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
 
-  window.onload = function() {
-    loadScript('/js/bundle.js', function() {
-      // load success
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
     });
-  }
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "vue相关（持续更新07.19）",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
 </script>
 
-</body>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>

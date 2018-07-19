@@ -160,6 +160,11 @@ html,body{
     margin-left:10px;
     margin-right:1px;
 }
+.content.content-post hr{
+    margin-top: 0;
+    height: 2px;
+    max-width: inherit;
+}
 .post-content{
     width:100%;
 }

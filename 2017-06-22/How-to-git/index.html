@@ -1,218 +1,144 @@
 <!DOCTYPE html>
-
-
-  <html class="dark page-post">
-
-
-<head>
-  <meta charset="utf-8">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
   
-  <title>How to git | 小聂子客栈</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-    <meta name="keywords" content="git,github," />
+  <title>
+    
+      How to git | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
   
-
-  <meta name="description" content="Github远程仓库">
-<meta name="keywords" content="git,github">
-<meta property="og:type" content="article">
-<meta property="og:title" content="How to git">
-<meta property="og:url" content="https://xiaoniezi.github.io/2017-06-22/How-to-git/index.html">
-<meta property="og:site_name" content="小聂子客栈">
-<meta property="og:description" content="Github远程仓库">
-<meta property="og:updated_time" content="2018-02-22T08:16:39.914Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to git">
-<meta name="twitter:description" content="Github远程仓库">
-
+    <link rel="stylesheet" href="/css/vexo_style.css">
   
-
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
-    <link rel="icon" href="/favicon.ico">
   
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
-
-
-  
-    <link rel="stylesheet" href="/css/main.css">
-  
-
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-  
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
 
-<body>
-
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">首页</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>小聂子客栈</span>
     </a>
-    <ul class="list-toolbox">
+    <ul class="right-list">
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            博客
-          </a>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            分类
-          </a>
+        <li class="list-item">
+          
+            <a href="/tag/" class="item-link">Tags</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            标签
-          </a>
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            搜索
-          </a>
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
         </li>
       
     </ul>
-  </div>
-
-
-</div>
-
-
-  <div id="toc" class="toc-article sl-article--toc">
-    <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：安装Git"><span class="toc-text">第一步：安装Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：配置用户"><span class="toc-text">第二步：配置用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：生成ssh"><span class="toc-text">第三步：生成ssh</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加公钥"><span class="toc-text">第四步：添加公钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：检测密钥"><span class="toc-text">第五步：检测密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六步：远程仓库"><span class="toc-text">第六步：远程仓库</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-How-to-git" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">How to git</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2017.06.22</span>
-      </span>
-
-      
-        <!-- <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Shyla Nie</span>
-        </span> -->
-      
-
-      
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/category/Others/">Others</a>
-  </span>
-
-
-
-      
-
-      
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
-      
-
-      
-
-      
-            <i class="fa fa-comment"></i>
-            <a href="#SOHUCS" id="changyan_count_unit">
-                <i class="fa fa-spinner fa-spin"></i>
-            </a> 条评论
-            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-      
-      
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
-  </header>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tag/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
 
-  <div class="article-content">
-    
-      <p>Github远程仓库<br><a id="more"></a></p>
+    <div id="article-banner">
+  <h2>How to git</h2>
+  <p class="post-date">2017-06-22</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Github远程仓库<br><a id="more"></a></p>
 <h2 id="第一步：安装Git"><a href="#第一步：安装Git" class="headerlink" title="第一步：安装Git"></a>第一步：安装Git</h2><p>1.下载Git：<a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">国外地址</a>   <a href="https://github.com/waylau/git-for-win" target="_blank" rel="external">国内地址</a><br>2.打开Git目录下的git.cmd，输入：<code>git --version</code>检查是否安装成功</p>
 <h2 id="第二步：配置用户"><a href="#第二步：配置用户" class="headerlink" title="第二步：配置用户"></a>第二步：配置用户</h2><p>打开git.cmd，配置用户名和邮箱(下方以xiaoniezi为例)<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git config --global user.name <span class="string">"xiaoniezi"</span></div><div class="line">git config --global user.email <span class="string">"123456789@qq.com"</span></div><div class="line">git config --global push.default matching</div></pre></td></tr></table></figure></p>
 <h2 id="第三步：生成ssh"><a href="#第三步：生成ssh" class="headerlink" title="第三步：生成ssh"></a>第三步：生成ssh</h2><p>1.找到Git目录下的git.bash，进入.ssh目录：<code>cd ~/.ssh</code><br>2.创建密钥：<code>ssh-keygen -t rsa</code>期间会有提示用户输入密钥的名字和密码，并二次确认密码，也可默认为空（下方以snow为例）<br>3.创建完成后查看目录文件：<code>ls -al</code>若出现snow和snow.pub两个文件即创建成功</p>
@@ -224,201 +150,219 @@
 <p><em>Hi xiaoniezi!You’re successfully authenticated, but Github does not provide shell access.</em></p>
 </blockquote>
 <h2 id="第六步：远程仓库"><a href="#第六步：远程仓库" class="headerlink" title="第六步：远程仓库"></a>第六步：远程仓库</h2><p>1.继续使用git.bash，进入你想与github远程的目录：<code>cd d:/github/snow</code><br>2.初始化：<code>git init</code><br>3.添加当前目录的所有文件：<code>git add .</code><br>4.提交文件：<code>git commit -m &quot;mark something&quot;</code><br>5.远程github：<code>git remote add origin git@github.com:xiaoniezi/test.git</code><br>6.push到test项目下：<code>git push -u origin master</code><br>7.到github的test上即可看到提交的文件</p>
-
+</section>
+    <!-- Tags START -->
     
-    
-  <div class="article-tags">
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/git/">git</a>
-        </div>
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/github/">github</a>
-        </div>
-    
-  </div>
-
-  </div>
-</article>
-
-
-
-   
-
-   
-  <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2017-06-22/hello-world/">
-        <i class="icon icon-angle-left"></i>
-    </a>
-    <a class="show pull-right" href="/2017-10-16/vue-ElementUI-tree-expand/">
-        <i class="icon icon-angle-right"></i>
-    </a>
-  </div>
-
-
-
-
-</div>
-
-
-  <a id="backTop" class="back-top sl-backtop">
-    <i class="icon-angle-up"></i>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#git" >
+    <span class="tag-code">git</span>
   </a>
 
+  <a href="/tag#github" >
+    <span class="tag-code">github</span>
+  </a>
 
-
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
-  </div>
-</div>
-
-
-
-  
-      <div class="fexo-comments comments-post">
+      </div>
     
-
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-
-
-
-
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-
+      <a class="nav-left" href="/2017-06-22/hello-world/">
+        <span class="nav-arrow">← </span>
+        
+          Hello World
+        
+      </a>
     
-	
-    	
     
-	<div id="comments" class="comments">
-	    <div id="SOHUCS" sid="cjifcd6r60000hkvqdiy1eql7"></div> 
-	</div>
-	<script>
-		(function(){ 
-		var appid = 'cyt5hjA1m'; 
-		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
-		var width = window.innerWidth || document.documentElement.clientWidth; 
-		if (width < 960) { 
-		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
-	</script>
-
-	
-    	
+      <a class="nav-right" href="/2017-10-16/vue-ElementUI-tree-expand/">
+        
+          VUE饿了么树形控件添加增删改功能
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
   </div>
 
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- ChangYan START -->
+      <div id="comments" class="comments">
+          <div id="SOHUCS" sid="cjjseu7kh0002mgvqao7vgd6y"></div> 
+      </div>
+      <script>
+        (function(){ 
+        var appid = 'cyt5hjA1m'; 
+        var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+        var width = window.innerWidth || document.documentElement.clientWidth; 
+        if (width < 960) { 
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+      </script>
+      <!-- ChangYan END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第一步：安装Git"><span class="toc-nav-text">第一步：安装Git</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第二步：配置用户"><span class="toc-nav-text">第二步：配置用户</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第三步：生成ssh"><span class="toc-nav-text">第三步：生成ssh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第四步：添加公钥"><span class="toc-nav-text">第四步：添加公钥</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第五步：检测密钥"><span class="toc-nav-text">第五步：检测密钥</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第六步：远程仓库"><span class="toc-nav-text">第六步：远程仓库</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
 
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2017-06-22/How-to-git/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
     }
+    $('.header').removeClass('fixed-header')
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
 
-  window.onload = function() {
-    loadScript('/js/bundle.js', function() {
-      // load success
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
     });
-  }
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "How to git",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
 </script>
 
-</body>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>

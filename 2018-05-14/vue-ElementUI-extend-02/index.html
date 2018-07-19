@@ -1,220 +1,144 @@
 <!DOCTYPE html>
-
-
-  <html class="dark page-post">
-
-
-<head>
-  <meta charset="utf-8">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
   
-  <title>Vue使用element-ui所遇BUG与需求集结（二）更新中... | 小聂子客栈</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+    <link rel="shortcut icon" href="/css/images/logo.png">
   
-    <meta name="keywords" content="vue,javascript,elementUI," />
+  <title>
+    
+      Vue使用element-ui所遇BUG与需求集结（二）更新中... | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
   
-
-  <meta name="description" content="第二版啦(＾Ｕ＾)ノ~ＹＯ">
-<meta name="keywords" content="vue,javascript,elementUI">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vue使用element-ui所遇BUG与需求集结（二）更新中...">
-<meta property="og:url" content="https://xiaoniezi.github.io/2018-05-14/vue-ElementUI-extend-02/index.html">
-<meta property="og:site_name" content="小聂子客栈">
-<meta property="og:description" content="第二版啦(＾Ｕ＾)ノ~ＹＯ">
-<meta property="og:image" content="https://xiaoniezi.github.io/images/vue_ex_05.png">
-<meta property="og:updated_time" content="2018-06-15T02:13:42.821Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue使用element-ui所遇BUG与需求集结（二）更新中...">
-<meta name="twitter:description" content="第二版啦(＾Ｕ＾)ノ~ＹＯ">
-<meta name="twitter:image" content="https://xiaoniezi.github.io/images/vue_ex_05.png">
-
+    <link rel="stylesheet" href="/css/vexo_style.css">
   
-
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
   
-    <link rel="icon" href="/favicon.ico">
   
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
-  <link href="/css/styles.css?v=c114cbe6" rel="stylesheet">
-
-
-  
-    <link rel="stylesheet" href="/css/main.css">
-  
-
-  
-
-  
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7f9d9cf8d1249ac4a0f19ff2b705741";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-  
-    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
   
 
-  
-    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+
 </head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
 
-<body>
-
-
-  
-    <span id="toolbox-mobile" class="toolbox-mobile">首页</span>
-  
-
-  <div class="post-header CENTER">
-   
-  <div class="toolbox">
-    <a class="toolbox-entry" href="/">
-      <span class="toolbox-entry-text">首页</span>
-      <i class="icon-angle-down"></i>
-      <i class="icon-home"></i>
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>小聂子客栈</span>
     </a>
-    <ul class="list-toolbox">
+    <ul class="right-list">
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/archives/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            博客
-          </a>
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/category/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            分类
-          </a>
+        <li class="list-item">
+          
+            <a href="/tag/" class="item-link">Tags</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/tag/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            标签
-          </a>
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
         </li>
       
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/about/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            关于
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/link/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            友链
-          </a>
-        </li>
-      
-        <li class="item-toolbox">
-          <a
-            class="CIRCLE"
-            href="/search/"
-            rel="noopener noreferrer"
-            target="_self"
-            >
-            搜索
-          </a>
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
         </li>
       
     </ul>
-  </div>
-
-
-</div>
-
-
-  <div id="toc" class="toc-article sl-article--toc">
-    <strong class="toc-title">目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#表格自定义合并"><span class="toc-text">表格自定义合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页自定义页数"><span class="toc-text">分页自定义页数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#样式修改"><span class="toc-text">样式修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-下拉箭头位置偏差"><span class="toc-text">1. 下拉箭头位置偏差</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-表单伪必填"><span class="toc-text">2. 表单伪必填</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-去除输入框number类型的箭头"><span class="toc-text">3. 去除输入框number类型的箭头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-复合型输入框去背景"><span class="toc-text">4. 复合型输入框去背景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#伪Radio-·-真-·-CheckBox"><span class="toc-text">伪Radio · 真 · CheckBox</span></a></li></ol>
-  </div>
-
-
-
-<div class="content content-post CENTER">
-   <article id="post-vue-ElementUI-extend-02" class="article article-type-post" itemprop="blogPost">
-  <header class="article-header">
-    <h1 class="post-title">Vue使用element-ui所遇BUG与需求集结（二）更新中...</h1>
-
-    <div class="article-meta">
-      <span>
-        <i class="icon-calendar"></i>
-        <span>2018.05.14</span>
-      </span>
-
-      
-        <!-- <span class="article-author">
-          <i class="icon-user"></i>
-          <span>Shyla Nie</span>
-        </span> -->
-      
-
-      
-  <span class="article-category">
-    <i class="icon-list"></i>
-    <a class="article-category-link" href="/category/Vue/">Vue</a>
-  </span>
-
-
-
-      
-
-      
-      <i class="fa fa-eye"></i> 
-        <span id="busuanzi_container_page_pv">
-           热度 <span id="busuanzi_value_page_pv">
-           <i class="fa fa-spinner fa-spin"></i></span>℃
-        </span>
-      
-
-      
-
-      
-            <i class="fa fa-comment"></i>
-            <a href="#SOHUCS" id="changyan_count_unit">
-                <i class="fa fa-spinner fa-spin"></i>
-            </a> 条评论
-            <script src="//assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
-      
-      
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </div>
-  </header>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/tag/" class="menu-link">Tags</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
 
-  <div class="article-content">
-    
-      <p>第二版啦(＾Ｕ＾)ノ~ＹＯ<br><a id="more"></a></p>
+    <div id="article-banner">
+  <h2>Vue使用element-ui所遇BUG与需求集结（二）更新中...</h2>
+  <p class="post-date">2018-05-14</p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>第二版啦(＾Ｕ＾)ノ~ＹＯ<br><a id="more"></a></p>
 <blockquote>
 <p>以下数据都是在vue(^2.5)+vuex(^2.3)+element-ui(^2.3)+webpack(^3.7)+axios(v0.16)环境下测试。</p>
 </blockquote>
@@ -225,9 +149,17 @@
 <p>把原先的更新列表<code>updateList</code>拆分出来</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">    tableData() &#123;</div><div class="line">        <span class="keyword">let</span> new_list = [];</div><div class="line">        <span class="keyword">this</span>.list.map(<span class="function">(<span class="params">p</span>) =&gt;</span> &#123;</div><div class="line">            <span class="comment">//存在更新列表就拆分</span></div><div class="line">            <span class="keyword">if</span> (p.updateList &amp;&amp; p.updateList.length !== <span class="number">0</span>) &#123;</div><div class="line">                p.updateList.map(<span class="function">(<span class="params">c, j</span>) =&gt;</span> &#123;</div><div class="line">                    <span class="keyword">let</span> first = &#123; <span class="attr">isFirst</span>: <span class="literal">false</span> &#125;;</div><div class="line">                    <span class="keyword">if</span> (j == <span class="number">0</span>) &#123; <span class="comment">//判断是否是列表中的第一条数据</span></div><div class="line">                        first.isFirst = <span class="literal">true</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="comment">//复制父级原有数据并结合当前列表中的数据</span></div><div class="line">                    new_list.push(<span class="built_in">Object</span>.assign(first, p, c))</div><div class="line">                &#125;)</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                new_list.push(p)</div><div class="line">            &#125;</div><div class="line">        &#125;);</div><div class="line">        <span class="keyword">return</span> new_list;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如何分割表格：<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">    handleSpan(&#123; row, column, rowIndex, columnIndex &#125;)&#123;</div><div class="line">        <span class="comment">// 根据更新列表数量判断是否分割</span></div><div class="line">        <span class="keyword">let</span> num = row.policyFlowList.length || <span class="number">0</span>;</div><div class="line">        <span class="keyword">if</span>(num &gt; <span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">if</span>(columnIndex !== <span class="number">3</span> &amp;&amp; columnIndex !== <span class="number">4</span>)&#123;</div><div class="line">                <span class="comment">// 不是更新人or更新时间列</span></div><div class="line">                <span class="keyword">if</span>(row.isFirst)&#123;<span class="comment">// 更新列表的第一项</span></div><div class="line">                    <span class="keyword">return</span> &#123; <span class="attr">rowspan</span>: num, <span class="attr">colspan</span>: <span class="number">1</span> &#125;</div><div class="line">                &#125;<span class="keyword">else</span>&#123;</div><div class="line">                    <span class="keyword">return</span> &#123; <span class="attr">rowspan</span>: <span class="number">0</span>, <span class="attr">colspan</span>: <span class="number">0</span> &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
 <h2 id="分页自定义页数"><a href="#分页自定义页数" class="headerlink" title="分页自定义页数"></a>分页自定义页数</h2><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 通过`page-size`与输入框同一个参数控制 --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">el-pagination</span> <span class="attr">class</span>=<span class="string">"sl-page"</span></span></div><div class="line"><span class="attr">layout</span>=<span class="string">"prev, pager, next, jumper, total, slot"</span></div><div class="line">@<span class="attr">current-change</span>=<span class="string">"handleCurrentChange"</span></div><div class="line"><span class="attr">:current-page.sync</span>=<span class="string">"params.pager"</span></div><div class="line"><span class="attr">:page-size</span>=<span class="string">"params.count"</span></div><div class="line"><span class="attr">:total</span>=<span class="string">"TOTAL"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"resize"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>每页记录数：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">"number"</span> <span class="attr">size</span>=<span class="string">"small"</span> </span></div><div class="line">        <span class="attr">v-model.number</span>=<span class="string">"params.count"</span> </div><div class="line">        @<span class="attr">change</span>=<span class="string">"handleSearch"</span>&gt;<span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-pagination</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> defalt&#123;</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">TOTAL</span>: <span class="number">100</span>,</div><div class="line">            <span class="attr">params</span>: &#123;</div><div class="line">                <span class="attr">pager</span>: <span class="number">1</span>,</div><div class="line">                <span class="attr">count</span>: <span class="number">10</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        handleSearch()&#123;<span class="comment">//页数改变</span></div><div class="line">            <span class="keyword">if</span>(!<span class="keyword">this</span>.parmas.count)&#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">this</span>.parmas.pager = <span class="number">1</span>;</div><div class="line">            <span class="keyword">this</span>.getList()</div><div class="line">        &#125;,</div><div class="line">        handleCurrentChange()&#123;<span class="comment">//页码改变</span></div><div class="line">            <span class="keyword">this</span>.getList()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">export</span> defalt&#123;</div><div class="line">    data()&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            <span class="attr">TOTAL</span>: <span class="number">100</span>,</div><div class="line">            <span class="attr">params</span>: &#123;</div><div class="line">                <span class="attr">pager</span>: <span class="number">1</span>,</div><div class="line">                <span class="attr">count</span>: <span class="number">10</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">methods</span>: &#123;</div><div class="line">        handleSearch()&#123;<span class="comment">//页数改变</span></div><div class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.parmas.count &lt;= <span class="number">0</span> || !<span class="keyword">this</span>.parmas.count || <span class="built_in">String</span>(<span class="keyword">this</span>.parmas.count).indexOf(<span class="string">"."</span>) !== <span class="number">-1</span>)&#123;</div><div class="line">                <span class="comment">//小于等于零or为空or小数点时不刷新数据</span></div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">this</span>.parmas.pager = <span class="number">1</span>;</div><div class="line">            <span class="keyword">this</span>.getList()</div><div class="line">        &#125;,</div><div class="line">        handleCurrentChange()&#123;<span class="comment">//页码改变</span></div><div class="line">            <span class="keyword">this</span>.getList()</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.sl-page</span> &#123;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">  <span class="attribute">padding-top</span>: <span class="number">20px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sl-page</span> <span class="selector-class">.resize</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">60px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.sl-page</span> <span class="selector-class">.resize</span> <span class="selector-class">.el-input__inner</span> &#123;</div><div class="line">  <span class="attribute">height</span>: <span class="number">28px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="伪Radio-·-真-·-CheckBox"><a href="#伪Radio-·-真-·-CheckBox" class="headerlink" title="伪Radio · 真 · CheckBox"></a>伪Radio · 真 · CheckBox</h2><blockquote>
+<p>单个radio可以不勾选效果</p>
+</blockquote>
+<p>复合：<br><figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fake-checkbox"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-radio</span> <span class="attr">v-model</span>=<span class="string">"isCheck"</span> <span class="attr">:label</span>=<span class="string">"1"</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-radio</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-checkbox</span> <span class="attr">v-model</span>=<span class="string">"isCheck"</span> <span class="attr">:false-label</span>=<span class="string">"0"</span> <span class="attr">:true-label</span>=<span class="string">"1"</span> @<span class="attr">change</span>=<span class="string">"handleSearch"</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-checkbox</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.fake-checkbox</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>,</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">55px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio__label</span>&#123;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">5px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
 <h2 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h2><h3 id="1-下拉箭头位置偏差"><a href="#1-下拉箭头位置偏差" class="headerlink" title="1. 下拉箭头位置偏差"></a>1. 下拉箭头位置偏差</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.el-select-dropdown</span> <span class="selector-class">.popper__arrow</span> &#123;</div><div class="line">    <span class="attribute">transform</span>: none <span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="2-表单伪必填"><a href="#2-表单伪必填" class="headerlink" title="2. 表单伪必填"></a>2. 表单伪必填</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.sl-required</span> <span class="selector-class">.el-form-item__label</span><span class="selector-pseudo">:before</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">'*'</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#fa5555</span>;</div><div class="line">  <span class="attribute">margin-right</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">class</span>=<span class="string">"sl-required"</span>&gt;</span>...<span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -235,211 +167,216 @@
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">class</span>=<span class="string">"non-arrow"</span> <span class="attr">type</span>=<span class="string">"number"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="4-复合型输入框去背景"><a href="#4-复合型输入框去背景" class="headerlink" title="4. 复合型输入框去背景"></a>4. 复合型输入框去背景</h3><figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.el-input</span><span class="selector-class">.clear-append</span> <span class="selector-tag">input</span><span class="selector-class">.el-input__inner</span>,</div><div class="line"><span class="selector-class">.el-input</span><span class="selector-class">.clear-prepend</span> <span class="selector-tag">input</span><span class="selector-class">.el-input__inner</span> &#123;</div><div class="line">  <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.el-input</span><span class="selector-class">.clear-append</span> <span class="selector-class">.el-input-group__append</span>,</div><div class="line"><span class="selector-class">.el-input</span><span class="selector-class">.clear-prepend</span> <span class="selector-class">.el-input-group__prepend</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: transparent;</div><div class="line">  <span class="attribute">border</span>: none;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">5px</span>;</div><div class="line">  <span class="attribute">padding-right</span>: <span class="number">5px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">el-input</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">sl-select</span> <span class="attr">slot</span>=<span class="string">"prepend"</span> <span class="attr">class</span>=<span class="string">"clear-prepend"</span>&gt;</span><span class="tag">&lt;/<span class="name">sl-select</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"append"</span> <span class="attr">class</span>=<span class="string">"clear-append"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="伪Radio-·-真-·-CheckBox"><a href="#伪Radio-·-真-·-CheckBox" class="headerlink" title="伪Radio · 真 · CheckBox"></a>伪Radio · 真 · CheckBox</h2><blockquote>
-<p>单个radio可以不勾选效果</p>
-</blockquote>
-<figure class="highlight html"><table><tr><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"fake-checkbox"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-radio</span> <span class="attr">v-model</span>=<span class="string">"isCheck"</span> <span class="attr">:label</span>=<span class="string">"1"</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-radio</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">el-checkbox</span> <span class="attr">v-model</span>=<span class="string">"isCheck"</span> <span class="attr">:false-label</span>=<span class="string">"0"</span> <span class="attr">:true-label</span>=<span class="string">"1"</span> @<span class="attr">change</span>=<span class="string">"handleSearch"</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-checkbox</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="code"><pre><div class="line"><span class="selector-class">.fake-checkbox</span>&#123;</div><div class="line">  <span class="attribute">position</span>: relative;</div><div class="line">  <span class="attribute">display</span>: inline-block;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>,</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">55px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio__label</span>&#123;</div><div class="line">  <span class="attribute">padding-left</span>: <span class="number">5px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>&#123;</div><div class="line">  <span class="attribute">position</span>: absolute;</div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+</section>
+    <!-- Tags START -->
     
-    
-  <div class="article-tags">
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/elementUI/">elementUI</a>
-        </div>
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/javascript/">javascript</a>
-        </div>
-    
-    	<div class="article-tag">
-    		<i class="fa fa-tags"></i>
-        	<a class="item-tag" href="/tag/vue/">vue</a>
-        </div>
-    
-  </div>
-
-  </div>
-</article>
-
-
-
-   
-
-   
-  <div class="box-prev-next clearfix">
-    <a class="show pull-left" href="/2018-05-11/common-in-vue/">
-        <i class="icon icon-angle-left"></i>
-    </a>
-    <a class="hide pull-right" href="/">
-        <i class="icon icon-angle-right"></i>
-    </a>
-  </div>
-
-
-
-
-</div>
-
-
-  <a id="backTop" class="back-top sl-backtop">
-    <i class="icon-angle-up"></i>
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
   </a>
 
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
 
+  <a href="/tag#elementUI" >
+    <span class="tag-code">elementUI</span>
+  </a>
 
-
-
-
-  <div class="modal" id="modal">
-  <span id="cover" class="cover hide"></span>
-  <div id="modal-dialog" class="modal-dialog hide-dialog">
-    <div class="modal-header">
-      <span id="close" class="btn-close">关闭</span>
-    </div>
-    <hr>
-    <div class="modal-body">
-      <ul class="list-toolbox">
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/archives/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              博客
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/category/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              分类
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/tag/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              标签
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/about/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              关于
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/link/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              友链
-            </a>
-          </li>
-        
-          <li class="item-toolbox">
-            <a
-              class="CIRCLE"
-              href="/search/"
-              rel="noopener noreferrer"
-              target="_self"
-              >
-              搜索
-            </a>
-          </li>
-        
-      </ul>
-
-    </div>
-  </div>
-</div>
-
-
-
-  
-      <div class="fexo-comments comments-post">
+      </div>
     
-
+    <!-- Tags END -->
+    <!-- NAV START -->
     
-
-
-
-
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
     
-
+      <a class="nav-left" href="/2018-05-11/common-in-vue/">
+        <span class="nav-arrow">← </span>
+        
+          vue相关（持续更新07.19）
+        
+      </a>
     
-	
-    	
     
-	<div id="comments" class="comments">
-	    <div id="SOHUCS" sid="cjifcd6rn000ihkvqewzdx749"></div> 
-	</div>
-	<script>
-		(function(){ 
-		var appid = 'cyt5hjA1m'; 
-		var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
-		var width = window.innerWidth || document.documentElement.clientWidth; 
-		if (width < 960) { 
-		window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
-	</script>
-
-	
-    	
   </div>
 
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- ChangYan START -->
+      <div id="comments" class="comments">
+          <div id="SOHUCS" sid="cjjseu7kr000fmgvqmufkwvae"></div> 
+      </div>
+      <script>
+        (function(){ 
+        var appid = 'cyt5hjA1m'; 
+        var conf = 'prod_209cb37ec7ad2dd42c7ac1ef5d7c1c30'; 
+        var width = window.innerWidth || document.documentElement.clientWidth; 
+        if (width < 960) { 
+        window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("//changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); 
+      </script>
+      <!-- ChangYan END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
   
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#表格自定义合并"><span class="toc-nav-text">表格自定义合并</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#分页自定义页数"><span class="toc-nav-text">分页自定义页数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#伪Radio-·-真-·-CheckBox"><span class="toc-nav-text">伪Radio · 真 · CheckBox</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#样式修改"><span class="toc-nav-text">样式修改</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-下拉箭头位置偏差"><span class="toc-nav-text">1. 下拉箭头位置偏差</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-表单伪必填"><span class="toc-nav-text">2. 表单伪必填</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-去除输入框number类型的箭头"><span class="toc-nav-text">3. 去除输入框number类型的箭头</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-复合型输入框去背景"><span class="toc-nav-text">4. 复合型输入框去背景</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
 
-  <script type="text/javascript">
-  function loadScript(url, callback) {
-    var script = document.createElement('script')
-    script.type = 'text/javascript';
-
-    if (script.readyState) { //IE
-      script.onreadystatechange = function() {
-        if (script.readyState == 'loaded' ||
-          script.readyState == 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { //Others
-      script.onload = function() {
-        callback();
-      };
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2018-05-14/vue-ElementUI-extend-02/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
     }
+    $('.header').removeClass('fixed-header')
 
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
-  }
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
 
-  window.onload = function() {
-    loadScript('/js/bundle.js', function() {
-      // load success
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
     });
-  }
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Vue使用element-ui所遇BUG与需求集结（二）更新中...",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
 </script>
 
-</body>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2018 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'false';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
 </html>
