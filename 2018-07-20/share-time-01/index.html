@@ -10,7 +10,7 @@
   
   <title>
     
-      How to git | 小聂子客栈
+      Share Time ~（第一期） | 小聂子客栈
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -131,8 +131,8 @@
 </header>
 
     <div id="article-banner">
-  <h2>How to git</h2>
-  <p class="post-date">2017-06-22</p>
+  <h2>Share Time ~（第一期）</h2>
+  <p class="post-date">2018-07-20</p>
   <div class="arrow-down">
     <a href="javascript:;"></a>
   </div>
@@ -141,31 +141,39 @@
   <!-- Article START -->
   <article class="post-article">
     <section class="markdown-content"><blockquote>
-<p>从安装到配置，如何用Git远程仓库<br><a id="more"></a></p>
+<p>看到有意思的网站总会点个收藏，但是会再次去浏览的却不多<br>今天空出些时间归纳了一下，先分享几个CSS相关的网站<br><a id="more"></a></p>
 </blockquote>
-<h2 id="第一步：安装Git"><a href="#第一步：安装Git" class="headerlink" title="第一步：安装Git"></a>第一步：安装Git</h2><p>1.下载Git：<a href="https://git-scm.com/book/zh/v1/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git" target="_blank" rel="external">国外地址</a>   <a href="https://github.com/waylau/git-for-win" target="_blank" rel="external">国内地址</a><br>2.打开Git目录下的git.cmd，输入：<code>git --version</code>检查是否安装成功</p>
-<h2 id="第二步：配置用户"><a href="#第二步：配置用户" class="headerlink" title="第二步：配置用户"></a>第二步：配置用户</h2><p>打开git.cmd，配置用户名和邮箱(下方以xiaoniezi为例)<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">git config --global user.name <span class="string">"xiaoniezi"</span></div><div class="line">git config --global user.email <span class="string">"123456789@qq.com"</span></div><div class="line">git config --global push.default matching</div></pre></td></tr></table></figure></p>
-<h2 id="第三步：生成ssh"><a href="#第三步：生成ssh" class="headerlink" title="第三步：生成ssh"></a>第三步：生成ssh</h2><p>1.找到Git目录下的git.bash，进入.ssh目录：<code>cd ~/.ssh</code><br>2.创建密钥：<code>ssh-keygen -t rsa</code>期间会有提示用户输入密钥的名字和密码，并二次确认密码，也可默认为空（下方以snow为例）<br>3.创建完成后查看目录文件：<code>ls -al</code>若出现snow和snow.pub两个文件即创建成功</p>
-<h2 id="第四步：添加公钥"><a href="#第四步：添加公钥" class="headerlink" title="第四步：添加公钥"></a>第四步：添加公钥</h2><p>   1.打开Github，进入用户的Settings的SSH and GPG keys设置选项<br>   2.复制snow.pub公钥的内容，在github上添加SSH keys<br>   3.同时在master分支下创建一个新的Repository（下方以test为例）</p>
-<h2 id="第五步：检测密钥"><a href="#第五步：检测密钥" class="headerlink" title="第五步：检测密钥"></a>第五步：检测密钥</h2><p>1.在git.bash主目录下输入：<code>ssh-add -l</code>若出现下方的提示继续以下步骤，否则跳到第六步<br>2.输入以下命令<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">$(ssh-agent -s)</span>"</span></div><div class="line">ssh-add ~/.ssh/snow</div></pre></td></tr></table></figure></p>
-<p>3.尝试连接github<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<p>出现以下提示则成功</p>
-<blockquote>
-<p><em>Hi xiaoniezi!You’re successfully authenticated, but Github does not provide shell access.</em></p>
-</blockquote>
-<h2 id="第六步：远程仓库"><a href="#第六步：远程仓库" class="headerlink" title="第六步：远程仓库"></a>第六步：远程仓库</h2><p>1.继续使用git.bash，进入你想与github远程的目录：<code>cd d:/github/snow</code><br>2.初始化：<code>git init</code><br>3.添加当前目录的所有文件：<code>git add .</code><br>4.提交文件：<code>git commit -m &quot;mark something&quot;</code><br>5.远程github：<code>git remote add origin git@github.com:xiaoniezi/test.git</code><br>6.push到test项目下：<code>git push -u origin master</code><br>7.到github的test上即可看到提交的文件</p>
+<ul>
+<li><p><a href="http://zh.learnlayout.com" target="_blank" rel="external">CSS超基础</a><br>这是个“小白”网站，目前只有19页，简单讲述了css的一些属性。<br>为啥放第一位，因为它可爱呀。</p>
+</li>
+<li><p><a href="https://codemyui.com/" target="_blank" rel="external">Code My UI</a><br>一个有各种各样CSS效果的网站，按钮、菜单栏、图片、输入框等等<br>偶尔想要给自己的博客装饰一下看起来不那么乏味，这个网站不会让你失望</p>
+</li>
+<li><p><a href="https://css-tricks.com/" target="_blank" rel="external">css-tricks</a><br>如网站名，CSS技巧。想要怎么实现一个css效果，在google时这个网站常常排在前几位。</p>
+</li>
+<li><p><a href="https://bttn.surge.sh/" target="_blank" rel="external">bttn.css</a><br>轻量级的按钮效果，压缩后只有4KB</p>
+</li>
+<li><p><a href="https://penjs.net/animate/" target="_blank" rel="external">gallery.animate.css</a><br>各种各样的动画效果，还有一个类似更出名的动画<a href="https://daneden.github.io/animate.css/" target="_blank" rel="external">daneden animate</a></p>
+</li>
+<li><p><a href="https://www.cssmatic.com/gradient-generator" target="_blank" rel="external">linear-gradient</a><br>一个可以调试<code>linear-gradient</code>属性并且做兼容的网站</p>
+</li>
+<li><p><a href="http://autoprefixer.github.io/" target="_blank" rel="external">autoprefixer</a><br>也是关于兼容的网站，可以帮你自动填充css属性前缀。不过当下很多第三方工具都可以实现，比如<code>webpakc</code>，所以作用并不大</p>
+</li>
+<li><p>还有几个关于CSS技巧or布局方面的</p>
+<ul>
+<li><a href="http://www.html-js.com/article/1866" target="_blank" rel="external">BFC布局</a>：<code>Block fomatting context</code>，或许对你理解<code>float</code>溢出有帮助</li>
+<li><a href="https://github.com/jawil/blog/issues/29" target="_blank" rel="external">黑魔法技巧</a>：在github的文章，主旨是少写js，以css达到相同的效果</li>
+<li><a href="https://javascript.ctolib.com/docs/sfile/FEND-Note/chapter4/02_layout.html" target="_blank" rel="external">垂直水平居中</a>：老生常谈，这里归纳了几种和对应的兼容</li>
+</ul>
+</li>
+</ul>
 </section>
     <!-- Tags START -->
     
       <div class="tags">
         <span>Tags:</span>
         
-  <a href="/tag#git" >
-    <span class="tag-code">git</span>
-  </a>
-
-  <a href="/tag#github" >
-    <span class="tag-code">github</span>
+  <a href="/tag#css" >
+    <span class="tag-code">css</span>
   </a>
 
       </div>
@@ -176,20 +184,13 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2017-06-22/hello-world/">
+      <a class="nav-left" href="/2018-05-14/vue-ElementUI-extend-02/">
         <span class="nav-arrow">← </span>
         
-          Hello World
+          Vue使用element-ui所遇BUG与需求集结（二）更新中...
         
       </a>
     
-    
-      <a class="nav-right" href="/2017-10-16/vue-ElementUI-tree-expand/">
-        
-          VUE饿了么树形控件添加增删改功能
-        
-        <span class="nav-arrow"> →</span>
-      </a>
     
   </div>
 
@@ -208,7 +209,7 @@
     
       <!-- ChangYan START -->
       <div id="comments" class="comments">
-          <div id="SOHUCS" sid="cjjtvt5e90007egvqbqhzdw1d"></div> 
+          <div id="SOHUCS" sid="cjjtvt5ed000eegvq8u24kqqz"></div> 
       </div>
       <script>
         (function(){ 
@@ -228,7 +229,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第一步：安装Git"><span class="toc-nav-text">第一步：安装Git</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第二步：配置用户"><span class="toc-nav-text">第二步：配置用户</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第三步：生成ssh"><span class="toc-nav-text">第三步：生成ssh</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第四步：添加公钥"><span class="toc-nav-text">第四步：添加公钥</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第五步：检测密钥"><span class="toc-nav-text">第五步：检测密钥</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第六步：远程仓库"><span class="toc-nav-text">第六步：远程仓库</span></a></li></ol>
+      <ol class="nav">none</ol>
     
   </div>
 </aside>
@@ -238,7 +239,7 @@
 
 <script>
   (function () {
-    var url = 'https://xiaoniezi.github.io/2017-06-22/How-to-git/';
+    var url = 'https://xiaoniezi.github.io/2018-07-20/share-time-01/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -294,7 +295,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "How to git",
+        id: "Share Time ~（第一期）",
         owner: "undefined",
         repo: "undefined",
         oauth: {

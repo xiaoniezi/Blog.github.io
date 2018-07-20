@@ -70,7 +70,7 @@
       
         <li class="list-item">
           
-            <a href="/" class="item-link">Home</a>
+            <a href="/" class="item-link active">Home</a>
           
         </li>
       
@@ -103,7 +103,7 @@
         
           <li class="menu-item">
             
-              <a href="/" class="menu-link">Home</a>
+              <a href="/" class="menu-link mobile-active">Home</a>
             
           </li>
         
@@ -130,98 +130,36 @@
   </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+    <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2017-06-22/hello-world/">Hello World</a>
+      </h2>
+      <p class="article-date">June 22, 2017</p>
+      
+      <div class="article-summary">
+        
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer ...
+        
+      </div>
+      <a class="more" href="/2017-06-22/hello-world/">Read more</a>
+    </article>
+  
+
+  
+    <div class="guide-pager">
+  
+    <a href="/"><span class="page-arrow">← </span>Prev</a>
+  
+  
+    <a class="unvisible" href="/">Next <span class="page-arrow">→</span></a>
+  
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2018-07-20/share-time-01/" class="archive-title">Share Time ~（第一期）</a>
-        <p class="archive-date">07-20</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-14/vue-ElementUI-extend-02/" class="archive-title">Vue使用element-ui所遇BUG与需求集结（二）更新中...</a>
-        <p class="archive-date">05-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-11/common-in-vue/" class="archive-title">vue相关（持续更新07.19）</a>
-        <p class="archive-date">05-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-08/working-with-v-charts/" class="archive-title">使用v-charts所遇问题及解决方法</a>
-        <p class="archive-date">05-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-04-08/common-in-css/" class="archive-title">常用css（持续更新07.19）</a>
-        <p class="archive-date">04-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-02-23/NEW-YEAR-NEW-PLAN/" class="archive-title">NEW YEAR ? NEW PLAN !</a>
-        <p class="archive-date">02-23</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017-11-17/vue-ElementUI-table-extend/" class="archive-title">VUE element-ui 写个复用Table组件</a>
-        <p class="archive-date">11-17</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-11-07/vue-ElementUI-extend-01/" class="archive-title">Vue使用element-ui所遇BUG与需求集结（一）</a>
-        <p class="archive-date">11-07</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-10-16/vue-ElementUI-tree-expand/" class="archive-title">VUE饿了么树形控件添加增删改功能</a>
-        <p class="archive-date">10-16</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-06-22/How-to-git/" class="archive-title">How to git</a>
-        <p class="archive-date">06-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-06-22/hello-world/" class="archive-title">Hello World</a>
-        <p class="archive-date">06-22</p>
-      </div>
-    
-  </div>
-</section>
   
 </main>
 
-<script>
-  (function () {
-    var url = 'https://xiaoniezi.github.io/tag/github/index.html';
-    $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
-</script>
+
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
