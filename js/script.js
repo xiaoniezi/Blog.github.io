@@ -1,5 +1,5 @@
 (function ($) {
-  console.log('© Theme-Vexo | https://github.com/yanm1ng/hexo-theme-vexo')
+  // console.log('© Theme-Vexo | https://github.com/yanm1ng/hexo-theme-vexo')
   var app = $('.app-body')
   var header = $('.header')
   var banner = document.getElementById('article-banner') || false
@@ -45,6 +45,16 @@
 
   $('#tag-cloud a').on('click', function () {
     var list = $('.tag-list')
+    var name = $(this).data('name')
+    var maoH = list.find('#' + name).offset().top
+
+    $('html,body').animate({
+      scrollTop: maoH - header.height()
+    }, 500)
+  })
+  
+  $('#category-cloud a').on('click', function () {
+    var list = $('.category-list')
     var name = $(this).data('name')
     var maoH = list.find('#' + name).offset().top
 

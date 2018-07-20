@@ -1007,6 +1007,59 @@ h2.article-head {
 .nav-container .nav-arrow {
   color: #34495e;
 }
+#category-cloud {
+  margin: 30px 0;
+  text-align: center;
+}
+#category-cloud a {
+  border: none;
+  line-height: 28px;
+  margin: 0 4px;
+  margin-bottom: 8px;
+  background: #63a35c;
+  display: inline-block;
+  border-radius: 4px;
+  padding: 0 10px;
+  color: #fff;
+  transition: background 0.5s;
+}
+#category-cloud a:hover {
+  background: #0085a1;
+}
+#category-cloud .category0 {
+  background: #bbe;
+}
+#category-cloud .category1 {
+  background: #9cb2e1;
+}
+#category-cloud .category2 {
+  background-color: rgba(0,133,161,0.8);
+}
+.category-list {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+.category-name {
+  font-size: 1.4em;
+  position: relative;
+}
+.category-name:before {
+  content: "#";
+  color: #42b983;
+  position: absolute;
+  left: -0.7em;
+  top: -2px;
+  font-size: 1.2em;
+  font-weight: 700;
+}
+.category-preview {
+  font-size: 1.1em;
+  padding-left: 1em;
+}
+.category-preview li {
+  cursor: pointer;
+  margin: 10px 0;
+}
 @-moz-keyframes shine {
   0%, 100% {
     opacity: 0.1;
