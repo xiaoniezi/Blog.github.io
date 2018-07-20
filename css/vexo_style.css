@@ -17,7 +17,7 @@
 	}
 	.catalog-container{
 		position: absolute;
-		top: 0;
+		top: 2em;
 		right: 0;
 		width: 280px;
 	}
