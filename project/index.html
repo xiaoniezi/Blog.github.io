@@ -10,7 +10,7 @@
   
   <title>
     
-      小聂子客栈
+      Project | 小聂子客栈
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -143,96 +143,54 @@
 </header>
 
     <div id="article-banner">
-  <h2>Archives</h2>
-  <p class="post-date">文章归档</p>
+  <h2>Projects</h2>
+  <p class="post-date">开源项目</p>
 </div>
-<main class="app-body" id="archives">
-  
-  
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2018
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2018-07-20/share-time-01/" class="archive-title">Share Time ~（第一期）</a>
-        <p class="archive-date">07-20</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-14/vue-ElementUI-extend-02/" class="archive-title">Vue使用element-ui所遇BUG与需求集结（二）更新中...</a>
-        <p class="archive-date">05-14</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-11/common-in-vue/" class="archive-title">vue相关（持续更新07.19）</a>
-        <p class="archive-date">05-11</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-05-08/working-with-v-charts/" class="archive-title">使用v-charts所遇问题及解决方法</a>
-        <p class="archive-date">05-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-04-08/common-in-css/" class="archive-title">常用css（持续更新07.19）</a>
-        <p class="archive-date">04-08</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2018-02-23/NEW-YEAR-NEW-PLAN/" class="archive-title">NEW YEAR ? NEW PLAN !</a>
-        <p class="archive-date">02-23</p>
-      </div>
-    
-  </div>
-</section>
-  
-    <section class="time-section">
-  <h1 class="section-year">
-    2017
-  </h1>
-  <div class="section-list">
-    
-    
-      <div class="section-list-item">
-        <a href="/2017-11-17/vue-ElementUI-table-extend/" class="archive-title">VUE element-ui 写个复用Table组件</a>
-        <p class="archive-date">11-17</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-11-07/vue-ElementUI-extend-01/" class="archive-title">Vue使用element-ui所遇BUG与需求集结（一）</a>
-        <p class="archive-date">11-07</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-10-16/vue-ElementUI-tree-expand/" class="archive-title">VUE饿了么树形控件添加增删改功能</a>
-        <p class="archive-date">10-16</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-06-22/How-to-git/" class="archive-title">How to git</a>
-        <p class="archive-date">06-22</p>
-      </div>
-    
-      <div class="section-list-item">
-        <a href="/2017-06-22/hello-world/" class="archive-title">Hello World</a>
-        <p class="archive-date">06-22</p>
-      </div>
-    
-  </div>
-</section>
-  
+<main class="app-body project-app">
+  <div class="card-container" id="all-project"></div>
 </main>
-
 <script>
-  (function () {
-    var url = 'https://xiaoniezi.github.io/archives/2018/index.html';
+  (function() {
+    var url = 'https://xiaoniezi.github.io/project/index.html';
     $('#article-banner').geopattern(url);
-    $('.header').removeClass('fixed-header');
-  })();
+    $('.header').removeClass('fixed-header')
+    $.ajax({
+      headers: {
+        Accept: 'application/vnd.github.v3.raw'
+      },
+      type: 'get',
+      url: 'https://api.github.com/users/xiaoniezi/repos',
+      success: function (data) {
+        var repos = data.sort(function(a, b) {
+          return (b.stargazers_count - a.stargazers_count)
+        }).slice(0, 6)
+        var cardHtml = repos.map(function(item) {
+          var description = item.description || ""
+          if (description.replace(/[\u0391-\uFFE5]/g, "aa").length > 72) {
+            description = description.slice(0, 72) + '...'
+          }
+          return (
+            '<section class="project-card">' + 
+              '<a class="card-wrap" href="'+ item.html_url +'" target="_blank">' +
+                '<div class="card-header" data-name="'+ item.name +'"></div>' +
+                '<h3 class="card-title">' + item.name + '</h3>' +
+                '<p class="card-description">' + description + '</p>' +
+                '<div class="card-footer">' +
+                  '<span><i class="fa fa-star"></i>'+ item.stargazers_count +'</span>' +
+                  '<span><i class="fa fa-code-fork"></i>' + item.forks_count +'</span>' +
+                '</div>' +
+              '</a>' +
+            '</section>'
+          )
+        }).join('')
+        $('#all-project').html(cardHtml)
+        $('.card-header').each(function() {
+          var name = $(this).data('name');
+          $(this).geopattern(name);
+        })
+      }
+    });
+  })()
 </script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
