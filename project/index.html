@@ -161,7 +161,10 @@
       type: 'get',
       url: 'https://api.github.com/users/xiaoniezi/repos',
       success: function (data) {
-        var repos = data.sort(function(a, b) {
+        var repos = data.filter(function(item){
+          return item.name !== 'old_snow' && item.name !== 'React-Study' && item.name !== 'test_vue'
+        })
+        repos = repos.sort(function(a, b) {
           return (b.stargazers_count - a.stargazers_count)
         }).slice(0, 6)
         var cardHtml = repos.map(function(item) {
