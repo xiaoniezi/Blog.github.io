@@ -52,3 +52,11 @@
 	background-size: 80% 100%;
 	border-bottom: 0;
 }
+
+/* 文章日期 */
+#article-banner .post-date span{
+	display: inline-block;
+}
+#article-banner .post-date .post-date-left{
+	margin-right: 10px;
+}
