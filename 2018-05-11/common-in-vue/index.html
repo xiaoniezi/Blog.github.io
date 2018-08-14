@@ -168,9 +168,7 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><blockquote>
-<p>Vue相关设置和基础用法<br><a id="more"></a></p>
-</blockquote>
+    <section class="markdown-content"><p>Vue相关设置和基础用法<br><a id="more"></a></p>
 <h2 id="零碎集"><a href="#零碎集" class="headerlink" title="零碎集"></a>零碎集</h2><h3 id="1-多个锚点"><a href="#1-多个锚点" class="headerlink" title="1. 多个锚点"></a>1. 多个锚点</h3><p>有时候页面内容过多，要在侧栏做个导航栏：<a href="https://blog.csdn.net/iceking66/article/details/78211213" target="_blank" rel="external">参考地址</a></p>
 <h3 id="2-监听页面滚动"><a href="#2-监听页面滚动" class="headerlink" title="2. 监听页面滚动"></a>2. 监听页面滚动</h3><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">methods: &#123;</div><div class="line">	handleScroll()&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">"I am scroll !!!"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;,</div><div class="line">created()&#123;</div><div class="line">	<span class="built_in">window</span>.addEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll)</div><div class="line">&#125;,</div><div class="line">destroyed()&#123;</div><div class="line">	<span class="built_in">window</span>.removeEventListener(<span class="string">"scroll"</span>, <span class="keyword">this</span>.handleScroll)</div><div class="line">&#125;</div><div class="line">;</div></pre></td></tr></table></figure>
 <h3 id="3-图片相对地址"><a href="#3-图片相对地址" class="headerlink" title="3. 图片相对地址"></a>3. 图片相对地址</h3><p>如果用<code>../../assets/example.png</code>插入<code>.vue</code>文件，一旦文件变动，地址可能也要改。所以用<code>vue-loader</code>的转换规则<br><code>@</code>在<code>build/webpack.base.config.js</code>中可配置</p>
@@ -278,7 +276,7 @@
     
       <!-- ChangYan START -->
       <div id="comments" class="comments">
-          <div id="SOHUCS" sid="cjkt6fmz70002bgvql0yxy9ad"></div> 
+          <div id="SOHUCS" sid="cjktbjej20008vcvqe7adq70k"></div> 
       </div>
       <script>
         (function(){ 
