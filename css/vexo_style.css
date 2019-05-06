@@ -1,7 +1,7 @@
 /*
  * Created in 2018.07.19
  * Shyla Nie
- * Last Modify: 2018.07.20;
+ * Last Modify: 2019.05.06;
 */
 
 /* header */
@@ -60,3 +60,72 @@
 #article-banner .post-date .post-date-left{
 	margin-right: 10px;
 }
+/* 文章日期 end */
+
+
+/* 外链 */
+.share-icons .icon-fa-github{
+	color: #24292e;
+}
+.share-icons .icon-fa-stack-overflow{
+	color: #f48024;
+}
+
+/* 外链 end */
+
+/* 友链 */
+.about-links{
+	width: 90%;
+	max-width: 800px;
+	margin: 20px auto;
+	position: relative;
+}
+/* 标题 */
+.about-links .abo-lk-title{
+	font-size: 1.4em;
+	font-weight: 600;
+	margin: 2em 0;
+}
+/* 列表 */
+.about-links .abo-lk-list{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.about-links .abo-lk-item{
+	display: inline-block;
+	margin-bottom: 20px;
+	width: 49%;
+}
+.about-links .abo-lk-url{
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+/* 头像 */
+.about-links .abo-lk-avatar{
+	float: left;
+	width: 55px;
+	height: 55px;
+	padding: 3px;
+	border-radius: 50%;
+	border: 1px solid #42b983;
+}
+.about-links .abo-lk-wrap{
+	position: relative;
+	padding-left: 80px;
+	width: 100%;
+	text-align: left;
+}
+.about-links .abo-lk-w--name{
+	margin-top: 5px;
+	margin-bottom: 10px;
+	color: #333;
+	font-weight: 600;
+}
+@media screen and (max-width: 720px){
+	.about-links .abo-lk-item{
+		width: 100%;
+	}
+}
+/* 友链 end */
