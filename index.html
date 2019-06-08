@@ -15,7 +15,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/plugins/gitment.css">
   
@@ -148,6 +148,34 @@
 </header>
 
     <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/2019-06-04/qrcode-in-poster-with-vue/">在Vue中用canvas实现二维码和图片合成海报</a>
+      </h2>
+      <p class="article-date">June 4, 2019</p>
+      
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+  <a href="/tag#qrcode" >
+    <span class="tag-code">qrcode</span>
+  </a>
+
+      
+      <div class="article-summary">
+        
+          <p>在项目中经常会遇到需要将不同的二维码放到一张通用图片上，提供用户下载<br>简单来说，就是利用canvas将同等比例的二维码在图片上叠加，生成海报<br>
+        
+      </div>
+      <a class="more" href="/2019-06-04/qrcode-in-poster-with-vue/">Read more</a>
+    </article>
   
     <article class="article-card">
       <h2 class="article-head">
@@ -365,34 +393,6 @@
       <a class="more" href="/2018-02-23/NEW-YEAR-NEW-PLAN/">Read more</a>
     </article>
   
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="/2017-11-17/vue-ElementUI-table-extend/">VUE element-ui 写个复用Table组件</a>
-      </h2>
-      <p class="article-date">November 17, 2017</p>
-      
-        
-  <a href="/tag#vue" >
-    <span class="tag-code">vue</span>
-  </a>
-
-  <a href="/tag#javascript" >
-    <span class="tag-code">javascript</span>
-  </a>
-
-  <a href="/tag#elementUI" >
-    <span class="tag-code">elementUI</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          <p>饿了么的table组件功能很强大，对于项目中的各种表格基本够用，但是……个人对于它<strong>以列为单位</strong>的操作不习惯 =。=所以改成了另一种方式（我不会告诉你其实本质没变）。<br>
-        
-      </div>
-      <a class="more" href="/2017-11-17/vue-ElementUI-table-extend/">Read more</a>
-    </article>
-  
 
   
     <div class="guide-pager">
@@ -441,7 +441,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

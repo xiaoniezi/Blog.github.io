@@ -15,7 +15,7 @@
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdn.bootcss.com/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/plugins/gitment.css">
   
@@ -154,35 +154,35 @@
 <main class="app-body">
   <div id="category-cloud">
     
+      <a class="category1" data-name="category-Personal">Personal</a>
+    
       <a class="category2" data-name="category-Others">Others</a>
     
-      <a class="category0" data-name="category-Personal">Personal</a>
+      <a class="category0" data-name="category-CSS">CSS</a>
     
-      <a class="category1" data-name="category-CSS">CSS</a>
+      <a class="category0" data-name="category-Vue">Vue</a>
     
-      <a class="category1" data-name="category-Vue">Vue</a>
-    
-      <a class="category1" data-name="category-Share">Share</a>
+      <a class="category0" data-name="category-Share">Share</a>
     
   </div>
   
-    <div class="category-list">
-      <h3 class="category-name" id="category-Others">Others</h3>
-      
-        <ul class="category-preview">
-          <li>
-            <a href="/2017-06-22/How-to-git/">How to git</a>
-          </li>
-        </ul>
-        
-    </div>
-    
     <div class="category-list">
       <h3 class="category-name" id="category-Personal">Personal</h3>
       
         <ul class="category-preview">
           <li>
             <a href="/2018-02-23/NEW-YEAR-NEW-PLAN/">NEW YEAR ? NEW PLAN !</a>
+          </li>
+        </ul>
+        
+    </div>
+    
+    <div class="category-list">
+      <h3 class="category-name" id="category-Others">Others</h3>
+      
+        <ul class="category-preview">
+          <li>
+            <a href="/2017-06-22/How-to-git/">How to git</a>
           </li>
         </ul>
         
@@ -205,6 +205,12 @@
         <ul class="category-preview">
           <li>
             <a href="/2018-05-11/common-in-vue/">vue相关（持续更新01.31）</a>
+          </li>
+        </ul>
+        
+        <ul class="category-preview">
+          <li>
+            <a href="/2019-06-04/qrcode-in-poster-with-vue/">在Vue中用canvas实现二维码和图片合成海报</a>
           </li>
         </ul>
         
@@ -251,13 +257,13 @@
         
         <ul class="category-preview">
           <li>
-            <a href="/2019-04-19/share-time-03/">Share Time ~（第三期）</a>
+            <a href="/2018-07-26/share-time-02/">Share Time ~（第二期）</a>
           </li>
         </ul>
         
         <ul class="category-preview">
           <li>
-            <a href="/2018-07-26/share-time-02/">Share Time ~（第二期）</a>
+            <a href="/2019-04-19/share-time-03/">Share Time ~（第三期）</a>
           </li>
         </ul>
         
@@ -320,7 +326,7 @@
 </script>
 
 <script>
-  var hasLine = 'false';
+  var hasLine = 'true';
   async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
     $('figure pre').each(function(i, block) {
       var figure = $(this).parents('figure');

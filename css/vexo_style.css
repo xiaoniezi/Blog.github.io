@@ -129,3 +129,20 @@
 	}
 }
 /* 友链 end */
+
+/* 代码高亮 */
+
+.markdown-content figure, 
+.article-summary figure{
+	border-radius: 5px;
+	background: #021d10;
+}
+.markdown-content pre, 
+.article-summary pre, 
+.markdown-content code, 
+.article-summary code{
+	font-family: system-ui, "Gill Sans", sans-serif;
+	font-size: 0.95em;
+}
+
+/* 代码高亮 end */
