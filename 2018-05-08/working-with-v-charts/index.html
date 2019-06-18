@@ -10,7 +10,7 @@
   
   <title>
     
-      使用v-charts所遇问题及解决方法 | 小聂子客栈
+      使用v-charts所遇问题及解决方法（持续更新06.14） | 小聂子客栈
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -148,7 +148,7 @@
 </header>
 
     <div id="article-banner">
-  <h2>使用v-charts所遇问题及解决方法</h2>
+  <h2>使用v-charts所遇问题及解决方法（持续更新06.14）</h2>
   <p class="post-date">
     <span class="post-date-left">2018-05-08</span>
      
@@ -180,7 +180,7 @@
 <h2 id="2-双轴对齐"><a href="#2-双轴对齐" class="headerlink" title="2. 双轴对齐"></a>2. 双轴对齐</h2><p>双轴对齐关键是限定y轴最大最小值和间隔值（interval）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.chartData = &#123;</div><div class="line">	<span class="attr">rows</span>: [...]</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//以下两者是倍数双轴的值才不会出现小数点</span></div><div class="line"><span class="keyword">this</span>.yAxisMultiple = <span class="number">10</span>;<span class="comment">//双轴对齐数据处理倍数</span></div><div class="line"><span class="keyword">this</span>.yAxisSplitNumber = <span class="number">5</span>;<span class="comment">//双轴分段数</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//分别获取左右两轴的列表</span></div><div class="line"><span class="keyword">let</span> left_list = <span class="keyword">this</span>.chartData.rows.map(<span class="function"><span class="params">c</span> =&gt;</span> c.left),</div><div class="line">	right_list = <span class="keyword">this</span>.chartData.rows.map(<span class="function"><span class="params">c</span> =&gt;</span> c.right);</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//获取列表内的最大值并向上取整</span></div><div class="line"><span class="keyword">let</span> left_max = <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.max(...let_list)/<span class="keyword">this</span>.yAxisMultiple)*<span class="keyword">this</span>.yAxisMultiple,</div><div class="line">	right_max = <span class="built_in">Math</span>.ceil(<span class="built_in">Math</span>.max(...right_list)/<span class="keyword">this</span>.yAxisMultiple)*<span class="keyword">this</span>.yAxisMultiple;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">//引用yAxis提供的默认参数设置最大最小值和间隔值</span></div><div class="line"><span class="keyword">let</span> that = <span class="keyword">this</span>;</div><div class="line"><span class="keyword">this</span>.chartExtend = &#123;</div><div class="line">	yAxis(item)&#123;</div><div class="line">		item.map(<span class="function"><span class="params">c</span> =&gt;</span> &#123; c.min = <span class="number">0</span> &#125;)</div><div class="line">		item[<span class="number">0</span>].max = left_max</div><div class="line">		item[<span class="number">0</span>].interval = left_max/that.yAxisSplitNumber</div><div class="line">		item[<span class="number">1</span>].max = right_max</div><div class="line">		item[<span class="number">1</span>].interval = right_max/that.yAxisSplitNumber</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>详情： <a href="https://jsfiddle.net/xiaoniezi/2q5udkkt/" target="_blank" rel="external">jsfiddle地址</a></p>
 <h2 id="3-折线图Y轴数值倍数"><a href="#3-折线图Y轴数值倍数" class="headerlink" title="3.折线图Y轴数值倍数"></a>3.折线图Y轴数值倍数</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.chartExtend = &#123;</div><div class="line">	yAxis(item)&#123;</div><div class="line">		<span class="keyword">let</span> obj = &#123;</div><div class="line">			<span class="attr">splitNumber</span>: <span class="number">5</span>,</div><div class="line">			<span class="attr">min</span>: <span class="number">0</span>,</div><div class="line">			<span class="attr">max</span>: <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</div><div class="line">				<span class="keyword">if</span>(val.max &lt; <span class="number">5</span>)&#123;</div><div class="line">					<span class="keyword">return</span> <span class="number">5</span></div><div class="line">				&#125;<span class="keyword">else</span>&#123;</div><div class="line">					<span class="keyword">return</span> <span class="built_in">Math</span>.ceil(val.max/<span class="number">10</span>)*<span class="number">10</span></div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		obj.max(item[<span class="number">0</span>])</div><div class="line">		<span class="built_in">Object</span>.assign(item[<span class="number">0</span>], obj)</div><div class="line">		<span class="keyword">return</span> item;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</section>
+<h2 id="4-地图"><a href="#4-地图" class="headerlink" title="4.地图"></a>4.地图</h2></section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -242,7 +242,7 @@
     
       <!-- ChangYan START -->
       <div id="comments" class="comments">
-          <div id="SOHUCS" sid="cjwnme6m3001668vq0d5ycn6m"></div> 
+          <div id="SOHUCS" sid="cjx1k13yp001al8vqo5t4cl8t"></div> 
       </div>
       <script>
         (function(){ 
@@ -262,7 +262,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-颜色渐变"><span class="toc-nav-text">1. 颜色渐变</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-双轴对齐"><span class="toc-nav-text">2. 双轴对齐</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-折线图Y轴数值倍数"><span class="toc-nav-text">3.折线图Y轴数值倍数</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-颜色渐变"><span class="toc-nav-text">1. 颜色渐变</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-双轴对齐"><span class="toc-nav-text">2. 双轴对齐</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-折线图Y轴数值倍数"><span class="toc-nav-text">3.折线图Y轴数值倍数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-地图"><span class="toc-nav-text">4.地图</span></a></li></ol>
     
   </div>
 </aside>
@@ -328,7 +328,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "使用v-charts所遇问题及解决方法",
+        id: "使用v-charts所遇问题及解决方法（持续更新06.14）",
         owner: "undefined",
         repo: "undefined",
         oauth: {
