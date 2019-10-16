@@ -10,7 +10,7 @@
   
   <title>
     
-      Share Time ~（第四期） | 小聂子客栈
+      防抖和节流 | 小聂子客栈
     
   </title>
   <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -148,9 +148,9 @@
 </header>
 
     <div id="article-banner">
-  <h2>Share Time ~（第四期）</h2>
+  <h2>防抖和节流</h2>
   <p class="post-date">
-    <span class="post-date-left">2019-04-19</span>
+    <span class="post-date-left">2019-10-16</span>
      
     <i class="fa fa-eye"></i>
     <span id="busuanzi_container_page_pv">
@@ -168,27 +168,12 @@
 <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-    <section class="markdown-content"><p>分享几个日常划水的网站(＾－＾)V<br><a id="more"></a></p>
+    <section class="markdown-content"><p>一直以为这么高端的两个名字，实际意义理解起来也很难。<br>然而几行代码已经足以概况，或许项目中已经运用而不自知。<br><a id="more"></a></p>
 <hr>
-<p>还是德语中毒的我</p>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="300" height="86" src="//music.163.com/outchain/player?type=2&id=32174338&auto=0&height=66"></iframe>
-
-<ul>
-<li><p><a href="https://juejin.im/pins/recommended" target="_blank" rel="external">掘金</a><br>喵喵喵这里有日常程序员鼓励师登场，也有等待挖掘的小技巧，and必不可少的八卦</p>
-</li>
-<li><p><a href="https://www.geekpark.net/" target="_blank" rel="external">极客公园</a><br>每天获取最新科技资讯（这个大佬又咋了，哪个公司又倒了……）<br>emmm就是偶尔会有打广告的文章<br>还有个专业一点的：<a href="https://www.infoq.cn/" target="_blank" rel="external">InfoQ</a></p>
-</li>
-<li><p><a href="https://segmentfault.com/" target="_blank" rel="external">SegmentFault思否</a><br>技术类文章，个人觉得最有用的应该是问答的功能，类似国外的Stack Overflow，只是如今问的问题越来越小白了，用户流失</p>
-</li>
-<li><p><a href="https://weekly.manong.io/issues/" target="_blank" rel="external">码农周刊</a><br>这个是真·IT技术周刊，除了编程外，人工智能单独分出一个tab</p>
-</li>
-<li><p><a href="https://www.oschina.net/tweets" target="_blank" rel="external">开源中国</a><br>下雨了，发个动弹；明星出轨了，发个动弹；又怼产品了，发个动弹；解决了一个bug，发个动弹；宝宝出生了，发个动弹，大家来帮忙想个名字啊……</p>
-</li>
-<li><p><a href="https://freefrontend.com/" target="_blank" rel="external">Free Frontend</a><br>看地址就知道了，这里都是与前端相关的技巧，比如loading的效果，button悬浮效果<br>可以用来优化日常项目</p>
-</li>
-<li><p><a href="https://www.awesomes.cn/repos" target="_blank" rel="external">Awesomes</a><br>优秀的github库or工具分享，偶尔能找到意想不到的东西<br>还有一个类似不过更详细的： <a href="https://www.ctolib.com/" target="_blank" rel="external">CTOLib码库</a></p>
-</li>
-</ul>
+<h3 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> timer = <span class="literal">null</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">// 触发时重置</span></div><div class="line">        clearTimeout(timer);</div><div class="line">        timer = setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</div><div class="line">        &#125;, <span class="number">500</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>监听一个输入框连续输入不触发，停止输入后进行搜索<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> bounceInput = <span class="built_in">document</span>.getElementById(<span class="string">"DeBounce"</span>);</div><div class="line">bounceInput.addEventListener(<span class="string">"input"</span>, debounce(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"debounce success!"</span>)</div><div class="line">&#125;))</div></pre></td></tr></table></figure></p>
+<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fn</span>)</span>&#123;</div><div class="line">    <span class="comment">// 当前是否可触发</span></div><div class="line">    <span class="keyword">let</span> isOpen = <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(!isOpen) <span class="keyword">return</span>;</div><div class="line">        isOpen = <span class="literal">false</span>;</div><div class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">            fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</div><div class="line">            isOpen = <span class="literal">true</span>;</div><div class="line">        &#125;, <span class="number">500</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>监听窗口大小变化在一定时间内只触发一次，避免高频执行<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.addEventListener(<span class="string">"resize"</span>, throttle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"throttle success~"</span>)</div><div class="line">&#125;))</div></pre></td></tr></table></figure></p>
 </section>
     <!-- Tags START -->
     
@@ -199,18 +184,6 @@
     <span class="tag-code">javascript</span>
   </a>
 
-  <a href="/tag#css" >
-    <span class="tag-code">css</span>
-  </a>
-
-  <a href="/tag#website" >
-    <span class="tag-code">website</span>
-  </a>
-
-  <a href="/tag#科技" >
-    <span class="tag-code">科技</span>
-  </a>
-
       </div>
     
     <!-- Tags END -->
@@ -219,17 +192,17 @@
   <div class="nav-container">
     <!-- reverse left and right to put prev and next in a more logic postition -->
     
-      <a class="nav-left" href="/2019-04-19/share-time-03/">
+      <a class="nav-left" href="/2019-08-21/share-time-05/">
         <span class="nav-arrow">← </span>
         
-          Share Time ~（第三期）
+          Share Time ~（第五期）
         
       </a>
     
     
-      <a class="nav-right" href="/2019-06-04/qrcode-in-poster-with-vue/">
+      <a class="nav-right" href="/2019-10-16/css-effect-01/">
         
-          在Vue中用canvas实现二维码和图片合成海报
+          收藏CSS效果 - 第一期
         
         <span class="nav-arrow"> →</span>
       </a>
@@ -251,7 +224,7 @@
     
       <!-- ChangYan START -->
       <div id="comments" class="comments">
-          <div id="SOHUCS" sid="ck1t2f777000zwgvqjd3mbxnb"></div> 
+          <div id="SOHUCS" sid="ck1t2f76p000dwgvqxoj018li"></div> 
       </div>
       <script>
         (function(){ 
@@ -271,7 +244,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="nav">none</ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#防抖"><span class="toc-nav-text">防抖</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#节流"><span class="toc-nav-text">节流</span></a></li></ol>
     
   </div>
 </aside>
@@ -281,7 +254,7 @@
 
 <script>
   (function () {
-    var url = 'https://xiaoniezi.github.io/2019-04-19/share-time-04/';
+    var url = 'https://xiaoniezi.github.io/2019-10-16/debounce-and-throttle/';
     var banner = 'undefined'
     if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
       $('#article-banner').css({
@@ -337,7 +310,7 @@
     var gitmentConfig = "undefined";
     if (gitmentConfig !== 'undefined') {
       var gitment = new Gitment({
-        id: "Share Time ~（第四期）",
+        id: "防抖和节流",
         owner: "undefined",
         repo: "undefined",
         oauth: {
