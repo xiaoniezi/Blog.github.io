@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+  <head><meta name="generator" content="Hexo 3.9.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Vue使用element-ui所遇BUG与需求集结（一） | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+  
+    <link rel="stylesheet" href="/css/vexo_style.css?v1.0.0">
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  <script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+</head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png">
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Vue使用element-ui所遇BUG与需求集结（一）</h2>
+  <p class="post-date">
+    <span class="post-date-left">2017-11-07</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>最近常使用<code>element-ui</code>的组件，遇到问题比较多，想做个清单。也包含一些自己总结的使用vue小方法。<img src="/images/face_01.jpg" alt="图片描述"><br><a id="more"></a></p>
+<blockquote>
+<p>敲黑板：重点！！以下数据都是在vue(v2.3)+element-ui(v1.4)+webpack(v2.6)+axios(v0.16)+vuex(v2.3)环境下测试。<br>如有改变会说明。</p>
+</blockquote>
+<h2 id="1-回车自动提交表单"><a href="#1-回车自动提交表单" class="headerlink" title="1.回车自动提交表单"></a>1.回车自动提交表单</h2><blockquote>
+<p>详情：做列表搜索的时候当表单只有单个输入框时，回车会自动提交表单</p>
+</blockquote>
+<p>issue在此：<a href="https://github.com/ElemeFE/element/issues/3625" target="_blank" rel="noopener">点我点我</a></p>
+<p><strong>解决：</strong>（阻止表单提交）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form</span> <span class="attr">:inline</span>=<span class="string">"true"</span> <span class="attr">:model</span>=<span class="string">"params"</span> @<span class="attr">submit.native.prevent</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-监听input回车"><a href="#2-监听input回车" class="headerlink" title="2.监听input回车"></a>2.监听input回车</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-on:keyup.enter.native</span>=<span class="string">"login"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-tree组件增删改"><a href="#3-tree组件增删改" class="headerlink" title="3.tree组件增删改"></a>3.tree组件增删改</h2><blockquote>
+<p>树形组件最难搞，尤其遇上各种蛋疼的需求=。= 这次要有增删改的功能，但是发现官网给的例子并不是直接在数据上操作，所以自己修改了一个。</p>
+</blockquote>
+<p>详细地址：<a href="/2017-10-16/vue-ElementUI-tree-expand/">点我就知道啦</a></p>
+<h2 id="4-table组件expand每次只展开一项"><a href="#4-table组件expand每次只展开一项" class="headerlink" title="4.table组件expand每次只展开一项"></a>4.table组件expand每次只展开一项</h2><blockquote>
+<p>文档没有具体属性，但是在issue找的方法都是结合<code>row-key</code>和<code>expand-row-keys</code>来实现这个功能</p>
+</blockquote>
+<p>issue地址：<a href="https://github.com/ElemeFE/element/issues/3747" target="_blank" rel="noopener">灵机一现！</a></p>
+<p><strong>解决：</strong>但是我在Stack Overflow找了个更简单的方法，要直接操作table树๑乛◡乛๑，只需要用到expand的方法</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table</span> @<span class="attr">expand</span>=<span class="string">"handleExpandRow"</span> <span class="attr">ref</span>=<span class="string">"row_table"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br><span class="line">//method:</span><br><span class="line">handleExpandRow(row,expanded)&#123;</span><br><span class="line">    this.$refs.row_table.store.states.expandRows = expanded ? [row] : [];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>附上Stack Overflow原地址：<a href="https://stackoverflow.com/questions/44590918/how-can-i-get-an-element-to-appear-directly-when-i-expand-a-row-using-vue" target="_blank" rel="noopener">大神在此</a><br>————</p>
+<p>以上是v1.4版本的，由于v2.0版本修改了返回参数，仿照上例修改了新的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">handleExpandRow(row,expandRows)&#123;</span><br><span class="line">    <span class="keyword">this</span>.$refs.raw_table.store.states.expandRows = expandRows.length !== <span class="number">0</span> ? [row] : [];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="5-复用table组件"><a href="#5-复用table组件" class="headerlink" title="5.复用table组件"></a>5.复用table组件</h2><p>项目中表格太多，做了两个之后还是决定写了个复用放组件，而因为需求不断增加修改，所以不断简化，下面只是上个简单版的：<br>详细地址：<a href="/2017-11-17/vue-ElementUI-table-extend/">都说点我咯</a></p>
+<p>在掘金上看到一篇还不错、也是关于table组件的文章：<a href="https://juejin.im/post/5a100d09f265da4324800807" target="_blank" rel="noopener">掘金地址</a></p>
+<h2 id="6-upload组件自定义filelist"><a href="#6-upload组件自定义filelist" class="headerlink" title="6.upload组件自定义filelist"></a>6.upload组件自定义filelist</h2><blockquote>
+<p>上传文件用的还是挺多的，就是列表不好控制，尤其是要通过ajax删除等操作，所以还是自己写了一个。也是因为upload上传时有个动态进程用户体验不错，也重新捣鼓了以下。</p>
+</blockquote>
+<p>还是另开了一篇文章，不过基本没难度：<a href="https://segmentfault.com/a/1190000012234747" target="_blank" rel="noopener">看这儿这儿</a></p>
+<h2 id="7-数组表单验证"><a href="#7-数组表单验证" class="headerlink" title="7.数组表单验证"></a>7.数组表单验证</h2><blockquote>
+<p>用<code>v-for</code>循环列表的时候，想给部分值都做个验证，但是<code>el-form</code>只接收<code>object</code>。</p>
+</blockquote>
+<p>其实这个功能在官网是已经给出了（v2.0:<a href="http://element-cn.eleme.io/2.0/#/zh-CN/component/form#dong-tai-zeng-jian-biao-dan-xiang" target="_blank" rel="noopener">原来是你</a>），不过研究了一阵才用了个蠢方法。</p>
+<p>假如有个列表：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">list: [&#123;</span><br><span class="line">    date: <span class="string">'2016-05-02'</span>,</span><br><span class="line">    name: <span class="string">'王小虎'</span>,</span><br><span class="line">    address: <span class="string">'上海市普陀区金沙江路 1518 弄'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    date: <span class="string">'2016-05-04'</span>,</span><br><span class="line">    name: <span class="string">'王小虎'</span>,</span><br><span class="line">    address: <span class="string">'上海市普陀区金沙江路 1517 弄'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    date: <span class="string">'2016-05-01'</span>,</span><br><span class="line">    name: <span class="string">'王小虎'</span>,</span><br><span class="line">    address: <span class="string">'上海市普陀区金沙江路 1519 弄'</span></span><br><span class="line">&#125;, &#123;</span><br><span class="line">    date: <span class="string">'2016-05-03'</span>,</span><br><span class="line">    name: <span class="string">'王小虎'</span>,</span><br><span class="line">    address: <span class="string">'上海市普陀区金沙江路 1516 弄'</span></span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<p>在新增或者修改<code>list</code>之后都要验证<code>name</code>和<code>adress</code>必填</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form</span> <span class="attr">ref</span>=<span class="string">"listOption"</span> <span class="attr">:rules</span>=<span class="string">"rules"</span> <span class="attr">:model</span>=<span class="string">"setForm"</span> <span class="attr">size</span>=<span class="string">"small"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"(item,i) in setForm.list"</span> <span class="attr">:key</span>=<span class="string">"i"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number</span>=<span class="string">"item.date"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">:prop</span>=<span class="string">"'list.' + i + '.name'"</span> <span class="attr">:rules</span>=<span class="string">"rules.name"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number</span>=<span class="string">"item.name"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">:prop</span>=<span class="string">"'list.' + i + '.address'"</span> <span class="attr">:rules</span>=<span class="string">"rules.address"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number</span>=<span class="string">"item.address"</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-form</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- prop的关键字要相对应，别少了那一点 --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>要啥给啥：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        list: [&#123;...&#125;],</span><br><span class="line">        rules: &#123;</span><br><span class="line">            name: [&#123;</span><br><span class="line">                required: <span class="literal">true</span>,</span><br><span class="line">                trigger: <span class="string">'请输入姓名'</span></span><br><span class="line">            &#125;],</span><br><span class="line">            address: [&#123;</span><br><span class="line">                required: <span class="literal">true</span>,</span><br><span class="line">                trigger: <span class="string">'请输入地址'</span></span><br><span class="line">            &#125;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">    setForm()&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            name: <span class="string">'mylist'</span>,</span><br><span class="line">            list: <span class="keyword">this</span>.list</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p><strong>从Tab 8开始升级使用element-ui（v2.0.9）</strong></p>
+</blockquote>
+<hr>
+<h2 id="8-转换emoji表情"><a href="#8-转换emoji表情" class="headerlink" title="8.转换emoji表情"></a>8.转换emoji表情</h2><blockquote>
+<p>例如用户的昵称使用了emoji表情，后台返回的数据<code>:rose:</code>，要转换成一朵玫瑰花。</p>
+</blockquote>
+<p>使用<a href="https://github.com/emojione/emojify.js" target="_blank" rel="noopener">emojify插件</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install emojify.js --save</span><br></pre></td></tr></table></figure>
+<p>vue main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Emojify <span class="keyword">from</span> <span class="string">'emojify.js'</span></span><br><span class="line"><span class="comment">// import 'emojify.js/dist/css/basic/emojify.min.css'//单个图</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'emojify.js/dist/css/sprites/emojify.min.css'</span><span class="comment">//雪碧图</span></span><br><span class="line">Emojify.setConfig(&#123;</span><br><span class="line">    mode: <span class="string">'sprite'</span>,</span><br><span class="line">&#125;);<span class="comment">//设置emojify为雪碧图模式，更多的设置可参考插件</span></span><br></pre></td></tr></table></figure>
+<p>正式引用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$emoji = Emojify;</span><br></pre></td></tr></table></figure>
+<p>由于输出的是<code>img</code>/<code>span</code>标签，所以用<code>v-html</code>，但是不支持<code>filter</code>，只能写个<code>method</code>了</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">v-html</span>=<span class="string">"Emojify(scope.row.name)"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Emojify(code)&#123;</span><br><span class="line">    <span class="keyword">let</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> code.replace(<span class="regexp">/\:\w+\:/g</span>,<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> that.$emoji.replace(str)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="9-百度富文本Ueditor"><a href="#9-百度富文本Ueditor" class="headerlink" title="9.百度富文本Ueditor"></a>9.百度富文本Ueditor</h2><blockquote>
+<p>做这个功能的时候遇到不少问题，尤其是图片上传。不过此处都简略，参考了不少前人的文档，大同小异。</p>
+</blockquote>
+<p>到 <a href="http://ueditor.baidu.com/website/" target="_blank" rel="noopener">官网</a> 下载对应服务器的压缩包，在<code>index.html</code>引入js文件（静态资源放在<code>static</code>文件夹）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/Ueditor/ueditor.config.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/Ueditor/ueditor.all.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/Ueditor/lang/zh-cn/zh-cn.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/static/Ueditor/ueditor.parse.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>写个组件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ueditor"</span> <span class="attr">ref</span>=<span class="string">"rowUEditor"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">id</span>=<span class="string">"editor"</span> <span class="attr">type</span>=<span class="string">"text/plain"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="javascript">    name: <span class="string">'ueditor'</span>,</span></span><br><span class="line"><span class="undefined">    data() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="javascript">            editor: <span class="literal">null</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    props: &#123;</span></span><br><span class="line"><span class="javascript">        defaultMsg: &#123;<span class="comment">//文本内容</span></span></span><br><span class="line"><span class="javascript">            type: <span class="built_in">String</span></span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        config: &#123;<span class="comment">//单独设置</span></span></span><br><span class="line"><span class="javascript">            type: <span class="built_in">Object</span>,</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    computed: &#123;</span></span><br><span class="line"><span class="javascript">        DefaultConfig() &#123;<span class="comment">//默认设置</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> obj = <span class="keyword">this</span>.config</span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> serverUrl = <span class="keyword">this</span>.$store.state.baseURL + <span class="string">'/sys/ueditor/exec.act'</span><span class="comment">//服务器地址</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> &#123;</span></span><br><span class="line"><span class="undefined">                serverUrl,</span></span><br><span class="line"><span class="undefined">                ...obj</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    mounted() &#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.initUEditor()</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="undefined">    methods: &#123;</span></span><br><span class="line"><span class="undefined">        initUEditor() &#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">const</span> that = <span class="keyword">this</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.editor = UE.getEditor(<span class="string">'editor'</span>, <span class="keyword">this</span>.DefaultConfig); <span class="comment">// 初始化UE</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.editor.addListener(<span class="string">"ready"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (that.defaultMsg == <span class="literal">null</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    that.editor.setContent(<span class="string">''</span>);</span></span><br><span class="line"><span class="javascript">                &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="undefined">                    that.editor.setContent(that.defaultMsg);</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.editor.addListener(<span class="string">"contentChange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="comment">//监听内容变化</span></span></span><br><span class="line"><span class="undefined">                that.getUEContent();</span></span><br><span class="line"><span class="undefined">            &#125;)</span></span><br><span class="line"><span class="undefined">        &#125;,</span></span><br><span class="line"><span class="javascript">        getUEContent() &#123; <span class="comment">// 获取内容方法</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> content = <span class="keyword">this</span>.editor.getContent();</span></span><br><span class="line"><span class="javascript">            <span class="keyword">this</span>.$emit(<span class="string">"getUEContent"</span>, content)</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;,</span></span><br><span class="line"><span class="javascript">    destroyed() &#123;<span class="comment">//退出后销毁</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">this</span>.editor.destroy();</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后就可以单独拎出来用了，只需要提供设置和默认文本就好</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">sl-editor</span> <span class="attr">ref</span>=<span class="string">"ueditor"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">v-if</span>=<span class="string">"editor.config.isShow"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">:defaultMsg</span>=<span class="string">"content"</span> </span></span><br><span class="line"><span class="tag"><span class="attr">:config</span>=<span class="string">"editor.config"</span></span></span><br><span class="line"><span class="tag">@<span class="attr">getUEContent</span>=<span class="string">"getUEContent"</span>&gt;</span><span class="tag">&lt;/<span class="name">sl-editor</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>data:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        editor: &#123;</span><br><span class="line">            msg: <span class="string">''</span>,</span><br><span class="line">            config: &#123;</span><br><span class="line">                autoHeightEnabled: <span class="literal">false</span>,</span><br><span class="line">                initialFrameHeight: <span class="number">300</span>,<span class="comment">//高度</span></span><br><span class="line">                zIndex: <span class="number">5</span>,<span class="comment">//层级</span></span><br><span class="line">                isShow: <span class="literal">false</span>,<span class="comment">//是否显示编辑器</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        content: <span class="string">'hello world'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods: &#123;</span><br><span class="line">    getUEContent(content)&#123;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>过程中遇到几个问题<br>1.由于是放在<code>form</code>下，<code>el-form-item</code>有个默认<code>line-height:40px</code>会让工具栏变形，所以要加个样式</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ueditor</span>&#123;</span><br><span class="line">  <span class="attribute">line-height</span>:normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.添加内容是默认<code>p</code>标签，显示相关内容时体验不好被运营投诉了→_→ 然后改用<code>div</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">getUEContent()&#123;</span><br><span class="line">    <span class="keyword">let</span> content = <span class="keyword">this</span>.editor.getContent();</span><br><span class="line">    content = content.replace(<span class="regexp">/&lt;p([\s\S]*?)&lt;\/p&gt;/g</span>,<span class="string">"&lt;div$1&lt;/div&gt;"</span>)</span><br><span class="line">    <span class="keyword">this</span>.$emit(<span class="string">"getUEContent"</span>,content)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>3.如果页面出现滚动条，编辑器进入编辑状态后，再往上滚动，工具栏也会跟着往上跑，脱离文本框。看☟☟☟<br><img src="/images/vue_ex_02.png" alt="正常的工具栏"><br><img src="/images/vue_ex_03.png" alt="猫饼工具栏"></p>
+<p>然而在google搜了半天没找到解决办法，倒回去看文档<em>(:</em>」∠)_<br>果然，精髓都浓缩在文档中</p>
+<p><img src="/images/vue_ex_04.png" alt="修复工具栏"></p>
+<p>所以在<code>DefaultConfig</code>加个默认设置就好了<code>autoFloatEnabled: false</code></p>
+<p>github：<a href="https://github.com/xiaoniezi/vue-ueditor" target="_blank" rel="noopener">戳戳戳</a>（附上一个修改单图上传功能后的<code>ueditor</code>文件，不知道为啥用原本的不行）</p>
+<h2 id="10-axios报错后重新请求"><a href="#10-axios报错后重新请求" class="headerlink" title="10.axios报错后重新请求"></a>10.axios报错后重新请求</h2><p>如题，请求数据报错时再请求一次=。= 这是个猫饼，不是都尽量避免重复请求，怎么还有这么野蛮的需求……anyway，找到个梯子</p>
+<p><a href="http://www.itomtan.com/2017/10/17/vue-axios-timeout-retry-callback/#" target="_blank" rel="noopener">使劲戳不戳不知道</a></p>
+<h2 id="更新项"><a href="#更新项" class="headerlink" title="更新项"></a>更新项</h2><p>———— 2017.12.12 ————</p>
+<ol>
+<li>[修改]Tab 4.table组件expand每次只展开一项</li>
+<li>[新增]Tab 7.数组表单验证</li>
+</ol>
+<p>———— 2018.01.22 ————</p>
+<ol>
+<li>[新增]Tab 8.转换emoji表情</li>
+</ol>
+<p>———— 2018.02.09 ————</p>
+<ol>
+<li>[新增]Tab 9.百度富文本Ueditor</li>
+<li>[新增]Tab 10.axios报错后重新请求</li>
+</ol>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+  <a href="/tag#elementUI" >
+    <span class="tag-code">elementUI</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2017-10-16/vue-ElementUI-tree-expand/">
+        <span class="nav-arrow">← </span>
+        
+          VUE饿了么树形控件添加增删改功能
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2017-11-17/vue-ElementUI-table-extend/">
+        
+          VUE element-ui 写个复用Table组件
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-回车自动提交表单"><span class="toc-nav-text">1.回车自动提交表单</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-监听input回车"><span class="toc-nav-text">2.监听input回车</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-tree组件增删改"><span class="toc-nav-text">3.tree组件增删改</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-table组件expand每次只展开一项"><span class="toc-nav-text">4.table组件expand每次只展开一项</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-复用table组件"><span class="toc-nav-text">5.复用table组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-upload组件自定义filelist"><span class="toc-nav-text">6.upload组件自定义filelist</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-数组表单验证"><span class="toc-nav-text">7.数组表单验证</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-转换emoji表情"><span class="toc-nav-text">8.转换emoji表情</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#9-百度富文本Ueditor"><span class="toc-nav-text">9.百度富文本Ueditor</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#10-axios报错后重新请求"><span class="toc-nav-text">10.axios报错后重新请求</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#更新项"><span class="toc-nav-text">更新项</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2017-11-07/vue-ElementUI-extend-01/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Vue使用element-ui所遇BUG与需求集结（一）",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2019 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+<script src="/js/script.js"></script>
+  </body>
+</html>
