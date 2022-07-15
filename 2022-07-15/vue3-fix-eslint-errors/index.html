@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      vue3 解决 ESLint 各类型错误 | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+    
+<link rel="stylesheet" href="/css/vexo_style.css?v1.0.0.css">
+
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+<script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>vue3 解决 ESLint 各类型错误</h2>
+  <p class="post-date">
+    <span class="post-date-left">2022-07-15</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>前期项目中忽略了 eslint 检查，导致一运行 <code>npm run lint</code> 出现两千多条错误(இдஇ; ) 造孽啊<br>花了两三天搞完，做个错误汇总。<br><span id="more"></span></p>
+<h2 id="环境和配置"><a href="#环境和配置" class="headerlink" title="环境和配置"></a>环境和配置</h2><p>项目用 <a href="mailto:vue@3.2">vue@3.2</a> + vite + <a href="mailto:ant-design@6.0">ant-design@6.0</a><br>关于eslint 配置的用法可参考：<a target="_blank" rel="noopener" href="https://cn.eslint.org/docs/user-guide/configuring">ESLint中文</a><br>eslint 有专门应用于 vue 的插件：<a target="_blank" rel="noopener" href="https://eslint.vuejs.org/">eslint-plugin-vue</a><br>大致贴一下版本依赖</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">devDependencies<span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@babel/eslint-parser&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^7.18.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^8.7.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-config-prettier&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^8.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-import-resolver-alias&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-plugin-import&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^2.25.4&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-plugin-jest&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^25.7.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;eslint-plugin-vue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^8.3.0&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>eslint 的配置采用 JS 文件格式，经过几次修改已经忘了一开始的内容，只贴基础配置如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="comment">// 只作用于当前目录</span></span><br><span class="line">    <span class="attr">root</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 运行环境</span></span><br><span class="line">    <span class="attr">env</span>: &#123;</span><br><span class="line">        <span class="attr">node</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">es6</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 解析器</span></span><br><span class="line">    <span class="attr">parser</span>: <span class="string">&#x27;@babel/eslint-parser&#x27;</span>,</span><br><span class="line">    <span class="comment">// 解析器选项</span></span><br><span class="line">    <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">        <span class="attr">sourceType</span>: <span class="string">&#x27;module&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 插件</span></span><br><span class="line">    <span class="attr">plugins</span>: [<span class="string">&#x27;import&#x27;</span>],</span><br><span class="line">    <span class="comment">// 扩展配置</span></span><br><span class="line">    <span class="attr">extends</span>: [</span><br><span class="line">        <span class="string">&#x27;plugin:vue/vue3-recommended&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;plugin:import/recommended&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;prettier&#x27;</span>,</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 启用规则</span></span><br><span class="line">    <span class="attr">rules</span>: &#123;&#125;,</span><br><span class="line">    <span class="comment">// 全局变量</span></span><br><span class="line">    <span class="attr">globals</span>: &#123;</span><br><span class="line">        <span class="attr">h</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 为指定文件指定处理器</span></span><br><span class="line">    <span class="attr">overrides</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">files</span>: [<span class="string">&#x27;*.vue&#x27;</span>, <span class="string">&#x27;*.jsx&#x27;</span>],</span><br><span class="line">            <span class="attr">parser</span>: <span class="string">&#x27;vue-eslint-parser&#x27;</span>,</span><br><span class="line">            <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">                <span class="attr">ecmaVersion</span>: <span class="number">2018</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">rules</span>: &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ERROR-Parsing-error-Unexpected-token"><a href="#ERROR-Parsing-error-Unexpected-token" class="headerlink" title="ERROR: Parsing error: Unexpected token ."></a>ERROR: Parsing error: Unexpected token .</h2><p>错误代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isOpen = data?.<span class="property">form</span>?.<span class="property">isOpen</span> || <span class="literal">false</span>;</span><br></pre></td></tr></table></figure></p>
+<p>原来是无法识别可选链操作符（<code>?.</code>），但是扩展运算符没问题，看了eslint 的配置，发现是 ECMAScript 的版本设置了2018（ES9），而可选链操作符是 ES2020（如果没记错），修改配置就可以了<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">parserOptions</span>: &#123;</span><br><span class="line">        <span class="comment">// ES版本，最新可设置 2022 or &quot;latest&quot;，overrides 中配置了有需要也要同步修改</span></span><br><span class="line">        <span class="attr">ecmaVersion</span>: <span class="number">2020</span>,</span><br><span class="line">        <span class="attr">sourceType</span>: <span class="string">&#x27;module&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ERROR-Unable-to-resolve-path-to-module"><a href="#ERROR-Unable-to-resolve-path-to-module" class="headerlink" title="ERROR: Unable to resolve path to module"></a>ERROR: Unable to resolve path to module</h2><p>错误代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Upload</span> <span class="keyword">from</span> <span class="string">&#x27;@/components/upload/index.vue&#x27;</span></span><br></pre></td></tr></table></figure></p>
+<p>路径引用错误？？看起来没毛病，<code>vite.config.js</code>中明明配置了短链<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">resolve</span>: &#123;</span><br><span class="line">    <span class="attr">alias</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;@&#x27;</span>: <span class="title function_">pathResolve</span>(<span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但 eslint 并不会自动读取 vite 的配置，因此 eslint 也要加上对应配置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">settings</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;import/resolver&#x27;</span>: &#123;</span><br><span class="line">            <span class="attr">alias</span>: &#123;</span><br><span class="line">                <span class="attr">map</span>: [<span class="string">&#x27;@&#x27;</span>: <span class="string">&#x27;./src&#x27;</span>]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="另外引入-vue-文件需要加上后缀-vue，否则也会报相同错误。"><a href="#另外引入-vue-文件需要加上后缀-vue，否则也会报相同错误。" class="headerlink" title="另外引入 vue 文件需要加上后缀.vue，否则也会报相同错误。"></a>另外引入 vue 文件需要加上后缀<code>.vue</code>，否则也会报相同错误。</h2><h2 id="ERROR-‘ref’-is-not-defined"><a href="#ERROR-‘ref’-is-not-defined" class="headerlink" title="ERROR: ‘ref’ is not defined"></a>ERROR: ‘ref’ is not defined</h2><p>错误代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">setup</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">const</span> isOpen = <span class="title function_">ref</span>(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        isOpen,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行都没报错，怎么突然 undefined 了？？<br>等等，因为偷懒，vue 的语法糖都是<code>unplugin-auto-import</code>每个文件自动引入的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="keyword">import</span> autoImport <span class="keyword">from</span> <span class="string">&#x27;unplugin-auto-import/vite&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">autoImport</span>(&#123;</span><br><span class="line">    <span class="attr">imports</span>: [</span><br><span class="line">        <span class="string">&#x27;vue&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;vue-router&#x27;</span>,</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>所以也要让 eslint 知道，先生成一个包含所有变量的文件：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// vite.config.js</span></span><br><span class="line"><span class="title function_">autoImport</span>(&#123;</span><br><span class="line">    ...last,</span><br><span class="line">    <span class="attr">eslintrc</span>: &#123;</span><br><span class="line">        <span class="comment">// 已存在文件设置默认 false，需要更新时再打开，防止每次更新都重新生成</span></span><br><span class="line">        <span class="attr">enabled</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="comment">// 生成文件地址和名称</span></span><br><span class="line">        <span class="attr">filepath</span>: <span class="string">&#x27;./.eslintrc-auto-import.json&#x27;</span>,</span><br><span class="line">        <span class="attr">globalsPropValue</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面的<code>enabled</code>在生成文件后建议关闭，否则每次更新都会重新生成。<br>扩展到 eslint：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">extends</span>: [</span><br><span class="line">        <span class="string">&#x27;plugin:vue/vue3-recommended&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;plugin:import/recommended&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;prettier&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;./.eslintrc-auto-import.json&#x27;</span></span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ERROR-vue-no-mutating-props"><a href="#ERROR-vue-no-mutating-props" class="headerlink" title="ERROR: vue/no-mutating-props"></a>ERROR: vue/no-mutating-props</h2><p>错误代码：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- parent.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;Child v-model:open=&quot;openModal&quot; /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    setup()&#123;</span><br><span class="line">        const openModal = ref(false);</span><br><span class="line">        return &#123;</span><br><span class="line">            openModal,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- child.vue --&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;a-modal v-model:visible=&quot;open&quot;&gt;&lt;/a-modal&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">        open: &#123;</span><br><span class="line">            type: Boolean,</span><br><span class="line">            default: true,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这是个低级错误，vue3支持多个参数双向绑定，但是子组件不能直接修改<code>props</code>，需要转换一下：</p>
+<ul>
+<li><p>方法一：用<code>computed</code>代替</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;a-modal v-model:visible=&quot;isOpen&quot;&gt;&lt;/a-modal&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">        open: &#123;</span><br><span class="line">            type: Boolean,</span><br><span class="line">            default: true,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setup(props, &#123; emit &#125;)&#123;</span><br><span class="line">        const isOpen = computed(&#123;</span><br><span class="line">            get: () =&gt; &#123;</span><br><span class="line">                return props.open;</span><br><span class="line">            &#125;,</span><br><span class="line">            set: (value) =&gt; &#123;</span><br><span class="line">                emit(&#x27;update:open&#x27;, value);</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            isOpen,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法二：用<code>watch</code>监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;a-modal v-model:visible=&quot;isOpen&quot;&gt;&lt;/a-modal&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default&#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">        open: &#123;</span><br><span class="line">            type: Boolean,</span><br><span class="line">            default: true,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    setup(props, &#123; emit &#125;)&#123;</span><br><span class="line">        const isOpen = ref(props.open);</span><br><span class="line">        </span><br><span class="line">        watch(</span><br><span class="line">            () =&gt; isOpen.value,</span><br><span class="line">            (value) =&gt; emit(&#x27;update:open&#x27;, value)</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        return &#123;</span><br><span class="line">            isOpen,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="ERROR-no-console"><a href="#ERROR-no-console" class="headerlink" title="ERROR: no-console"></a>ERROR: no-console</h2><p>错误代码：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br></pre></td></tr></table></figure></p>
+<p>eslint 的规则设定了不能有<code>console</code>，当然可以改配置：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;no-console&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">    <span class="comment">// or:</span></span><br><span class="line">    <span class="string">&#x27;no-console&#x27;</span>: [<span class="number">2</span>, &#123; <span class="attr">allow</span>: [<span class="string">&#x27;warn&#x27;</span>, <span class="string">&#x27;error&#x27;</span>] &#125;],</span><br><span class="line">    <span class="comment">// or:</span></span><br><span class="line">    <span class="string">&#x27;no-console&#x27;</span>: process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;production&#x27;</span> ? [<span class="number">2</span>, &#123; <span class="attr">allow</span>: [<span class="string">&#x27;warn&#x27;</span>, <span class="string">&#x27;error&#x27;</span>] &#125;] : <span class="string">&#x27;off&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>提这个错误是为了引入下面的问题，在某些地方需要打印但不希望 eslint 报错，可以让其忽略检查：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 忽略整个文件在第一行加</span></span><br><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 忽略一段代码检查</span></span><br><span class="line"><span class="comment">/* eslint-disable */</span></span><br><span class="line">...<span class="variable language_">this</span> our codes;</span><br><span class="line"><span class="comment">/* eslint-enable */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 忽略一行代码检查</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data); <span class="comment">// eslint-disable-line</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 忽略下一行代码检查</span></span><br><span class="line"><span class="comment">// eslint-disable-next-line</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br></pre></td></tr></table></figure></p>
+<p>那么在<code>&lt;template&gt;</code>中呢？<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;!-- eslint-disable --&gt;</span><br><span class="line">    &lt;div v-for=&quot;item in options&quot;&gt;&#123;&#123; item &#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure><br>然后发现不行，会报<code>vue/require-v-for-key</code>错误，注释失败。<br>找了各种文章最后发现是自己的锅Ծ‸Ծ，找不出问题的时候还是要看官方文档，在<a target="_blank" rel="noopener" href="https://eslint.vuejs.org/rules/comment-directive.html">eslint-plugin-vue</a>已有说明<code>vue/comment-directive</code>规则就是用于忽略代码检查，一看 eslint 的文件配置果然是关闭了：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// .eslintrc.js</span></span><br><span class="line"><span class="attr">rules</span>: &#123;</span><br><span class="line">    <span class="string">&#x27;vue/comment-directive&#x27;</span>: <span class="string">&#x27;off&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>改为<code>error</code>，完美؏؏☝ᖗ乛◡乛ᖘ☝؏؏</p>
+<hr>
+<p>收工。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2020-02-27/blog-animation/">
+        <span class="nav-arrow">← </span>
+        
+          为博客增添动画色彩
+        
+      </a>
+    
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%8E%AF%E5%A2%83%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">环境和配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ERROR-Parsing-error-Unexpected-token"><span class="toc-nav-text">ERROR: Parsing error: Unexpected token .</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ERROR-Unable-to-resolve-path-to-module"><span class="toc-nav-text">ERROR: Unable to resolve path to module</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%A6%E5%A4%96%E5%BC%95%E5%85%A5-vue-%E6%96%87%E4%BB%B6%E9%9C%80%E8%A6%81%E5%8A%A0%E4%B8%8A%E5%90%8E%E7%BC%80-vue%EF%BC%8C%E5%90%A6%E5%88%99%E4%B9%9F%E4%BC%9A%E6%8A%A5%E7%9B%B8%E5%90%8C%E9%94%99%E8%AF%AF%E3%80%82"><span class="toc-nav-text">另外引入 vue 文件需要加上后缀.vue，否则也会报相同错误。</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ERROR-%E2%80%98ref%E2%80%99-is-not-defined"><span class="toc-nav-text">ERROR: ‘ref’ is not defined</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ERROR-vue-no-mutating-props"><span class="toc-nav-text">ERROR: vue&#x2F;no-mutating-props</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ERROR-no-console"><span class="toc-nav-text">ERROR: no-console</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2022-07-15/vue3-fix-eslint-errors/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "vue3 解决 ESLint 各类型错误",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+<!-- 彩带 START-->
+
+  <script id="ribbon" size="70" alpha="0.2" src="/js/canvas_ribbon.js"></script>
+
+<!-- 彩带 END-->
+  </body>
+</html>
