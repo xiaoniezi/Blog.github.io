@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      自定义导航栏菜单失焦 | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+    
+<link rel="stylesheet" href="/css/vexo_style.css?v1.0.0.css">
+
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+<script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>自定义导航栏菜单失焦</h2>
+  <p class="post-date">
+    <span class="post-date-left">2019-06-08</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>一个简单的效果，点击导航栏弹出菜单后，在菜单外点击触发失焦，自动关闭菜单<br><span id="more"></span></p>
+<p>本文采用<a target="_blank" rel="noopener" href="https://youzan.github.io/vant/#/zh-CN/nav-bar">Vant</a>组件<br>核心：通过触发菜单内的<code>input</code>聚焦失焦控制显示/隐藏</p>
+<h2 id="导航栏："><a href="#导航栏：" class="headerlink" title="导航栏："></a>导航栏：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">van-nav-bar</span> <span class="attr">title</span>=<span class="string">&quot;导航栏&quot;</span> <span class="attr">left-arrow</span> @<span class="attr">click</span>=<span class="string">&quot;handleRight&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">van-icon</span> <span class="attr">name</span>=<span class="string">&quot;ellipsis&quot;</span> <span class="attr">v-slot:right</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">van-nav-bar</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="菜单："><a href="#菜单：" class="headerlink" title="菜单："></a>菜单：</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-show</span>=<span class="string">&quot;isShowMenu&quot;</span> <span class="attr">class</span>=<span class="string">&quot;nav-menu&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">&quot;item in menuList&quot;</span> </span></span><br><span class="line"><span class="tag">            <span class="attr">:key</span>=<span class="string">&quot;item&quot;</span></span></span><br><span class="line"><span class="tag">            @<span class="attr">click</span>=<span class="string">&quot;handleMenu(item)&quot;</span>&gt;</span>&#123;&#123; item &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&quot;MenuInput&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> @<span class="attr">blur</span>=<span class="string">&quot;menuBlur&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.nav-menu</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">5px</span>;</span><br><span class="line">    <span class="selector-tag">input</span>&#123;</span><br><span class="line">        <span class="attribute">position</span>: absolute;</span><br><span class="line">        <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">border</span>: none;</span><br><span class="line">        <span class="attribute">outline</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">        -webkit-appearence: none;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="事件："><a href="#事件：" class="headerlink" title="事件："></a>事件：</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;custom-nav&#x27;</span>,</span><br><span class="line">    <span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">isShowMenu</span>: <span class="literal">false</span>,<span class="comment">// 控制菜单</span></span><br><span class="line">            <span class="attr">menuList</span>: [<span class="string">&#x27;操作1&#x27;</span>, <span class="string">&#x27;操作2&#x27;</span>],<span class="comment">// 菜单</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">handleMenu</span>(<span class="params">item</span>)&#123;<span class="comment">// 点击菜单项</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(item)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">menuBlur</span>(<span class="params"></span>)&#123;<span class="comment">// 输入框失焦 =》 隐藏菜单</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">isShowMenu</span> = <span class="literal">false</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">handleRight</span>(<span class="params"></span>)&#123;<span class="comment">// 点击导航栏右侧</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">isShowMenu</span> = !<span class="variable language_">this</span>.<span class="property">isShowMenu</span></span><br><span class="line">            <span class="comment">// trigger焦点</span></span><br><span class="line">            <span class="variable language_">this</span>.$nextTick(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">MenuInput</span>)&#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">MenuInput</span>.<span class="title function_">focus</span>()</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">MenuInput</span>.<span class="title function_">blur</span>()</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><ol>
+<li><p>菜单栏点击事件<code>handleMenu</code>与输入框失焦<code>menuBlur</code>冲突<br>由于js是单线程，所以两者无法同时进行，加个延迟</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">menuBlur</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">isShowMenu</span> = <span class="literal">false</span>;</span><br><span class="line">    &#125;, <span class="number">100</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>输入框聚焦同时弹出键盘<br>如果把input类型设置为hidden反而不能聚焦，所以加个只读属性<code>readonly</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&quot;MenuInput&quot;</span> <span class="attr">readonly</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> @<span class="attr">blur</span>=<span class="string">&quot;menuBlur&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他组件同时出发失焦事件<br>在用ElementUI的日期选择器时，其自带的<code>@blur</code>会上浮，不知道算不算bug。<br>此处带上事件修饰符可解决</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-date-picker</span> @<span class="attr">blur.native.capture</span>=<span class="string">&quot;pickerBlur&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-date-picker</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+  <a href="/tag#input" >
+    <span class="tag-code">input</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019-06-04/qrcode-in-poster-with-vue/">
+        <span class="nav-arrow">← </span>
+        
+          在Vue中用canvas实现二维码和图片合成海报
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019-06-18/operate-on-date/">
+        
+          常用日期操作集合（持续更新08.22）
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%AF%BC%E8%88%AA%E6%A0%8F%EF%BC%9A"><span class="toc-nav-text">导航栏：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%8F%9C%E5%8D%95%EF%BC%9A"><span class="toc-nav-text">菜单：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BA%8B%E4%BB%B6%EF%BC%9A"><span class="toc-nav-text">事件：</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-nav-text">问题：</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2019-06-08/blur-custom-nav-menu/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "自定义导航栏菜单失焦",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+<!-- 彩带 START-->
+
+  <script id="ribbon" size="70" alpha="0.2" src="/js/canvas_ribbon.js"></script>
+
+<!-- 彩带 END-->
+  </body>
+</html>

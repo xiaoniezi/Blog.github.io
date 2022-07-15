@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      Vue使用element-ui所遇BUG与需求集结（二） | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+    
+<link rel="stylesheet" href="/css/vexo_style.css?v1.0.0.css">
+
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+<script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>Vue使用element-ui所遇BUG与需求集结（二）</h2>
+  <p class="post-date">
+    <span class="post-date-left">2018-05-14</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>第二版啦(＾Ｕ＾)ノ~ＹＯ<br>由于项目的功能越来越多，开始注重细节的优化和可延展性，<br>主要方向是将复用的代码集成一个组件。</p>
+<span id="more"></span>
+<blockquote>
+<p>以下数据都是在vue(^2.5)+vuex(^2.3)+element-ui(^2.3)+webpack(^3.7)+axios(v0.16)环境下测试。</p>
+</blockquote>
+<h2 id="混入（Mixins）"><a href="#混入（Mixins）" class="headerlink" title="混入（Mixins）"></a>混入（Mixins）</h2><p>由于有很多table都是要请求列表总数，包括请求列表也是千篇一律。一开始用的是<code>Eventbus</code>注册了共用组件，后来感觉对非列表的组件来说是累赘，才改用mixins，既做到了通用，还能复写。<br>虽然这个方法个人还是不太满意。。。求更好idea</p>
+<p>in <code>@/componens/mixins/TableList.js</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">isLoading</span>: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">getTotal</span>(<span class="params">response</span>)&#123;</span><br><span class="line">            <span class="comment">// 加个loading状态</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">isLoading</span> = !<span class="variable language_">this</span>.<span class="property">isLoading</span></span><br><span class="line">            <span class="comment">// 开始请求列表</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getTableList</span>()</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">getList</span>(<span class="params">response</span>)&#123;</span><br><span class="line">             <span class="comment">// 结束loading状态</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">isLoading</span> = !<span class="variable language_">this</span>.<span class="property">isLoading</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">getTableListCount</span>(<span class="params">total</span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(total.<span class="property">api</span>[<span class="number">0</span>],&#123;&#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(response.<span class="property">data</span> &amp;&amp; <span class="keyword">typeof</span> response.<span class="property">data</span> === <span class="string">&#x27;object&#x27;</span>)&#123;</span><br><span class="line">                    <span class="comment">// 成功获取数量回调</span></span><br><span class="line">                    <span class="variable language_">this</span>.<span class="title function_">getTotal</span>(response)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">getTableList</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">get</span>(total.<span class="property">api</span>[<span class="number">1</span>],&#123;&#125;).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>(response.<span class="property">data</span> &amp;&amp; <span class="keyword">typeof</span> response.<span class="property">data</span> === <span class="string">&#x27;object&#x27;</span>)&#123;</span><br><span class="line">                    <span class="comment">// 成功获取列表回调</span></span><br><span class="line">                    <span class="variable language_">this</span>.<span class="title function_">getList</span>(response)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;).<span class="title function_">catch</span>(<span class="function">() =&gt;</span> &#123;&#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>在组件内引用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">TableListMX</span> <span class="keyword">from</span> <span class="string">&#x27;@/components/mixins/TableList&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="attr">mixins</span>: [<span class="title class_">TableListMX</span>],</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">getStart</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getTableListCount</span>(&#123;</span><br><span class="line">                <span class="attr">api</span>: [<span class="string">&#x27;list_count&#x27;</span>, <span class="string">&#x27;list&#x27;</span>]</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>项目后台当然少不了表单，联系到数据输入，这时候限制输入内容显得尤为必要。如果每个输入框都在输入时做提示就显得累赘，所以用了指令去限制输入。<br>这里举例一个限制小数点位数的自定义指令（<a target="_blank" rel="noopener" href="https://juejin.im/post/5b6b9308f265da0f4e62fecc">参考大佬地址</a>）</p>
+<p>in <code>@directives/InputNumDigit</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> @directive 输入框限制范围：小数点个数 or 整数</span></span><br><span class="line"><span class="comment">        @param &#123;data-index&#125; 如果是数组要加入index</span></span><br><span class="line"><span class="comment">        @param &#123;data-dotrange&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 寻找当前dom</span></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">FindElement</span> = (<span class="params">parent, selector</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> parent.<span class="property">tagName</span>.<span class="title function_">toLowerCase</span>() === selector ? parent : parent.<span class="title function_">querySelector</span>(selector);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置组件中的指定属性的值</span></span><br><span class="line"><span class="keyword">let</span> setValue = <span class="keyword">function</span>(<span class="params">exp, value, context</span>) &#123;</span><br><span class="line">    value = <span class="built_in">isNaN</span>(value) ? <span class="string">&#x27;&#x27;</span> : value</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&#x27;context&#x27;</span>, <span class="string">&#x27;value&#x27;</span>, <span class="string">`context.<span class="subst">$&#123;exp&#125;</span> = value`</span>)(context, value)</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="attr">bind</span>: <span class="keyword">function</span>(<span class="params">el, &#123; expression &#125;, &#123; context &#125;</span>)&#123;</span><br><span class="line">        <span class="keyword">let</span> $input = <span class="title class_">FindElement</span>(el, <span class="string">&#x27;input&#x27;</span>);</span><br><span class="line">        el.<span class="property">$input</span> = $input;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 初始化lastValue</span></span><br><span class="line">        $input.<span class="property">lastValue</span> = $input.<span class="property">value</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 通过dataset 判断是否允许小数点</span></span><br><span class="line">        <span class="keyword">let</span> allowDot = !!$input.<span class="property">dataset</span>.<span class="property">dotrange</span>,</span><br><span class="line">            keys = $input.<span class="property">dataset</span>.<span class="property">keys</span> || -<span class="number">1</span>,<span class="comment">// 如果是数组则加入索引</span></span><br><span class="line">            dotRange = $input.<span class="property">dataset</span>.<span class="property">dotrange</span> || <span class="string">`&#123;0,2&#125;`</span>, <span class="comment">// 默认</span></span><br><span class="line">            pattern = <span class="string">`^[0-9]+<span class="subst">$&#123;allowDot ? <span class="string">`(.[0-9]<span class="subst">$&#123;dotRange&#125;</span>)?`</span> : <span class="string">&#x27;&#x27;</span>&#125;</span>$`</span>,</span><br><span class="line">            new_expression = expression;</span><br><span class="line">        <span class="keyword">if</span> (!expression) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeError</span>(<span class="string">&#x27;请绑定expression&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环</span></span><br><span class="line">        <span class="keyword">if</span>(keys !== -<span class="number">1</span>)&#123;</span><br><span class="line">            new_expression = expression.<span class="title function_">replace</span>(<span class="regexp">/\[.*?\]/</span>, <span class="string">`[<span class="subst">$&#123;keys&#125;</span>]`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(new_expression)</span><br><span class="line">        $input.<span class="property">handleInputEvent</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.<span class="property">target</span>.<span class="property">value</span> === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">                    <span class="title function_">setValue</span>(new_expression, <span class="string">&#x27;&#x27;</span>, context)</span><br><span class="line">                    <span class="comment">// 遇到非法数值，则重置</span></span><br><span class="line">                    e.<span class="property">target</span>.<span class="property">value</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.<span class="property">target</span>.<span class="property">value</span> !== <span class="string">&#x27;&#x27;</span> &amp;&amp; !<span class="keyword">new</span> <span class="title class_">RegExp</span>(pattern).<span class="title function_">test</span>(e.<span class="property">target</span>.<span class="property">value</span>)) &#123;</span><br><span class="line">                    <span class="title function_">setValue</span>(new_expression, <span class="built_in">parseFloat</span>(e.<span class="property">target</span>.<span class="property">lastValue</span>), context)</span><br><span class="line">                    <span class="comment">// 遇到非法数值，则重置为lastValue</span></span><br><span class="line">                    e.<span class="property">target</span>.<span class="property">value</span> = e.<span class="property">target</span>.<span class="property">lastValue</span></span><br><span class="line">                    <span class="keyword">if</span> (allowDot) &#123;</span><br><span class="line">                        $input.<span class="property">title</span> = <span class="string">`小数点后最多<span class="subst">$&#123;dotRange.replace(/[&#125;</span>&#123;]/g, &#x27;&#x27;).split(&#x27;,&#x27;)[1]&#125;位`</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                e.<span class="property">target</span>.<span class="property">lastValue</span> = e.<span class="property">target</span>.<span class="property">value</span></span><br><span class="line">            &#125;, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        $input.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, $input.<span class="property">handleInputEvent</span>, <span class="literal">false</span>)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="title function_">unbind</span>(<span class="params">el</span>) &#123;</span><br><span class="line">        el &amp;&amp; el.<span class="property">$input</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$input</span>.<span class="property">handleInputEvent</span>, <span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>全局注册：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">InputNumDigit</span> <span class="keyword">from</span> <span class="string">&#x27;@/directives/InputNumDigit&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;num-digit&#x27;</span>, <span class="title class_">InputNumDigit</span>)</span><br></pre></td></tr></table></figure></p>
+<p>引用：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 最多只能输入三位小数 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number.trim</span>=<span class="string">&quot;rate&quot;</span> <span class="attr">v-num-digit</span>=<span class="string">&quot;setForm.rate&quot;</span> <span class="attr">data-dotrange</span>=<span class="string">&quot;&#123;0,3&#125;&quot;</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>有个瑕疵，这个指令只兼容了第一层for循环时的情况，没有考虑到更复杂的情况</p>
+</blockquote>
+<hr>
+<h2 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h2><p>比如，将数字转换成千分位<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> <span class="title function_">ToThousands</span> = (<span class="params">val</span>) =&gt; &#123;<span class="comment">// 数字转换成千分位</span></span><br><span class="line">    <span class="keyword">if</span>(!val || val === <span class="number">0</span> || <span class="built_in">isNaN</span>(val))&#123;</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(val.<span class="title function_">toString</span>().<span class="property">indexOf</span> (<span class="string">&#x27;.&#x27;</span>) !== -<span class="number">1</span>)&#123;<span class="comment">// 带小数点</span></span><br><span class="line">            num = val.<span class="title function_">toLocaleString</span>()</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            num = val.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="regexp">/(\d)(?=(?:\d&#123;3&#125;)+$)/g</span>, <span class="string">&#x27;$1,&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&#x27;ToThousands&#x27;</span>, <span class="title class_">ToThousands</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// or 全局通用</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$toThousands</span> = <span class="title class_">ToThousands</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="常用表单验证"><a href="#常用表单验证" class="headerlink" title="常用表单验证"></a>常用表单验证</h2><p>表单验证少不了，列几个在后台常用的，放在store可以随时调用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> validator = &#123;<span class="comment">// 验证信息</span></span><br><span class="line">    <span class="attr">mobile</span>: <span class="function">(<span class="params">rule, value, callback</span>) =&gt;</span> &#123;<span class="comment">// 手机号码</span></span><br><span class="line">        <span class="keyword">let</span> reg = <span class="regexp">/^1[3|4|5|6|7|8|9][0-9]&#123;9&#125;$/</span>;</span><br><span class="line">        <span class="keyword">if</span>(!reg.<span class="title function_">test</span>(value))&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;请输入正确手机号码&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">callback</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">idcard</span>: <span class="function">(<span class="params">rule, value, callback</span>) =&gt;</span> &#123;<span class="comment">// 身份证号码</span></span><br><span class="line">        <span class="keyword">let</span> dalu_reg = <span class="regexp">/(^\d&#123;15&#125;$)|(^\d&#123;18&#125;$)|(^\d&#123;17&#125;(\d|X|x)$)/</span>,<span class="comment">// 大陆</span></span><br><span class="line">            xianggang_reg = <span class="regexp">/[A-Z]&#123;1,2&#125;[0-9]&#123;6&#125;([0-9A])/</span>,<span class="comment">// 香港</span></span><br><span class="line">            aomen_reg = <span class="regexp">/^[1|5|7][0-9]&#123;6&#125;\([0-9Aa]\)/</span>,<span class="comment">// 澳门</span></span><br><span class="line">            taiwan_reg = <span class="regexp">/[A-Z][0-9]&#123;9&#125;/</span>;<span class="comment">// 台湾</span></span><br><span class="line">        <span class="keyword">if</span>(!dalu_reg.<span class="title function_">test</span>(value) &amp;&amp; !xianggang_reg.<span class="title function_">test</span>(value) &amp;&amp; !aomen_reg.<span class="title function_">test</span>(value) &amp;&amp; !taiwan_reg.<span class="title function_">test</span>(value))&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;请输入正确身份证号码&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">callback</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">noChinese</span>: <span class="function">(<span class="params">rule, value, callback</span>) =&gt;</span> &#123;<span class="comment">// 英文和数字</span></span><br><span class="line">        <span class="keyword">let</span> reg = <span class="regexp">/^[A-Za-z0-9]+$/g</span>;</span><br><span class="line">        <span class="keyword">if</span>(!reg.<span class="title function_">test</span>(value))&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;不能输入中文！&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">callback</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limitNumber</span>: <span class="function">(<span class="params">rule, value, callback</span>) =&gt;</span> &#123;<span class="comment">// 限制数字大小</span></span><br><span class="line">        <span class="keyword">if</span>(value &lt; <span class="number">0</span> || value &gt;= <span class="number">10000000</span>)&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;最多输入7位有效数字&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isNaN</span>(value))&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;请输入数字&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">callback</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">limitPercent</span>: <span class="function">(<span class="params">rule, value, callback</span>) =&gt;</span> &#123;<span class="comment">// 限制百分比</span></span><br><span class="line">        <span class="keyword">if</span>(value &lt; <span class="number">0</span> || value &gt; <span class="number">100</span>)&#123;</span><br><span class="line">            <span class="title function_">callback</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&quot;请输入0~100之间的数字&quot;</span>))</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">callback</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="常用日期限制范围"><a href="#常用日期限制范围" class="headerlink" title="常用日期限制范围"></a>常用日期限制范围</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> dateLimit = &#123;</span><br><span class="line">    <span class="attr">beforeToday</span>: &#123;<span class="comment">// 今天之前：不包含今天</span></span><br><span class="line">        <span class="title function_">disabledDate</span>(<span class="params">time</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> time.<span class="title function_">getTime</span>() &gt; <span class="title class_">Date</span>.<span class="title function_">now</span>() - <span class="number">8.64e7</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">beforeTomorrow</span>: &#123;<span class="comment">// 明天之前：包含今天</span></span><br><span class="line">        <span class="title function_">disabledDate</span>(<span class="params">time</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> time.<span class="title function_">getTime</span>() &gt; <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">afterToday</span>: &#123;<span class="comment">// 今天之后：包含今天</span></span><br><span class="line">        <span class="title function_">disabledDate</span>(<span class="params">time</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> time.<span class="title function_">getTime</span>() &lt; <span class="title class_">Date</span>.<span class="title function_">now</span>() - <span class="number">8.64e7</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">afterTomorrow</span>: &#123;<span class="comment">// 明天之后：不包含今天</span></span><br><span class="line">        <span class="title function_">disabledDate</span>(<span class="params">time</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> time.<span class="title function_">getTime</span>() &lt; <span class="title class_">Date</span>.<span class="title function_">now</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="分页自定义页数"><a href="#分页自定义页数" class="headerlink" title="分页自定义页数"></a>分页自定义页数</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 通过`page-size`与输入框同一个参数控制 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">el-pagination</span> <span class="attr">class</span>=<span class="string">&quot;sl-page&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">layout</span>=<span class="string">&quot;prev, pager, next, jumper, total, slot&quot;</span></span></span><br><span class="line"><span class="tag">@<span class="attr">current-change</span>=<span class="string">&quot;handleCurrentChange&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">:current-page.sync</span>=<span class="string">&quot;params.pager&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">:page-size</span>=<span class="string">&quot;params.count&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">:total</span>=<span class="string">&quot;TOTAL&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;resize&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>每页记录数：<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">el-input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">size</span>=<span class="string">&quot;small&quot;</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">v-model.number</span>=<span class="string">&quot;params.count&quot;</span> </span></span><br><span class="line"><span class="tag">        @<span class="attr">change</span>=<span class="string">&quot;handleSearch&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-pagination</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> defalt&#123;</span><br><span class="line">    <span class="title function_">data</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            <span class="attr">TOTAL</span>: <span class="number">100</span>,</span><br><span class="line">            <span class="attr">params</span>: &#123;</span><br><span class="line">                <span class="attr">pager</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">count</span>: <span class="number">10</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">methods</span>: &#123;</span><br><span class="line">        <span class="title function_">handleSearch</span>(<span class="params"></span>)&#123;<span class="comment">//页数改变</span></span><br><span class="line">            <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">parmas</span>.<span class="property">count</span> &lt;= <span class="number">0</span> || !<span class="variable language_">this</span>.<span class="property">parmas</span>.<span class="property">count</span> || <span class="title class_">String</span>(<span class="variable language_">this</span>.<span class="property">parmas</span>.<span class="property">count</span>).<span class="title function_">indexOf</span>(<span class="string">&quot;.&quot;</span>) !== -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//小于等于零or为空or小数点时不刷新数据</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">parmas</span>.<span class="property">pager</span> = <span class="number">1</span>;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getList</span>()</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="title function_">handleCurrentChange</span>(<span class="params"></span>)&#123;<span class="comment">//页码改变</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">getList</span>()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sl-page</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">padding-top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sl-page</span> <span class="selector-class">.resize</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sl-page</span> <span class="selector-class">.resize</span> <span class="selector-class">.el-input__inner</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">28px</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="伪Radio-·-真-·-CheckBox"><a href="#伪Radio-·-真-·-CheckBox" class="headerlink" title="伪Radio · 真 · CheckBox"></a>伪Radio · 真 · CheckBox</h2><blockquote>
+<p>单个radio可以不勾选效果</p>
+</blockquote>
+<p>复合：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;fake-checkbox&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-radio</span> <span class="attr">v-model</span>=<span class="string">&quot;isCheck&quot;</span> <span class="attr">:label</span>=<span class="string">&quot;1&quot;</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-radio</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-checkbox</span> <span class="attr">v-model</span>=<span class="string">&quot;isCheck&quot;</span> <span class="attr">:false-label</span>=<span class="string">&quot;0&quot;</span> <span class="attr">:true-label</span>=<span class="string">&quot;1&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;handleSearch&quot;</span>&gt;</span>是否勾选<span class="tag">&lt;/<span class="name">el-checkbox</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fake-checkbox</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>,</span><br><span class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">55px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-radio__label</span>&#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">5px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fake-checkbox</span> <span class="selector-class">.el-checkbox</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="样式修改"><a href="#样式修改" class="headerlink" title="样式修改"></a>样式修改</h2><h3 id="1-下拉箭头位置偏差"><a href="#1-下拉箭头位置偏差" class="headerlink" title="1. 下拉箭头位置偏差"></a>1. 下拉箭头位置偏差</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.el-select-dropdown</span> <span class="selector-class">.popper__arrow</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: none <span class="meta">!important</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-表单伪必填"><a href="#2-表单伪必填" class="headerlink" title="2. 表单伪必填"></a>2. 表单伪必填</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.sl-required</span> <span class="selector-class">.el-form-item__label</span><span class="selector-pseudo">:before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&#x27;*&#x27;</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fa5555</span>;</span><br><span class="line">  <span class="attribute">margin-right</span>: <span class="number">4px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-form-item</span> <span class="attr">class</span>=<span class="string">&quot;sl-required&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">el-form-item</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-去除输入框number类型的箭头"><a href="#3-去除输入框number类型的箭头" class="headerlink" title="3. 去除输入框number类型的箭头"></a>3. 去除输入框number类型的箭头</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.non-arrow</span> <span class="selector-tag">input</span><span class="selector-attr">[type=<span class="string">&quot;number&quot;</span>]</span>::-webkit-outer-spin-button,</span><br><span class="line">.non-arrow input[type=<span class="string">&quot;number&quot;</span>]::-webkit-inner-spin-button &#123;</span><br><span class="line">  -webkit-appearance: none;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">class</span>=<span class="string">&quot;non-arrow&quot;</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+  <a href="/tag#javascript" >
+    <span class="tag-code">javascript</span>
+  </a>
+
+  <a href="/tag#elementUI" >
+    <span class="tag-code">elementUI</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018-05-11/common-in-vue/">
+        <span class="nav-arrow">← </span>
+        
+          vue相关（持续更新01.31）
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018-07-20/share-time-01/">
+        
+          Share Time ~（第一期）
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%B7%B7%E5%85%A5%EF%BC%88Mixins%EF%BC%89"><span class="toc-nav-text">混入（Mixins）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4"><span class="toc-nav-text">自定义指令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-nav-text">自定义过滤器</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-nav-text">常用表单验证</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%B8%B8%E7%94%A8%E6%97%A5%E6%9C%9F%E9%99%90%E5%88%B6%E8%8C%83%E5%9B%B4"><span class="toc-nav-text">常用日期限制范围</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%88%86%E9%A1%B5%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E6%95%B0"><span class="toc-nav-text">分页自定义页数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BC%AARadio-%C2%B7-%E7%9C%9F-%C2%B7-CheckBox"><span class="toc-nav-text">伪Radio · 真 · CheckBox</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-nav-text">样式修改</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E4%B8%8B%E6%8B%89%E7%AE%AD%E5%A4%B4%E4%BD%8D%E7%BD%AE%E5%81%8F%E5%B7%AE"><span class="toc-nav-text">1. 下拉箭头位置偏差</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E8%A1%A8%E5%8D%95%E4%BC%AA%E5%BF%85%E5%A1%AB"><span class="toc-nav-text">2. 表单伪必填</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%8E%BB%E9%99%A4%E8%BE%93%E5%85%A5%E6%A1%86number%E7%B1%BB%E5%9E%8B%E7%9A%84%E7%AE%AD%E5%A4%B4"><span class="toc-nav-text">3. 去除输入框number类型的箭头</span></a></li></ol></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2018-05-14/vue-ElementUI-extend-02/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "Vue使用element-ui所遇BUG与需求集结（二）",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+<!-- 彩带 START-->
+
+  <script id="ribbon" size="70" alpha="0.2" src="/js/canvas_ribbon.js"></script>
+
+<!-- 彩带 END-->
+  </body>
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      vue相关（持续更新01.31） | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+    
+<link rel="stylesheet" href="/css/vexo_style.css?v1.0.0.css">
+
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+<script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>vue相关（持续更新01.31）</h2>
+  <p class="post-date">
+    <span class="post-date-left">2018-05-11</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>Vue相关设置和基础用法<br><span id="more"></span></p>
+<h2 id="零碎集"><a href="#零碎集" class="headerlink" title="零碎集"></a>零碎集</h2><h3 id="1-多个锚点"><a href="#1-多个锚点" class="headerlink" title="1. 多个锚点"></a>1. 多个锚点</h3><p>有时候页面内容过多，要在侧栏做个导航栏：<a target="_blank" rel="noopener" href="https://blog.csdn.net/iceking66/article/details/78211213">参考地址</a></p>
+<h3 id="2-监听页面滚动"><a href="#2-监听页面滚动" class="headerlink" title="2. 监听页面滚动"></a>2. 监听页面滚动</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">methods</span>: &#123;</span><br><span class="line">	<span class="title function_">handleScroll</span>(<span class="params"></span>)&#123;</span><br><span class="line">		<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;I am scroll !!!&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">created</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;scroll&quot;</span>, <span class="variable language_">this</span>.<span class="property">handleScroll</span>)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">destroyed</span>(<span class="params"></span>)&#123;</span><br><span class="line">	<span class="variable language_">window</span>.<span class="title function_">removeEventListener</span>(<span class="string">&quot;scroll&quot;</span>, <span class="variable language_">this</span>.<span class="property">handleScroll</span>)</span><br><span class="line">&#125;</span><br><span class="line">;</span><br></pre></td></tr></table></figure>
+<h3 id="3-图片相对地址"><a href="#3-图片相对地址" class="headerlink" title="3. 图片相对地址"></a>3. 图片相对地址</h3><p>如果用<code>../../assets/example.png</code>插入<code>.vue</code>文件，一旦文件变动，地址可能也要改。所以用<code>vue-loader</code>的转换规则<br><code>@</code>在<code>build/webpack.base.config.js</code>中可配置</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;~@/assets/example.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="ElementUI"><a href="#ElementUI" class="headerlink" title="ElementUI"></a>ElementUI</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">ElementUI</span> <span class="keyword">from</span> <span class="string">&quot;element-ui&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;element-ui/lib/theme-chalk/index.css&quot;</span></span><br><span class="line"><span class="comment">//修改ElementUI默认值</span></span><br><span class="line"><span class="title class_">ElementUI</span>.<span class="property">Dialog</span>.<span class="property">props</span>.<span class="property">appendToBody</span>.<span class="property">default</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">ElementUI</span>);</span><br></pre></td></tr></table></figure>
+<p>内容较多，另开文章说明：<a href="/2017-11-07/vue-ElementUI-extend-01/">第一版</a>、<a href="/2018-05-14/vue-ElementUI-extend-02/">第二版</a></p>
+<hr>
+<h2 id="VCharts"><a href="#VCharts" class="headerlink" title="VCharts"></a>VCharts</h2><p>单个引入</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//折线图</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VeLine</span> <span class="keyword">from</span> <span class="string">&#x27;v-charts/lib/line&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="title class_">VeLine</span>.<span class="property">name</span>,<span class="title class_">VeLine</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ve-line</span> <span class="attr">:data</span>=<span class="string">&quot;chartData&quot;</span> <span class="attr">:settings</span>=<span class="string">&quot;chartSettings&quot;</span> <span class="attr">:extend</span>=<span class="string">&quot;chartExtend&quot;</span> <span class="attr">:grid</span>=<span class="string">&quot;chartGrid&quot;</span> <span class="attr">:colors</span>=<span class="string">&quot;chartColor0&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">ve-line</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>所遇到相关问题：<a href="/2018-05-08/working-with-v-charts/">不点不知道</a></p>
+<hr>
+<h2 id="Emojify"><a href="#Emojify" class="headerlink" title="Emojify"></a>Emojify</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Emojify</span> <span class="keyword">from</span> <span class="string">&#x27;emojify.js&#x27;</span></span><br><span class="line"><span class="comment">// import &#x27;emojify.js/dist/css/basic/emojify.min.css&#x27;//emoji单个图</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;emojify.js/dist/css/sprites/emojify.min.css&#x27;</span><span class="comment">//emoji雪碧图</span></span><br><span class="line"><span class="title class_">Emojify</span>.<span class="title function_">setConfig</span>(&#123; <span class="attr">mode</span>: <span class="string">&#x27;sprite&#x27;</span> &#125;)<span class="comment">//雪碧图模式</span></span><br><span class="line"><span class="title class_">Emojify</span>.<span class="title function_">run</span>()</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">$emoji</span> = <span class="title class_">Emojify</span>;</span><br><span class="line"><span class="comment">// =&gt; 栗子</span></span><br><span class="line"><span class="keyword">let</span> code = <span class="string">&quot;:rose:&quot;</span>,</span><br><span class="line">	that = <span class="variable language_">this</span>,</span><br><span class="line">	emojify = code.<span class="title function_">replace</span>(<span class="regexp">/\:\w+\:/g</span>,<span class="function">(<span class="params">str</span>) =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> that.<span class="property">$emoji</span>.<span class="title function_">replace</span>(str)</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="引入自定义组件"><a href="#引入自定义组件" class="headerlink" title="引入自定义组件"></a>引入自定义组件</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">ReturnBack</span> <span class="keyword">from</span> <span class="string">&#x27;@/components/returnback&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">component</span>(<span class="string">&#x27;sl-back&#x27;</span>,<span class="title class_">ReturnBack</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="全局过滤器"><a href="#全局过滤器" class="headerlink" title="全局过滤器"></a>全局过滤器</h2><h3 id="1-时间戳转换"><a href="#1-时间戳转换" class="headerlink" title="1. 时间戳转换"></a>1. 时间戳转换</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&quot;Timer&quot;</span>, <span class="function">(<span class="params">val, is_time, is_second</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	*	@param &#123;is_time&#125; Boolean 是否返回时分</span></span><br><span class="line"><span class="comment">	*		   &#123;is_second&#125; Boolean 是否返回秒</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span>(!val)&#123;</span><br><span class="line">		<span class="keyword">return</span> val</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">let</span> stamp = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="built_in">parseInt</span>(val)),</span><br><span class="line">		year = stamp.<span class="title function_">getFullYear</span>(),</span><br><span class="line">		month = (stamp.<span class="title function_">getMonth</span>()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+(stamp.<span class="title function_">getMonth</span>()+<span class="number">1</span>) : stamp.<span class="title function_">getMonth</span>()+<span class="number">1</span>),</span><br><span class="line">		day = (stamp.<span class="title function_">getDate</span>() &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+stamp.<span class="title function_">getDate</span>() : stamp.<span class="title function_">getDate</span>()),</span><br><span class="line">		hour = (stamp.<span class="title function_">getHours</span>() &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+stamp.<span class="title function_">getHours</span>() : stamp.<span class="title function_">getHours</span>()),</span><br><span class="line">		minute = (stamp.<span class="title function_">getMinutes</span>() &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+stamp.<span class="title function_">getMinutes</span>() : stamp.<span class="title function_">getMinutes</span>()),</span><br><span class="line">		second = (stamp.<span class="title function_">getSeconds</span>() &lt;<span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span> + stamp.<span class="title function_">getSeconds</span>() : stamp.<span class="title function_">getSeconds</span>()),</span><br><span class="line">		tims = year+<span class="string">&quot;-&quot;</span>+month+<span class="string">&quot;-&quot;</span>+day;</span><br><span class="line">	<span class="keyword">if</span>(is_time)&#123;</span><br><span class="line">		tims += <span class="string">&quot; &quot;</span>+hour+<span class="string">&quot;:&quot;</span>+minute;</span><br><span class="line">		tims = is_second ? times+<span class="string">&quot;:&quot;</span>+second : times;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> times;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="2-筛选键值对"><a href="#2-筛选键值对" class="headerlink" title="2. 筛选键值对"></a>2. 筛选键值对</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&quot;ValueToName&quot;</span>, <span class="function">(<span class="params">val, list, key, name</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		@param &#123;list&#125; Array 筛选的列表</span></span><br><span class="line"><span class="comment">			   &#123;key&#125; String 与val对应的键值</span></span><br><span class="line"><span class="comment">			   &#123;name&#125; String 返回内容的键值</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	<span class="keyword">if</span>(val || val == <span class="number">0</span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> arr = list.<span class="title function_">filter</span>(<span class="function">(<span class="params">v</span>) =&gt;</span> v[key] == val);</span><br><span class="line">		<span class="keyword">return</span> arr.<span class="property">length</span> !== <span class="number">0</span> ? arr[<span class="number">0</span>][name] : val;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> val</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>=&gt; 栗子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;&#123; params.levelNo | ValueToName(levellist,&#x27;levelNo&#x27;,&#x27;levelName&#x27;) &#125;&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="3-手机号码部分隐藏"><a href="#3-手机号码部分隐藏" class="headerlink" title="3. 手机号码部分隐藏"></a>3. 手机号码部分隐藏</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&quot;BlurMobile&quot;</span>, <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(val.<span class="property">length</span> == <span class="number">11</span>)&#123;</span><br><span class="line">		<span class="keyword">return</span> val.<span class="title function_">substr</span>(<span class="number">0</span>, <span class="number">3</span>) + <span class="string">&#x27;****&#x27;</span> + val.<span class="title function_">substr</span>(<span class="number">7</span>)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> val</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="4-数字转换成千分位"><a href="#4-数字转换成千分位" class="headerlink" title="4. 数字转换成千分位"></a>4. 数字转换成千分位</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Vue</span>.<span class="title function_">filter</span>(<span class="string">&quot;ToThousands&quot;</span>, <span class="function">(<span class="params">val</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 转换数字类型</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> val !== <span class="string">&#x27;number&#x27;</span> &amp;&amp; !<span class="built_in">isNaN</span>(val))&#123;</span><br><span class="line">        val = <span class="title class_">Number</span>(val)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!val || val === <span class="number">0</span> || <span class="built_in">isNaN</span>(val))&#123;</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(val.<span class="title function_">toString</span>().<span class="property">indexOf</span> (<span class="string">&#x27;.&#x27;</span>) !== -<span class="number">1</span>)&#123;<span class="comment">// 带小数点</span></span><br><span class="line">            num = val.<span class="title function_">toLocaleString</span>()</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            num = val.<span class="title function_">toString</span>().<span class="title function_">replace</span>(<span class="regexp">/(\d)(?=(?:\d&#123;3&#125;)+$)/g</span>, <span class="string">&#x27;$1,&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="全局指令"><a href="#全局指令" class="headerlink" title="全局指令"></a>全局指令</h2><h3 id="1-限制输入小数位数"><a href="#1-限制输入小数位数" class="headerlink" title="1. 限制输入小数位数"></a>1. 限制输入小数位数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> @directive 输入框限制范围：小数点个数 or 整数</span></span><br><span class="line"><span class="comment"> 		@param &#123;data-index&#125; 如果是数组要加入index</span></span><br><span class="line"><span class="comment"> 		@param &#123;data-dotrange&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title function_">FindElement</span> = (<span class="params">parent, selector</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">return</span> parent.<span class="property">tagName</span>.<span class="title function_">toLowerCase</span>() === selector ? parent : parent.<span class="title function_">querySelector</span>(selector);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置组件中的指定属性的值</span></span><br><span class="line"><span class="keyword">let</span> setValue = <span class="keyword">function</span>(<span class="params">exp, value, context</span>) &#123;</span><br><span class="line">    value = <span class="built_in">isNaN</span>(value) ? <span class="string">&#x27;&#x27;</span> : value</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">Function</span>(<span class="string">&#x27;context&#x27;</span>, <span class="string">&#x27;value&#x27;</span>, <span class="string">`context.<span class="subst">$&#123;exp&#125;</span> = value`</span>)(context, value)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">InputNumDigit</span> = &#123;</span><br><span class="line">	<span class="attr">bind</span>: <span class="keyword">function</span>(<span class="params">el, &#123; expression &#125;, &#123; context &#125;</span>)&#123;</span><br><span class="line">		<span class="keyword">let</span> $input = <span class="title class_">FindElement</span>(el, <span class="string">&#x27;input&#x27;</span>);</span><br><span class="line">		el.<span class="property">$input</span> = $input;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 初始化lastValue</span></span><br><span class="line">        $input.<span class="property">lastValue</span> = $input.<span class="property">value</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 通过dataset 判断是否允许小数点</span></span><br><span class="line">        <span class="keyword">let</span> allowDot = !!$input.<span class="property">dataset</span>.<span class="property">dotrange</span>,</span><br><span class="line">        	keys = $input.<span class="property">dataset</span>.<span class="property">keys</span> || -<span class="number">1</span>,<span class="comment">// 如果是数组则加入索引</span></span><br><span class="line">        	dotRange = $input.<span class="property">dataset</span>.<span class="property">dotrange</span> || <span class="string">`&#123;0,2&#125;`</span>, <span class="comment">// 默认</span></span><br><span class="line">        	pattern = <span class="string">`^[0-9]+<span class="subst">$&#123;allowDot ? <span class="string">`(.[0-9]<span class="subst">$&#123;dotRange&#125;</span>)?`</span> : <span class="string">&#x27;&#x27;</span>&#125;</span>$`</span>,</span><br><span class="line">        	new_expression = expression;</span><br><span class="line">        <span class="keyword">if</span> (!expression) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeError</span>(<span class="string">&#x27;请绑定expression&#x27;</span>)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 循环</span></span><br><span class="line">        <span class="keyword">if</span>(keys !== -<span class="number">1</span>)&#123;</span><br><span class="line">        	new_expression = expression.<span class="title function_">replace</span>(<span class="regexp">/\[.*?\]/</span>, <span class="string">`[<span class="subst">$&#123;keys&#125;</span>]`</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(new_expression)</span><br><span class="line"></span><br><span class="line">        $input.<span class="property">handleInputEvent</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">            <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.<span class="property">target</span>.<span class="property">value</span> === <span class="string">&#x27;&#x27;</span>) &#123;</span><br><span class="line">                    <span class="title function_">setValue</span>(new_expression, <span class="string">&#x27;&#x27;</span>, context)</span><br><span class="line">                    <span class="comment">// 遇到非法数值，则重置</span></span><br><span class="line">                    e.<span class="property">target</span>.<span class="property">value</span> = <span class="string">&#x27;&#x27;</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e.<span class="property">target</span>.<span class="property">value</span> !== <span class="string">&#x27;&#x27;</span> &amp;&amp; !<span class="keyword">new</span> <span class="title class_">RegExp</span>(pattern).<span class="title function_">test</span>(e.<span class="property">target</span>.<span class="property">value</span>)) &#123;</span><br><span class="line">                    <span class="title function_">setValue</span>(new_expression, <span class="built_in">parseFloat</span>(e.<span class="property">target</span>.<span class="property">lastValue</span>), context)</span><br><span class="line">                    <span class="comment">// 遇到非法数值，则重置为lastValue</span></span><br><span class="line">                    e.<span class="property">target</span>.<span class="property">value</span> = e.<span class="property">target</span>.<span class="property">lastValue</span></span><br><span class="line">                    <span class="keyword">if</span> (allowDot) &#123;</span><br><span class="line">                        <span class="comment">// 这个时候，根据业务逻辑，可以收起键盘，给出吐司提示</span></span><br><span class="line">                        <span class="keyword">let</span> num = dotRange.<span class="title function_">replace</span>(<span class="regexp">/[&#125;&#123;]/g</span>, <span class="string">&#x27;&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;,&#x27;</span>)[<span class="number">1</span>];</span><br><span class="line">                        <span class="keyword">if</span>(num || num === <span class="number">0</span>)&#123;</span><br><span class="line">                            $input.<span class="property">title</span> = <span class="string">`小数点后最多<span class="subst">$&#123;num&#125;</span>位`</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                e.<span class="property">target</span>.<span class="property">lastValue</span> = e.<span class="property">target</span>.<span class="property">value</span></span><br><span class="line">            &#125;, <span class="number">0</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        $input.<span class="title function_">addEventListener</span>(<span class="string">&#x27;input&#x27;</span>, $input.<span class="property">handleInputEvent</span>, <span class="literal">false</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="title function_">unbind</span>(<span class="params">el</span>) &#123;</span><br><span class="line">        el &amp;&amp; el.<span class="property">$input</span>.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;input&#x27;</span>, el.<span class="property">$input</span>.<span class="property">handleInputEvent</span>, <span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;num-digit&#x27;</span>, <span class="title class_">InputNumDigit</span>)</span><br></pre></td></tr></table></figure>
+<p>=&gt; 栗子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-input</span> <span class="attr">v-model.number</span>=<span class="string">&quot;setForm.price&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">v-num-digit</span>=<span class="string">&quot;setForm.price&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">data-dotrange</span>=<span class="string">&quot;&#123;0,2&#125;&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> </span></span><br><span class="line"><span class="tag">    <span class="attr">class</span>=<span class="string">&quot;non-arrow&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">el-input</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2-防止按钮重复点击"><a href="#2-防止按钮重复点击" class="headerlink" title="2. 防止按钮重复点击"></a>2. 防止按钮重复点击</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> deafultClock = <span class="number">1000</span>;<span class="comment">// 默认可点击时长</span></span><br><span class="line"><span class="keyword">let</span> <span class="title class_">StopDoubleClick</span> = &#123;</span><br><span class="line">	<span class="attr">inserted</span>: <span class="keyword">function</span>(<span class="params">el, binding</span>)&#123;</span><br><span class="line">		el.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;———— stop double click ————&quot;</span>)</span><br><span class="line">			<span class="keyword">if</span>(!el.<span class="property">disabled</span>)&#123;</span><br><span class="line">				el.<span class="property">disabled</span> = <span class="literal">true</span></span><br><span class="line">				<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">					el.<span class="property">disabled</span> = <span class="literal">false</span></span><br><span class="line">				&#125;, binding.<span class="property">value</span> || deafultClock)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">directive</span>(<span class="string">&#x27;stop-dbclick&#x27;</span>, <span class="title class_">StopDoubleClick</span>)</span><br></pre></td></tr></table></figure>
+<p>=&gt; 栗子<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-button</span> <span class="attr">v-stop-dbclick</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">el-button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="title function_">getCookie</span> = (<span class="params">name</span>) =&gt; &#123;</span><br><span class="line">	<span class="keyword">let</span> arr, reg = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;(^| )&quot;</span> + name + <span class="string">&quot;=([^;]*)(;|$)&quot;</span>);</span><br><span class="line">	arr = <span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">match</span>(reg);</span><br><span class="line">	<span class="keyword">return</span> arr !== <span class="literal">null</span> ? <span class="built_in">decodeURIComponent</span>(arr[<span class="number">2</span>]) : <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getCookie</span> = getCookie;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">setCookie</span> = <span class="function">(<span class="params">name,val,expir</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> _date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">	_date.<span class="title function_">setDate</span>(_date.<span class="title function_">getDate</span>() + expir);</span><br><span class="line">	<span class="variable language_">document</span>.<span class="property">cookie</span> = name + <span class="string">&quot;=&quot;</span> + <span class="built_in">encodeURIComponent</span>(val) + ((expir == <span class="literal">null</span>) ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;;expires=&quot;</span>+_date.<span class="title function_">toGMTString</span>());</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">Vue</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">delCookie</span> = <span class="function">(<span class="params">name</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">let</span> val = <span class="title function_">getCookie</span>(name);</span><br><span class="line">	<span class="keyword">if</span>(val !== <span class="literal">null</span>)&#123;</span><br><span class="line">		<span class="variable language_">document</span>.<span class="property">cookie</span> = name + <span class="string">&quot;=&quot;</span> + val + <span class="string">&quot;;expires=Thu, 01 Jan 1970 00:00:01 GMT;&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// =&gt; 栗子</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">setCookie</span>(<span class="string">&quot;TOKEN&quot;</span>,response.<span class="property">data</span>);</span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">getCookie</span>(<span class="string">&quot;TOKEN&quot;</span>);</span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">delCookie</span>(<span class="string">&quot;TOKEN&quot;</span>);</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vuex</span> <span class="keyword">from</span> <span class="string">&#x27;vuex&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Axios</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/axios&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Vuex</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable constant_">GET_LIST</span> = <span class="string">&#x27;GET_LIST&#x27;</span>;<span class="comment">//定义全局</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 模块命名空间 */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Setting</span> = &#123;</span><br><span class="line">	<span class="attr">namespaced</span>: <span class="literal">true</span>,</span><br><span class="line">	<span class="attr">state</span>: &#123;</span><br><span class="line">		<span class="attr">userlist</span>: []</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">mutations</span>: &#123;</span><br><span class="line">		<span class="title function_">SET_USER</span>(<span class="params">state, list</span>)&#123;</span><br><span class="line">			state.<span class="property">userlist</span> = list</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Vuex</span>.<span class="title class_">Store</span>(&#123;</span><br><span class="line">	<span class="attr">state</span>: &#123;</span><br><span class="line">		<span class="attr">api</span>: &#123;</span><br><span class="line">			<span class="attr">city</span>: <span class="string">&#x27;/city.act&#x27;</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="attr">citylist</span>: []</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">modules</span>: &#123;</span><br><span class="line">		<span class="title class_">Setting</span>,</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">mutations</span>: &#123;</span><br><span class="line">		[<span class="variable constant_">GET_LIST</span>](state, &#123; context, val &#125;)&#123;</span><br><span class="line">			<span class="title class_">Axios</span>.<span class="title function_">get</span>(state.<span class="property">api</span>[val.<span class="property">apiName</span>], val.<span class="property">params</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">				<span class="variable language_">console</span>.<span class="title function_">log</span>(response)</span><br><span class="line">				<span class="keyword">if</span>(response.<span class="property">code</span>)&#123;</span><br><span class="line">					state[listName] = response.<span class="property">data</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">actions</span>: &#123;</span><br><span class="line">		[<span class="variable constant_">GET_LIST</span>](context, val)&#123;</span><br><span class="line">			context.<span class="title function_">commit</span>(<span class="variable constant_">GET_LIST</span>, &#123; context, val &#125;)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>栗子 =&gt; 模块命名空间</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">commit</span>(<span class="string">&quot;Setting/SET_USER&quot;</span>, []);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>栗子 =&gt; 异步分发</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$store</span>.<span class="title function_">dispatch</span>(<span class="string">&#x27;GET_LIST&#x27;</span>, &#123;</span><br><span class="line">	<span class="attr">params</span>: &#123;<span class="attr">enable</span>: <span class="literal">true</span>&#125;,</span><br><span class="line">	<span class="attr">apiName</span>: <span class="string">&#x27;city&#x27;</span>,</span><br><span class="line">	<span class="attr">listName</span>: <span class="string">&#x27;citylist&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="VueRouter"><a href="#VueRouter" class="headerlink" title="VueRouter"></a>VueRouter</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Router</span> <span class="keyword">from</span> <span class="string">&#x27;vue-router&#x27;</span></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Router</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> <span class="title class_">Router</span>(&#123;</span><br><span class="line">	<span class="attr">mode</span>: <span class="string">&#x27;history&#x27;</span>,<span class="comment">//路由模式</span></span><br><span class="line">	<span class="attr">base</span>: <span class="string">&#x27;/home/&#x27;</span>,<span class="comment">//路由初始位置</span></span><br><span class="line">	<span class="comment">/* 控制滚动条位置 */</span></span><br><span class="line">	<span class="title function_">scrollBehavior</span>(<span class="params">to, <span class="keyword">from</span>, savedPosition</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(savedPosition)&#123;</span><br><span class="line">			<span class="keyword">return</span> savedPosition</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(to.<span class="property">hash</span>)&#123;<span class="comment">//锚点</span></span><br><span class="line">				<span class="keyword">return</span> &#123; <span class="attr">selector</span>: to.<span class="property">hash</span> &#125;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">return</span> &#123; <span class="attr">x</span>: <span class="number">0</span>, <span class="attr">y</span>: <span class="number">0</span> &#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">routes</span>: [&#123;</span><br><span class="line">		<span class="attr">path</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">		<span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span>,</span><br><span class="line">		<span class="comment">//懒加载 type1</span></span><br><span class="line">		<span class="attr">component</span>: <span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">require</span>([<span class="string">&#x27;@/view/login&#x27;</span>], resolve)</span><br><span class="line">	&#125;,&#123;</span><br><span class="line">		<span class="attr">path</span>: <span class="string">&#x27;password&#x27;</span>,</span><br><span class="line">		<span class="attr">name</span>: <span class="string">&#x27;password&#x27;</span>,</span><br><span class="line">		<span class="comment">//懒加载 type2</span></span><br><span class="line">		<span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="title function_">import</span>(<span class="comment">/* webpackChunkName: &#x27;password&#x27; */</span><span class="string">&#x27;@/view/password&#x27;</span>)</span><br><span class="line">	&#125;,&#123;</span><br><span class="line">		<span class="attr">path</span>: <span class="string">&#x27;container&#x27;</span>,</span><br><span class="line">		<span class="attr">name</span>: <span class="string">&#x27;container&#x27;</span>,</span><br><span class="line">		<span class="attr">component</span>: <span class="function">(<span class="params">resolve</span>) =&gt;</span> <span class="built_in">require</span>([<span class="string">&#x27;@/view/container&#x27;</span>], resolve),</span><br><span class="line">		<span class="comment">//控制路由缓存</span></span><br><span class="line">		<span class="attr">meta</span>: &#123;</span><br><span class="line">			<span class="attr">keepAlive</span>: <span class="literal">true</span></span><br><span class="line">		&#125;,</span><br><span class="line">		<span class="comment">//控制路由跳转，检测是否已登录</span></span><br><span class="line">		<span class="attr">beforeEnter</span>: <span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">			<span class="keyword">if</span>(!<span class="variable language_">localStorage</span>.<span class="property">ACCOUNT</span> || <span class="variable language_">localStorage</span>.<span class="property">ACCOUNT</span> == <span class="string">&#x27;&#x27;</span>)&#123;</span><br><span class="line">				<span class="title function_">next</span>(&#123; <span class="attr">name</span>: <span class="string">&#x27;login&#x27;</span> &#125;)</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="title function_">next</span>()</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;]</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>栗子 =&gt; 路由缓存</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">keep-alive</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">&quot;$route.meta.keepAlive&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">keep-alive</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">router-view</span> <span class="attr">v-if</span>=<span class="string">&quot;!$route.meta.keepAlive&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>栗子 =&gt; 缓存登录信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$http</span>.<span class="title function_">post</span>(<span class="string">&#x27;login.api&#x27;</span>,userparam).<span class="title function_">then</span>(<span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(response.<span class="property">data</span>)&#123;</span><br><span class="line">		<span class="variable language_">localStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&quot;ACCOUNT&quot;</span>);<span class="comment">//删除旧数据</span></span><br><span class="line">		<span class="variable language_">localStorage</span>.<span class="title function_">setItem</span>(<span class="string">&quot;ACCOUNT&quot;</span>,<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(userparam));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加百度统计</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">router.<span class="title function_">afterEach</span>(<span class="function">(<span class="params">to, <span class="keyword">from</span>, next</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">		<span class="keyword">var</span> _hmt = _hmt || [];</span><br><span class="line">		(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">			<span class="comment">//先清空页面已有的统计连接</span></span><br><span class="line">			<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;BaiduStatis&quot;</span>) &amp;&amp; <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;BaiduStatis&quot;</span>).<span class="title function_">remove</span>();</span><br><span class="line">			<span class="keyword">var</span> hm = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>);</span><br><span class="line">			hm.<span class="property">id</span> = <span class="string">&quot;BaiduStatis&quot;</span>;</span><br><span class="line">			hm.<span class="property">src</span> = <span class="string">&quot;https://hm.baidu.com/hm.js?id&quot;</span>;</span><br><span class="line">			<span class="keyword">var</span> s = <span class="variable language_">document</span>.<span class="title function_">getElementsByTagName</span>(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>]; </span><br><span class="line">			s.<span class="property">parentNode</span>.<span class="title function_">insertBefore</span>(hm, s);</span><br><span class="line">		&#125;)();</span><br><span class="line">	&#125;,<span class="number">0</span>)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2><h3 id="1-打包后移除console"><a href="#1-打包后移除console" class="headerlink" title="1. 打包后移除console"></a>1. 打包后移除console</h3><p>in build/webpack.prod.conf.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">UglifyJsPlugin</span>(&#123;</span><br><span class="line">	<span class="attr">compress</span>: &#123;</span><br><span class="line">		<span class="attr">warning</span>: <span class="literal">false</span>,<span class="comment">//移除warning警告</span></span><br><span class="line">		<span class="attr">dead_code</span>: <span class="literal">true</span>,<span class="comment">//移除没被引用代码</span></span><br><span class="line">		<span class="attr">pure_funcs</span>: [<span class="string">&#x27;console.log&#x27;</span>],<span class="comment">//不打包的函数</span></span><br><span class="line">		<span class="comment">// drop_debugger: true,//移除debugger</span></span><br><span class="line">		<span class="comment">// drop_console: true//移除console，包括报错类型</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">sourceMap</span>: <span class="literal">true</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-本机IP可访问项目"><a href="#2-本机IP可访问项目" class="headerlink" title="2. 本机IP可访问项目"></a>2. 本机IP可访问项目</h3><p>in build/webpack.dev.conf.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">devServer</span>: &#123;</span><br><span class="line">	<span class="attr">host</span>: <span class="string">&#x27;0.0.0.0&#x27;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-打包时不包含-map文件"><a href="#3-打包时不包含-map文件" class="headerlink" title="3. 打包时不包含.map文件"></a>3. 打包时不包含.map文件</h3><p>in config/index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">build</span>: &#123;</span><br><span class="line">	<span class="attr">productionSourceMap</span>: <span class="literal">false</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h3 id="4-第三方组件单独打包DLLPlugin"><a href="#4-第三方组件单独打包DLLPlugin" class="headerlink" title="4. 第三方组件单独打包DLLPlugin"></a>4. 第三方组件单独打包DLLPlugin</h3><h4 id="1-新增文件"><a href="#1-新增文件" class="headerlink" title="1. 新增文件"></a>1. 新增文件</h4><p>new build/webpack.dll.config.js <a target="_blank" rel="noopener" href="https://juejin.im/post/5a622613f265da3e5342475c">参考文章</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">&#x27;webpack&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">	<span class="attr">entry</span>: &#123;</span><br><span class="line">		<span class="attr">vendor</span>: [<span class="string">&#x27;vue/dist/vue.esm.js&#x27;</span>, <span class="string">&#x27;axios&#x27;</span>, <span class="string">&#x27;vue-router&#x27;</span>, <span class="string">&#x27;element-ui&#x27;</span>, <span class="string">&#x27;emojify.js&#x27;</span>, <span class="string">&#x27;awe-dnd&#x27;</span>, <span class="string">&#x27;echarts&#x27;</span>]</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">output</span>: &#123;</span><br><span class="line">		<span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;../static/js&#x27;</span>),</span><br><span class="line">		<span class="attr">filename</span>: <span class="string">&#x27;[name].dll.js&#x27;</span>,</span><br><span class="line">		<span class="attr">library</span>: <span class="string">&#x27;[name]_library&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">plugins</span>: [</span><br><span class="line">		<span class="keyword">new</span> webpack.<span class="title class_">DllPlugin</span>(&#123;</span><br><span class="line">			<span class="attr">path</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;[name]-manifest.json&#x27;</span>),</span><br><span class="line">			<span class="attr">name</span>: <span class="string">&#x27;[name]_library&#x27;</span>,</span><br><span class="line">			<span class="attr">context</span>: __dirname</span><br><span class="line">		&#125;),</span><br><span class="line">		<span class="keyword">new</span> webpack.<span class="property">optimize</span>.<span class="title class_">UglifyJsPlugin</span>(&#123;</span><br><span class="line">			<span class="attr">compress</span>: &#123;</span><br><span class="line">				<span class="attr">warnings</span>: <span class="literal">false</span>,</span><br><span class="line">				<span class="attr">dead_code</span>: <span class="literal">true</span>,<span class="comment">//移除没被引用的代码</span></span><br><span class="line">				<span class="attr">pure_funcs</span>: [<span class="string">&#x27;console.log&#x27;</span>]<span class="comment">//发布时不被打包的函数</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;)</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2-新增插件"><a href="#2-新增插件" class="headerlink" title="2. 新增插件"></a>2. 新增插件</h4><p>in build/webpack.dev.conf.js and build/webpack.prod.conf.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">plugins</span>: [</span><br><span class="line">	<span class="keyword">new</span> webpack.<span class="title class_">DllReferencePlugin</span>(&#123;</span><br><span class="line">		<span class="attr">context</span>: __dirname,</span><br><span class="line">		<span class="attr">manifest</span>: <span class="built_in">require</span>(<span class="string">&#x27;./vendor-manifest.json&#x27;</span>)</span><br><span class="line">	&#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<h4 id="3-新增命令"><a href="#3-新增命令" class="headerlink" title="3. 新增命令"></a>3. 新增命令</h4><p>in package.json<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">	<span class="string">&quot;dll&quot;</span>: <span class="string">&quot;webpack --config ./build/webpack.dll.config.js&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h4 id="4-引入DLL文件"><a href="#4-引入DLL文件" class="headerlink" title="4. 引入DLL文件"></a>4. 引入DLL文件</h4><p>in index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;/static/js/vendor.dll.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="5-打包构建"><a href="#5-打包构建" class="headerlink" title="5. 打包构建"></a>5. 打包构建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run dll</span><br><span class="line">npm run dev / npm run build</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">App</span> <span class="keyword">from</span> <span class="string">&#x27;./App&#x27;</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">	<span class="attr">el</span>: <span class="string">&quot;#app&quot;</span>,</span><br><span class="line">	router,</span><br><span class="line">	store,</span><br><span class="line">	<span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>),</span><br><span class="line">	<span class="attr">watch</span>: &#123;</span><br><span class="line">		<span class="comment">/* 监听路由变化 */</span></span><br><span class="line">		<span class="string">&#x27;$route&#x27;</span>: <span class="string">&#x27;handleRouter&#x27;</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="attr">methods</span>: &#123;</span><br><span class="line">		<span class="title function_">handleRouter</span>(<span class="params"></span>)&#123;</span><br><span class="line">			<span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;路由变化...&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#vue" >
+    <span class="tag-code">vue</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2018-05-08/working-with-v-charts/">
+        <span class="nav-arrow">← </span>
+        
+          使用v-charts所遇问题及解决方法（持续更新06.14）
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2018-05-14/vue-ElementUI-extend-02/">
+        
+          Vue使用element-ui所遇BUG与需求集结（二）
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9B%B6%E7%A2%8E%E9%9B%86"><span class="toc-nav-text">零碎集</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E5%A4%9A%E4%B8%AA%E9%94%9A%E7%82%B9"><span class="toc-nav-text">1. 多个锚点</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E7%9B%91%E5%90%AC%E9%A1%B5%E9%9D%A2%E6%BB%9A%E5%8A%A8"><span class="toc-nav-text">2. 监听页面滚动</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E5%9B%BE%E7%89%87%E7%9B%B8%E5%AF%B9%E5%9C%B0%E5%9D%80"><span class="toc-nav-text">3. 图片相对地址</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#ElementUI"><span class="toc-nav-text">ElementUI</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VCharts"><span class="toc-nav-text">VCharts</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Emojify"><span class="toc-nav-text">Emojify</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%BC%95%E5%85%A5%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6"><span class="toc-nav-text">引入自定义组件</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%A8%E5%B1%80%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-nav-text">全局过滤器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%97%B6%E9%97%B4%E6%88%B3%E8%BD%AC%E6%8D%A2"><span class="toc-nav-text">1. 时间戳转换</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E7%AD%9B%E9%80%89%E9%94%AE%E5%80%BC%E5%AF%B9"><span class="toc-nav-text">2. 筛选键值对</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E6%89%8B%E6%9C%BA%E5%8F%B7%E7%A0%81%E9%83%A8%E5%88%86%E9%9A%90%E8%97%8F"><span class="toc-nav-text">3. 手机号码部分隐藏</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E6%95%B0%E5%AD%97%E8%BD%AC%E6%8D%A2%E6%88%90%E5%8D%83%E5%88%86%E4%BD%8D"><span class="toc-nav-text">4. 数字转换成千分位</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%A8%E5%B1%80%E6%8C%87%E4%BB%A4"><span class="toc-nav-text">全局指令</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E9%99%90%E5%88%B6%E8%BE%93%E5%85%A5%E5%B0%8F%E6%95%B0%E4%BD%8D%E6%95%B0"><span class="toc-nav-text">1. 限制输入小数位数</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E9%98%B2%E6%AD%A2%E6%8C%89%E9%92%AE%E9%87%8D%E5%A4%8D%E7%82%B9%E5%87%BB"><span class="toc-nav-text">2. 防止按钮重复点击</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Cookie"><span class="toc-nav-text">Cookie</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Vuex"><span class="toc-nav-text">Vuex</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#VueRouter"><span class="toc-nav-text">VueRouter</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Webpack"><span class="toc-nav-text">Webpack</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-%E6%89%93%E5%8C%85%E5%90%8E%E7%A7%BB%E9%99%A4console"><span class="toc-nav-text">1. 打包后移除console</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-%E6%9C%AC%E6%9C%BAIP%E5%8F%AF%E8%AE%BF%E9%97%AE%E9%A1%B9%E7%9B%AE"><span class="toc-nav-text">2. 本机IP可访问项目</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-%E6%89%93%E5%8C%85%E6%97%B6%E4%B8%8D%E5%8C%85%E5%90%AB-map%E6%96%87%E4%BB%B6"><span class="toc-nav-text">3. 打包时不包含.map文件</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BB%84%E4%BB%B6%E5%8D%95%E7%8B%AC%E6%89%93%E5%8C%85DLLPlugin"><span class="toc-nav-text">4. 第三方组件单独打包DLLPlugin</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#1-%E6%96%B0%E5%A2%9E%E6%96%87%E4%BB%B6"><span class="toc-nav-text">1. 新增文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-%E6%96%B0%E5%A2%9E%E6%8F%92%E4%BB%B6"><span class="toc-nav-text">2. 新增插件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-%E6%96%B0%E5%A2%9E%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. 新增命令</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-%E5%BC%95%E5%85%A5DLL%E6%96%87%E4%BB%B6"><span class="toc-nav-text">4. 引入DLL文件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#5-%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA"><span class="toc-nav-text">5. 打包构建</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Vue"><span class="toc-nav-text">Vue</span></a></li></ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2018-05-11/common-in-vue/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "vue相关（持续更新01.31）",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+<!-- 彩带 START-->
+
+  <script id="ribbon" size="70" alpha="0.2" src="/js/canvas_ribbon.js"></script>
+
+<!-- 彩带 END-->
+  </body>
+</html>

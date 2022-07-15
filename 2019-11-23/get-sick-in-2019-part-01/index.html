@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="ShylaNie&#39;s Blog">
+  <meta name="keyword" content="前端, 前端开发, 博客, frontend, JavaScript, shyla, xiaoniezi, css, html, vue, blog">
+  
+    <link rel="shortcut icon" href="/css/images/logo.png">
+  
+  <title>
+    
+      肺炎——住院前篇 | 小聂子客栈
+    
+  </title>
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdn.bootcss.com/highlight.js/9.15.8/styles/atelier-dune-dark.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+    
+<link rel="stylesheet" href="/css/vexo_style.css?v1.0.0.css">
+
+  
+  <script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdn.bootcss.com/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdn.bootcss.com/nprogress/0.2.0/nprogress.min.js"></script>
+  
+<script src="/js/qrious.js"></script>
+<script src="/js/gitment.js"></script>
+
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  <!-- 不蒜子 START-->
+  
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 不蒜子 END-->
+<meta name="generator" content="Hexo 5.4.0"></head>
+<div class="wechat-share">
+  <img src="/css/images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo">
+        <img src="https://avatars1.githubusercontent.com/u/15884596?s=400&v=4"> 
+      </div>
+      <span>小聂子客栈</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/" class="item-link">Home</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/category/" class="item-link">Category</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/archives/" class="item-link">Archives</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/project/" class="item-link">Projects</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/about/" class="item-link">About</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/" class="menu-link">Home</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/category/" class="menu-link">Category</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/archives/" class="menu-link">Archives</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/project/" class="menu-link">Projects</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/about/" class="menu-link">About</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <div id="article-banner">
+  <h2>肺炎——住院前篇</h2>
+  <p class="post-date">
+    <span class="post-date-left">2019-11-23</span>
+     
+    <i class="fa fa-eye"></i>
+    <span id="busuanzi_container_page_pv">
+      热度
+      <span id="busuanzi_value_page_pv">
+        <i class="fa fa-spinner fa-spin"></i>
+      </span>℃
+    </span>
+    
+  </p>
+  <div class="arrow-down">
+    <a href="javascript:;"></a>
+  </div>
+</div>
+<main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <section class="markdown-content"><p>生病大概是个讲理又忠诚的身体预警。<br>在你疏忽的时候提个醒，没有例外和侥幸。<br><span id="more"></span></p>
+<hr>
+<p>九月底刚开始微咳那周我并未在意，周末时突发高热整晚咳嗽不止，第二天请假去药店咨询过店员后买了一堆药回去。几天未见好转还是去了医院，医生询问后做了血检，是细菌感染引起的支气管炎。然而吃了药当晚还是整夜反复咳醒，第二天又去一趟，换了个医生值班，听闻我将近一周没有睡好觉，很是贴心开了助眠的药。<br><br>或许是这细菌太强大，又或许是多年没运动的身体太孱弱，情况依旧如此。此时我已经对医生的诊断怀疑，如果真是细菌，为什么开的药物毫无作用，还加剧了病情。<br><br>还好迎来了国庆假期，我想，终于能回家喘口气了吧。<br><br>在家里看的小诊所，没有先进的机器，靠医生多年的经验望闻问切。第一个医生说是因为受凉引起的支气管炎，做了雾化吃了药。那个晚上终于只咳醒了两次，将近十天以来最好眠的一个晚上。我想，看来有希望了。然而第二天依旧如此。于是换了第二个医生，信誓旦旦诊断是热气引起的。隔两天没用，又换回第一个医生，继续雾化治疗。遇上重阳节，家里祭祖，或许是晒了太阳，回来后忍不住干呕，当时只觉这病遥遥无期，或许在治好前已被睡眠不足折磨疯。以前看过一篇小说，男主七八岁开始十几年没有睡好一觉——因为神经衰弱，丁点声响都会梦醒——而患上了躁狂症，当时自己还觉得挺神奇，这不是相对于普通人有了双倍的时间努力，难怪成了男主。<br><br>偏题了。饭前母亲见我眼眶微红还笑嗔，生病就是不舒服呀，有什么好哭的。我瞬间就委屈了，眼泪吧嗒吧嗒地掉。觉得自己脆弱，又羞愧，这么大还要母亲担心。在得知我生病就开始担心，常问今日睡眠如何，每日换着菜式，凉了热了都不敢做。当天又带着我换了第三个医生，这次是社区医院，说凉还是热引起的我忘了，那天开始猪肉是我唯一能吃的荤菜。<br><br>此时我已经习惯咳嗽伴随似梦似醒的日子。本想回去那周换个医院（既然西医不行那就试试中医），遇上一个重要朋友的婚期，就改为参加婚礼后再看。去之前还找了家药店，期望能吃些中成药缓缓白日的咳嗽。<br><br>没想到这次真的缓解了，白日已经很少会咳，晚上最多醒来两次。我开始相信药店老板娘的话了，是因为刚开始受凉没好全，又受了热气，所以外热内寒互相影响。——这时候的我精神上已经病入膏肓，只要能稍微治愈微末我都无条件相信那个人，深刻体会了什么叫急病乱投医。像个嗑了长生药的老皇帝，只要沉珂少了一分都是朕年轻了十岁，朕的国师炼丹有道。<br><br>期间新人来敬酒的时候，鉴于这破身体，我只含着一小口，没想到酒气一下子冲进了喉咙，当下咳嗽不止。我自以为好转，隔了一周才去的中医院，但那时已经咳太久，深呼吸肋骨都疼。于是预约了一个预约量最多的呼吸内科医生，六七十岁的老奶奶，预约了也很多人排队，十一点多才轮到我。医生听我开始叙述病情，不可置信地再次询问我是否咳了将近一个月，确认后说咳嗽这么久要照个肺才行。问了我几个问题，就让我去照胸片和血检，还有个第二天才能拿结果的支原体抗体检查。<br><br>胸片结果诊断肺部感染，医生看到连声说来得太迟了，要住院打点滴。因为那个中医院没住院部，她温柔地谆谆安慰这情况什么医院都会收，让我别担心。我反而觉得更怕了，对于未知，从小到大最严重只烧到39°，“住院”这个词不亚于“你患了癌症”。<br><br>那天我从医院出来，在隔壁小区的树下坐了一个小时，千愁万绪。<br><br>有那么一刻，我想好了怎么让家人继承我那存款微末的支付宝。<br><br>跟姐妹说情况的时候还乱糟糟，前言不搭后语，姐姐匆忙请假买了晚上的票就要过来，还问我怕不怕。我说怕啊。太直接怕她担心，又补了一句玩笑，怕以后不能吃辣条。</p>
+</section>
+    <!-- Tags START -->
+    
+      <div class="tags">
+        <span>Tags:</span>
+        
+  <a href="/tag#2019" >
+    <span class="tag-code">2019</span>
+  </a>
+
+      </div>
+    
+    <!-- Tags END -->
+    <!-- NAV START -->
+    
+  <div class="nav-container">
+    <!-- reverse left and right to put prev and next in a more logic postition -->
+    
+      <a class="nav-left" href="/2019-10-16/css-effect-01/">
+        <span class="nav-arrow">← </span>
+        
+          收藏CSS：Hover下划线收缩、蛇形边框
+        
+      </a>
+    
+    
+      <a class="nav-right" href="/2019-12-15/get-sick-in-2019-part-02/">
+        
+          肺炎——住院后篇
+        
+        <span class="nav-arrow"> →</span>
+      </a>
+    
+  </div>
+
+    <!-- NAV END -->
+    <!-- 打赏 START -->
+    
+    <!-- 打赏 END -->
+    <!-- 二维码 START -->
+    
+      <div class="qrcode">
+        <canvas id="share-qrcode"></canvas>
+        <p class="notice">扫描二维码，分享此文章</p>
+      </div>
+    
+    <!-- 二维码 END -->
+    
+      <!-- Livere START -->
+      <!-- 来必力City版安装代码 -->
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzU1MC8yNDA1MA==">
+        <script type="text/javascript">
+         (function(d, s) {
+             var j, e = d.getElementsByTagName(s)[0];
+
+             if (typeof LivereTower === 'function') { return; }
+
+             j = d.createElement(s);
+             j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+             j.async = true;
+
+             e.parentNode.insertBefore(j, e);
+         })(document, 'script');
+        </script>
+      <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+      </div>
+      <!-- City版安装代码已完成 -->
+      <!-- Livere END -->
+    
+  </article>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+    <aside class="catalog-container">
+  <div class="toc-main">
+    <strong class="toc-title">Catalog</strong>
+    
+      <ol class="nav">none</ol>
+    
+  </div>
+</aside>
+  
+  <!-- Catalog END -->
+</main>
+
+<script>
+  (function () {
+    var url = 'https://xiaoniezi.github.io/2019-11-23/get-sick-in-2019-part-01/';
+    var banner = 'undefined'
+    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
+      $('#article-banner').css({
+        'background-image': 'url(' + banner + ')'
+      })
+    } else {
+      $('#article-banner').geopattern(url)
+    }
+    $('.header').removeClass('fixed-header')
+
+     // error image
+    $(".markdown-content img").on('error', function() {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function() {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+        
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function() {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+
+    // qrcode
+    var qr = new QRious({
+      element: document.getElementById('share-qrcode'),
+      value: document.location.href
+    });
+
+    // gitment
+    var gitmentConfig = "undefined";
+    if (gitmentConfig !== 'undefined') {
+      var gitment = new Gitment({
+        id: "肺炎——住院前篇",
+        owner: "undefined",
+        repo: "undefined",
+        oauth: {
+          client_id: "undefined",
+          client_secret: "undefined"
+        },
+        theme: {
+          render(state, instance) {
+            const container = document.createElement('div')
+            container.lang = "en-US"
+            container.className = 'gitment-container gitment-root-container'
+            container.appendChild(instance.renderHeader(state, instance))
+            container.appendChild(instance.renderEditor(state, instance))
+            container.appendChild(instance.renderComments(state, instance))
+            container.appendChild(instance.renderFooter(state, instance))
+            return container;
+          }
+        }
+      })
+      gitment.render(document.getElementById('comments'))
+    }
+  })();
+</script>
+
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    <footer class="app-footer">
+  <p class="copyright">
+    &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!--
+    <br>
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
+    -->
+    <br>
+    <span id="busuanzi_container_site_uv">
+      本站访客数：<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>人次
+    </span>
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+<!-- 彩带 START-->
+
+  <script id="ribbon" size="70" alpha="0.2" src="/js/canvas_ribbon.js"></script>
+
+<!-- 彩带 END-->
+  </body>
+</html>
